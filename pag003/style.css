@@ -50,7 +50,7 @@ h2 {
     margin-top: 25px;
 }
 
-.input-control {
+.input-new-task {
     width: 400px;
     height: 3vh;
     border-radius: 45px;
@@ -72,12 +72,71 @@ h2 {
     cursor: pointer;
 }
 
-.profile-icon{
+.profile-icon {
     background-color: black;
     border: none;
 }
 
-.profile-icon svg{
+.profile-icon svg {
     color: white;
     cursor: pointer;
 }
+
+#to-do-list {
+    list-style-type:none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#to-do-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: #f8f8f8;
+    border-radius: 45px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.438);
+    transition: all 0.2s ease;
+}
+
+#to-do-list li:hover {
+    background-color: #dfdfdf69;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 45px;
+}
+
+/* Estilização do texto das tarefas */
+#to-do-list li {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 16px;
+    color: #333;
+    word-break: break-word;
+    flex-grow: 1;
+}
+
+/* Estilização do botão de concluir */
+#btn-ok {
+    background-color: #ff0000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+}
+
+#btn-ok:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+#btn-ok svg {
+    fill: rgb(255, 255, 255);
+}
+
