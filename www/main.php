@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>do !t</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_main.css">
 </head>
 
 <body>
@@ -21,13 +21,6 @@
     </div>
     <div class="info-tab" id="infoTab">
         <div class="info-content">
-            <div class="info-header">
-                <h3>Perfil</h3>
-            </div>
-            <div class="user-info">
-                <p><strong>Nome:</strong> <span id="userName">João exemplo</span></p>
-                <p><strong>Email:</strong> <span id="userEmail">joao@exemplo.com</span></p>
-            </div>
             <button class="exit-button" onclick="window.location.href='sair.php'">Sair</button>
         </div>
     </div>
@@ -54,9 +47,9 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script_main.js"></script>
 
 </body>
-<script src="script.js"></script>
+<script src="script_main.js"></script>
 
 </html>
