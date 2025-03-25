@@ -13,7 +13,7 @@
 
 # Do-it
 
-![DoIt](https://github.com/user-attachments/assets/44f26102-16c9-4022-8ef1-20cd16efd5db)
+![DoIt](https://github.com/user-attachments/assets/9599b40d-76e8-4197-b6a5-2dcfd0038644)
 
 ## Aplicativo de Gerenciamento de Tarefas
 
@@ -54,7 +54,13 @@ Dispositivo e software utilizados:
 
 Backgrounds:
 
+![image](https://github.com/user-attachments/assets/d7424986-59e8-44cc-aaf4-ede9f2c4c370)
+
+![image](https://github.com/user-attachments/assets/b9388396-41af-48d3-b99a-788c3fba6121)
+
 Logo:
+
+![image](https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40)
 
 ### Front-end:
 Thiago Galvão Amorim e Guilherme da Silva Carvalho ficaram responsaveis pelo front-end do projeto.
@@ -75,6 +81,7 @@ Ruam Marcos Maciel dos Santos e Douglas Alves da Cruz ficaram responsaveis pelo 
 ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+
 Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD), assegurando que o trabalho do grupo fosse integrado de forma mais harmoniosa.
 
 ### APRESENTAÇÂO DO PROJETO
