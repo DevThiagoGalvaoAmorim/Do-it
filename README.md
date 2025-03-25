@@ -13,7 +13,7 @@
 
 # Do-it
 
-![DoIt](https://github.com/user-attachments/assets/9599b40d-76e8-4197-b6a5-2dcfd0038644)
+![DoIt](https://github.com/user-attachments/assets/346e703f-fa86-419d-8b17-6b2b5a47dc13)
 
 ## Aplicativo de Gerenciamento de Tarefas
 
