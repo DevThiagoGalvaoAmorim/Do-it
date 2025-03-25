@@ -1,16 +1,3 @@
-
-Projeto de engenharia de software - Dev com GitFlow
-Universidade Federal do Tocantins 
-Curso: Ciência da computação
-Disciplina: Engenharia de software
-Professor: Edeilson Milhomen da Silva
-
-Time: 
-* Thiago Galvâo Amorim
-* Douglas Alves da Cruz
-* Ruam Marcos Maciel dos Santos
-* Joao Sestari Galvão
-
 # Projeto de engenharia de software - Dev com GitFlow
 - Universidade Federal do Tocantins 
 - Curso: Ciência da computação
