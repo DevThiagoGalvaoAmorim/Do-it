@@ -55,7 +55,9 @@ Backgrounds criados:
 
 Esboço da elaboração da logo:
 
-![image](https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40" alt="Descrição da imagem" />
+</div>
 
 ### Front-end:
 Thiago Galvão Amorim e Guilherme da Silva Carvalho ficaram responsaveis pelo front-end do projeto.
