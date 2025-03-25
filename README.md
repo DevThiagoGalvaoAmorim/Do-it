@@ -1,4 +1,3 @@
-# Do-it
 Projeto de engenharia de software - Dev com GitFlow
 Universidade Federal do Tocantins 
 Curso: Ciência da computação
@@ -11,10 +10,11 @@ Time:
 * Ruam Marcos Maciel dos Santos
 * Joao Sestari Galvão
 * Guilherme da Silva Carvalho
-  
-# Aplicativo de Gerenciamento de Tarefas
 
-![Login_DO_IT](https://github.com/user-attachments/assets/b818800b-17be-40db-a433-12c4e1a37bde)
+# Do-it
+## Aplicativo de Gerenciamento de Tarefas
+
+![DO IT](https://github.com/user-attachments/assets/77698557-55db-4750-a91f-44bb66e98acb)
 
 Este é um aplicativo de gerenciamento de tarefas que ajuda você a organizar, acompanhar e concluir suas tarefas com eficiência.
 
