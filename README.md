@@ -14,7 +14,7 @@ Time:
   
 # Aplicativo de Gerenciamento de Tarefas
 
-![Logo](![Login_DO_IT](https://github.com/user-attachments/assets/b818800b-17be-40db-a433-12c4e1a37bde))
+![Login_DO_IT](https://github.com/user-attachments/assets/b818800b-17be-40db-a433-12c4e1a37bde)
 
 Este é um aplicativo de gerenciamento de tarefas que ajuda você a organizar, acompanhar e concluir suas tarefas com eficiência.
 
