@@ -47,13 +47,13 @@ Dispositivo e software utilizados:
 - Mesa digitalizadora xp-pen
 - Software de desenho ![Krita](https://img.shields.io/badge/Krita-203759?style=for-the-badge&logo=krita&logoColor=EEF37B)
 
-Backgrounds:
+Backgrounds criados:
 
 ![image](https://github.com/user-attachments/assets/d7424986-59e8-44cc-aaf4-ede9f2c4c370)
 
 ![image](https://github.com/user-attachments/assets/b9388396-41af-48d3-b99a-788c3fba6121)
 
-Logo:
+Esboço da elaboração da logo:
 
 ![image](https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40)
 
