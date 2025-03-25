@@ -83,6 +83,9 @@ Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD
 
 ### APRESENTAÇÂO DO PROJETO
 João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou repsonsável por fazer o vídeo/tutorial.
+
+## Começando
+segue abaixo as instruções de como usar o Do it
   
 [VIDEO APRESENTANDO O PROJETO](https://drive.google.com/file/d/1vYhDOM9LR5l7OAbotGXSv3w3WQ7gGpzS/view?usp=sharing)
 
