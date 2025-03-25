@@ -12,8 +12,9 @@
 * Guilherme da Silva Carvalho
 
 # Do-it
-
-![DoIt](https://github.com/user-attachments/assets/346e703f-fa86-419d-8b17-6b2b5a47dc13)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/346e703f-fa86-419d-8b17-6b2b5a47dc13" alt="Descrição da imagem" />
+</div>
 
 ## Aplicativo de Gerenciamento de Tarefas
 
@@ -55,9 +56,6 @@ Backgrounds:
 Logo:
 
 ![image](https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40)
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40" alt="Logotipo do Projeto" />
-</div>
 
 ### Front-end:
 Thiago Galvão Amorim e Guilherme da Silva Carvalho ficaram responsaveis pelo front-end do projeto.
