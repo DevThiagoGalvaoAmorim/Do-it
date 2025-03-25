@@ -11,10 +11,8 @@ Time:
 * Joao Sestari Galvão
 * Guilherme da Silva Carvalho
 
-# Do-it
+# Do-it ![DO IT](https://github.com/user-attachments/assets/77698557-55db-4750-a91f-44bb66e98acb)
 ## Aplicativo de Gerenciamento de Tarefas
-
-![DO IT](https://github.com/user-attachments/assets/77698557-55db-4750-a91f-44bb66e98acb)
 
 Este é um aplicativo de gerenciamento de tarefas que ajuda você a organizar, acompanhar e concluir suas tarefas com eficiência.
 
