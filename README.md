@@ -84,17 +84,32 @@ Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD
 ### APRESENTAÇÂO DO PROJETO
 João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou repsonsável por fazer o vídeo/tutorial.
 
-## Começando
-segue abaixo as instruções de como usar o Do it
-  
+ 
 [VIDEO APRESENTANDO O PROJETO](https://drive.google.com/file/d/1vYhDOM9LR5l7OAbotGXSv3w3WQ7gGpzS/view?usp=sharing)
 
 ---
 
-**Network Graph do fluxo de trabalho desenvolvido: **
+**Network Graph do fluxo de trabalho desenvolvido:**
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/344e42fd-a7e2-4a85-bedb-d73117c160c7" alt="Network Graph" />
 </div>
 
+---
 
+## Começando
+ segue abaixo as instruções de como usar o Do it
+ 
+ ### Pré-requisitos
+ - Docker (versão 20.10.0 ou superior)
+ - Docker Compose (versão 1.29.0 ou superior)
+ 
+ ### Instalação com Docker Compose
+ 
+ 1. Clone o repositório:
+    git clone https://github.com/DevThiagoGalvaoAmorim/Do-it.git
+    cd Do-it
+    git checkout develop
+ 2. Configure o Docker Compose:
+     docker-compose up
+ 3. Abra o navegador, e navegue até a seguinte URL: localhost:8080
