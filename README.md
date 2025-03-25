@@ -82,27 +82,16 @@ Ruam Marcos Maciel dos Santos e Douglas Alves da Cruz ficaram responsaveis pelo 
 Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD), assegurando que o trabalho do grupo fosse integrado de forma mais harmoniosa.  E ainda, foram desenvolvidos o sistema de login e o sistema de cadastro.
 
 ### APRESENTAÇÂO DO PROJETO
-João Sestari Galvão ficou responsavel por criar o README e vídeo de apresentação.
+João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou repsonsável por fazer o vídeo/tutorial.
+  
+[VIDEO APRESENTANDO O PROJETO](https://drive.google.com/file/d/1vYhDOM9LR5l7OAbotGXSv3w3WQ7gGpzS/view?usp=sharing)
 
-link do vídeo:
+---
 
-## Começando
-segue abaixo as instruções de como usar o Do it
+**Network Graph do fluxo de trabalho desenvolvido: **
 
-### Pré-requisitos
-- Docker (versão 20.10.0 ou superior)
-- Docker Compose (versão 1.29.0 ou superior)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/344e42fd-a7e2-4a85-bedb-d73117c160c7" alt="Network Graph" />
+</div>
 
-### Instalação com Docker Compose
-
-1. Clone o repositório:
-   git clone https://github.com/DevThiagoGalvaoAmorim/Do-it.git
-   cd Do-it
-   git checkout develop
-2. Configure o Docker Compose:
-    docker-compose up
-
-### Abra o app no localhost
-
-Entre com http://localhost:8080
 
