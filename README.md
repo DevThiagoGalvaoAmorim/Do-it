@@ -34,12 +34,6 @@ Este é um aplicativo de gerenciamento de tarefas que ajuda você a organizar, a
 - Criação rápida de tarefas
 - Design responsivo para todos os dispositivos
 
-## Começando
-
-⚡ **Ferramentas de Produtividade**
-- Criação rápida de tarefas 
-- Design responsivo para todos os dispositivos
-
 # Features:
 
 ### Design:
@@ -61,6 +55,9 @@ Backgrounds:
 Logo:
 
 ![image](https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/51b931d5-3ef6-4ccf-8fdc-a59ca3bcbf40" alt="Logotipo do Projeto" />
+</div>
 
 ### Front-end:
 Thiago Galvão Amorim e Guilherme da Silva Carvalho ficaram responsaveis pelo front-end do projeto.
@@ -82,7 +79,7 @@ Ruam Marcos Maciel dos Santos e Douglas Alves da Cruz ficaram responsaveis pelo 
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
-Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD), assegurando que o trabalho do grupo fosse integrado de forma mais harmoniosa.
+Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD), assegurando que o trabalho do grupo fosse integrado de forma mais harmoniosa.  E ainda, foram desenvolvidos o sistema de login e o sistema de cadastro.
 
 ### APRESENTAÇÂO DO PROJETO
 João Sestari Galvão ficou responsavel por criar o README e vídeo de apresentação.
