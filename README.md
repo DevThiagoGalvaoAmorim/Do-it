@@ -74,9 +74,8 @@ Ruam Marcos Maciel dos Santos e Douglas Alves da Cruz ficaram responsaveis pelo 
 **tecnologias**: 
 ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-
-Desenvolveram ambos o banco de dados que armazena as informações de login e criação de conta,
-eles também realizaram os teste de funcionalida de projeto.
+![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD), assegurando que o trabalho do grupo fosse integrado de forma mais harmoniosa.
 
 ### APRESENTAÇÂO DO PROJETO
 João Sestari Galvão ficou responsavel por criar o README e vídeo de apresentação.
