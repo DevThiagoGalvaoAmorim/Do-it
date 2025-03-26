@@ -85,7 +85,7 @@ Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD
 João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou repsonsável por fazer o vídeo/tutorial.
 
  
-[VIDEO APRESENTANDO O PROJETO](https://drive.google.com/file/d/1vYhDOM9LR5l7OAbotGXSv3w3WQ7gGpzS/view?usp=sharing)
+[VIDEO APRESENTANDO O PROJETO]([https://drive.google.com/file/d/1vYhDOM9LR5l7OAbotGXSv3w3WQ7gGpzS/view?usp=sharing](https://docs.google.com/document/d/15sDGJFrplWvTm98ccEN_uUTgV2XrsOlb7kP3PalAGzY/edit?usp=sharing))
 
 ---
 
