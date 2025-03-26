@@ -82,10 +82,10 @@ Ruam Marcos Maciel dos Santos e Douglas Alves da Cruz ficaram responsaveis pelo 
 Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD), assegurando que o trabalho do grupo fosse integrado de forma mais harmoniosa.  E ainda, foram desenvolvidos o sistema de login e o sistema de cadastro.
 
 ### APRESENTAÇÂO DO PROJETO
-João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou repsonsável por fazer o vídeo/tutorial.
+João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou reponsável por fazer o vídeo/tutorial.
 
- 
-[VIDEO APRESENTANDO O PROJETO]([https://drive.google.com/file/d/1vYhDOM9LR5l7OAbotGXSv3w3WQ7gGpzS/view?usp=sharing](https://docs.google.com/document/d/15sDGJFrplWvTm98ccEN_uUTgV2XrsOlb7kP3PalAGzY/edit?usp=sharing))
+Link do vídeo:
+https://drive.google.com/file/d/1uwErgRkIHeP2otONdiVtWXAxJUf335t8/view?usp=drive_link
 
 ---
 
