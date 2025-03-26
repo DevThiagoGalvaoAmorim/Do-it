@@ -85,8 +85,7 @@ Eles foram encarregados do desenvolvimento do banco de dados e da conexão (CRUD
 João Sestari Galvão ficou responsavel por criar o README e Ruam Marcos ficou reponsável por fazer o vídeo/tutorial.
 
 Link do vídeo:
-https://drive.google.com/file/d/1uwErgRkIHeP2otONdiVtWXAxJUf335t8/view?usp=drive_link
-
+https://drive.google.com/file/d/1ZiVNbwgLwupi_PB1tff392ZYylcbPiVu/view?usp=drive_link
 ---
 
 **Network Graph do fluxo de trabalho desenvolvido:**
