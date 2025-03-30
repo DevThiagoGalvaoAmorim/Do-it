@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once 'conexao.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -11,6 +12,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $criar = $pdo->prepare($sql);
         $criar->execute(['nome' => $nome, 'email' => $email, 'senha' => $senha]);
+
+        $_SESSION['nome'] = $nome;
+        $_SESSION['email'] = $email;
+        $_SESSION['usuario_id'] = $pdo->lastInsertId();
         
         header("Location: main.php");
         exit();

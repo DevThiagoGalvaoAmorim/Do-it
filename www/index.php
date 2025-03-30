@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexao.php';
 
 $errorMessage = null; 
@@ -16,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resultado = $buscar->fetch(PDO::FETCH_ASSOC);
 
         if ($resultado) {
+            $_SESSION['nome'] = $resultado['nome'];;
+            $_SESSION['email'] = $email;
+            $_SESSION['usuario_id'] = $resultado['usuario_id'];
             header("Location: main.php");
             exit();
         } else {

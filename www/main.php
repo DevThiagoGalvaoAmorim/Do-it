@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -50,6 +57,4 @@
     <script src="script_main.js"></script>
 
 </body>
-<script src="script_main.js"></script>
-
 </html>
