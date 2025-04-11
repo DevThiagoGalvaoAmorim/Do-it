@@ -1,7 +1,13 @@
 # Engenharia de Software 2024.2 - Universidade Federal do Tocantins  
 Bacharelado em Ciência da Computação, 4º semestre  
 Professor: Edeilson Milhomem da Silva  
-Grupo: [Nomes dos Integrantes]
+Grupo: 
+* Thiago Galvâo Amorim
+* Douglas Alves da Cruz
+* Ruam Marcos Maciel dos Santos
+* João Sestari Galvão
+* Guilherme da Silva Carvalho
+* Raphael Sales de Souza
 
 ## Sistema de Notas
 
@@ -166,17 +172,3 @@ Protótipo de Tela:
 
 ---
 
-### Links Úteis
-
-[Relatório Técnico](Relatorio.md)  
-[Apresentação Final](https://link-apresentacao)  
-[Landing Page](https://link-landing-page)
-
----
-
-### Passos para Utilização
-
-```bash
-git clone <url_do_repositório>
-composer install
-php -S localhost:8000 -t public
