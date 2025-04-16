@@ -15,7 +15,7 @@ Grupo:
 O Sistema de Notas é uma aplicação voltada para organização pessoal de informações, permitindo ao usuário criar, editar e gerenciar notas, lembretes, listas de tarefas e agrupá-las em pastas. O sistema também possibilita personalização de perfil e gerenciamento de conta, com diferentes níveis de acesso (Usuário e Administrador).
 
 ---
-
+ 
 ### Requisitos Funcionais do Projeto
 
 
@@ -240,11 +240,20 @@ Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sist
 - RF01 – Cadastro de Usuário  
 - RF02 – Login do Usuário e Administrador  
 - RF09 – Edição de Dados Pessoais do Usuário  
-- RF10 – Exclusão da Conta do Usuário  
+- RF10 – Exclusão da Conta do Usuário
+- RF11 - Gerenciamento de Usuários pelo Administrador
+
 
 ![image](https://github.com/user-attachments/assets/af094729-ba3b-4e69-9c36-726c8665a042)
 
 ![image](https://github.com/user-attachments/assets/f2795ec4-f7c5-426a-84f7-97059ad7174f)
+
+![Tela de Administrador - Usuários-Douglas](https://github.com/user-attachments/assets/dcf2d4b4-e5c8-4866-a5cd-106b6462fc82)
+
+![Tela de Administrador - Log De Atividades-Douglas](https://github.com/user-attachments/assets/36b62a4e-6797-4b78-93c5-043c81c2b1cf)
+
+![Tela de Administrador - Estatísticas-Douglas](https://github.com/user-attachments/assets/36224352-9d7d-4a74-8eef-62af22f0cae5)
+
 
 
 ### User Stories que se enquadram na Iteração 2
