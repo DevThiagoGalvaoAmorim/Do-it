@@ -19,17 +19,249 @@ O Sistema de Notas é uma aplicação voltada para organização pessoal de info
 ### Requisitos Funcionais do Projeto
 
 **RF01** - Cadastro de Usuário  
+  Descrição: O usuário consegue de forma simples utilizar a aplicação para criar uma novo cadastro no sistema,
+  sendo essa uma instância de sua utilização no sistema.
+
+  Tarefas:   
+      Criar o visual dessa tela, com um formulário enviando os dados via método POST.
+      Adicionar ao banco de dados a Relação com os dados do usuário.
+      Criar uma função que faz a inserção da instância do novo usuário no sistema.
+      Criar o uma função que recebe como parâmetro, os dados do formulário, e, faz a autenticação, ou recusa a autenticação com uma mensagem de erro,
+      de acordo com a busca feita no banco de dados.
+      Mostrar o visual da mensagem de erro.
+
+### RF01 - Cadastro de Usuário
+
+| **Id**        | **RF01**                                                                                                                                             |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Cadastro de Usuário                                                                                                                                  |
+| **Descrição** | Permitir que o usuário crie um novo cadastro no sistema de forma simples, representando uma nova instância de uso.                                  |
+| **Tarefas**   | - Desenvolver a interface da tela de cadastro, com formulário que envia dados via método `POST`.<br>                                                |
+|               | - Criar a estrutura no banco de dados para armazenar os dados do usuário.<br>                                                                        |
+|               | - Implementar função para inserir a instância do novo usuário no banco de dados.<br>                                                                |
+|               | - Implementar função que:<br>&nbsp;&nbsp;&nbsp;&nbsp;• Recebe os dados do formulário;<br>&nbsp;&nbsp;&nbsp;&nbsp;• Verifica autenticidade no banco;<br>&nbsp;&nbsp;&nbsp;&nbsp;• Retorna mensagem de erro se necessário.<br> |
+|               | - Exibir mensagem de erro de forma visual na interface, em caso de falha.                                                                            |
+
+
 **RF02** - Login do Usuário e Administrador  
+  Descrição: O usuário deve conseguir efetuar seu login (autenticação) no sistema, com seu cadastro previamente efetuado. Essa capacidade do sistema 
+  deve ser simples e rápida de ser realizada pelo usuário.
+
+  Tarefas:
+      Criar o visual da tela de login, com um formulário enviando os dados via método POST.
+      Utiliar a função de busca e verificação, criada em RF01.
+      Criar a mensagem de erro a ser apresentada ao usuário.
+
+### RF02 - Login do Usuário e Administrador
+
+| **Id**        | RF02                                                                                                                                              |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Login do Usuário e Administrador                                                                                                                  |
+| **Descrição** | O usuário deve conseguir efetuar seu login no sistema, com cadastro previamente efetuado. O processo deve ser simples e rápido.                  |
+| **Tarefas**   | - Criar o visual da tela de login com formulário que envia dados via método `POST`.<br>                                                          |
+|               | - Utilizar a função de busca e verificação criada em RF01.<br>                                                                                    |
+|               | - Criar a mensagem de erro a ser apresentada ao usuário.                                                                                          |
+
+
 **RF03** - Criação de Notas (Anotações, Lembretes, Listas de Tarefas)  
+  Descrição: O usuário deve conseguir criar notas, de forma simples, podendo visualizá-las em um painel de  Notas. 
+
+  Tarefas:
+      Criar uma Página que seja capaz de mostrar notas de forma padronizada, independente da quantidade de notas, onde todas as notas tem o mesmo tamanho
+      na exbição de seu Resumo e Título.
+      Fazer um método Iterativo que faz a busca de todas as notas de um usuário no banco de dados e o carregamento dessas para exibição
+      Criar um construtor de Anotação, onde faz a construção de uma anotação, mediante o tipo de anotação; Lembrete, Anotação e Lista de Tarefas.
+        obs: esse método serve para salvar uma nova nota no banco de dados, quanto para recuperar uma nota do banco de dados.
+      Fazer o método de carregamento de notas para o Painel de notas.
+      Criar a funcionalidade de busca de notas por título.
+
+### RF03 - Criação de Notas
+
+| **Id**        | RF03                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Criação de Notas (Anotações, Lembretes, Listas de Tarefas)                                                                                                               |
+| **Descrição** | O usuário deve conseguir criar notas de forma simples, podendo visualizá-las em um painel de notas.                                                                     |
+| **Tarefas**   | - Criar uma página que exiba as notas de forma padronizada, independente da quantidade.<br>                                                                             |
+|               | - Criar método iterativo para buscar todas as notas do usuário no banco e carregá-las para exibição.<br>                                                                |
+|               | - Criar um construtor de anotação para os tipos: Lembrete, Anotação e Lista de Tarefas (salvar e recuperar).<br>                                                        |
+|               | - Desenvolver o método de carregamento de notas para o painel de notas.<br>                                                                                              |
+|               | - Criar a funcionalidade de busca de notas por título.                                                                                                                   |
+
+
+      
 **RF04** - Edição de Notas  
+  Descrição: O usuário deve conseguir editar uma nota já criada.
+
+  Tarefas:
+      Com uma nota já criada, o usuário deve conseguir mudar os dados daquela nota, e ainda, salvá-las para futura modificação, exclusão, arquivamento ou nova
+      Edição.
+
+### RF04 - Edição de Notas
+
+| **Id**        | RF04                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Edição de Notas                                                                                                                                                          |
+| **Descrição** | O usuário deve conseguir editar uma nota já criada.                                                                                                                      |
+| **Tarefas**   | - Permitir a modificação de dados de uma nota já criada.<br>                                                                                                              |
+|               | - Garantir a persistência dessas alterações para futuras edições, exclusões ou arquivamentos.                                                                            |
+
+   
 **RF05** - Exclusão de Notas  
+  Descrição: O usuário deve conseguir excluir uma nota já criada.
+
+  Tarefas:
+      Criar o método de Enviar a lixeira, para futura exclusão da nota.
+      Criar o atributo Lixeira, pertencente a cada nota, e nesta contém a validade da nota. Assim que inicializado, terá um prazo para sua autoexclusão.
+      Criar o método que recupera uma nota da lixeira.
+      Criar o método de exclusão imediata de uma nota.
+
+### RF05 - Exclusão de Notas
+
+| **Id**        | RF05                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Exclusão de Notas                                                                                                                                                        |
+| **Descrição** | O usuário deve conseguir excluir uma nota já criada.                                                                                                                     |
+| **Tarefas**   | - Criar método de envio para lixeira, com exclusão futura.<br>                                                                                                            |
+|               | - Adicionar o atributo "Lixeira" à nota, com prazo de autoexclusão.<br>                                                                                                  |
+|               | - Criar método de recuperação de nota da lixeira.<br>                                                                                                                     |
+|               | - Criar método de exclusão imediata.                                                                                                                                     |
+
+
 **RF06** - Arquivamento de Notas  
+  Descrição: O usuário deve conseguir arquivar uma nota criada. Uma nota na lixeira não está arquiva.
+
+  Tarefas: 
+      Criar um método que atribua o estado de arquivada a uma nota.
+      Criar uma método que carregue as notas no estado arquivadas.
+      Criar um método que retire a nota do estado de arquivada.
+
+### RF06 - Arquivamento de Notas
+
+| **Id**        | RF06                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Arquivamento de Notas                                                                                                                                                    |
+| **Descrição** | O usuário deve conseguir arquivar uma nota criada. Notas na lixeira não estão arquivadas.                                                                                |
+| **Tarefas**   | - Criar método para atribuir estado de arquivada à nota.<br>                                                                                                              |
+|               | - Criar método para carregar notas arquivadas.<br>                                                                                                                        |
+|               | - Criar método para remover o estado de arquivada da nota.                                                                                                                |
+
+
 **RF07** - Organização em Pastas  
+  Descrição: O usuário deve conseguir colocar uma nota dentro de uma pasta. As notas arquivadas ou em lixeira não estão em nenhuma pasta. Com isso, o usuário
+  consegue acessar todas as suas pastas, e para cada pasta, o usuário deve conseguir visualizar todas as suas notas de maneira simples.
+
+  Tarefas:
+      Criar o metodo de Criar novas Pastas
+      Criar um metodo de excluir pastas.
+      Criar o metodo de atribuir pasta, que relaciona uma pasta a um metodo.
+      Criar o metodo de carregar notas de uma pasta.
+
+### RF07 - Organização em Pastas
+
+| **Id**        | RF07                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Organização em Pastas                                                                                                                                                    |
+| **Descrição** | O usuário deve conseguir colocar uma nota dentro de uma pasta. Notas arquivadas ou na lixeira não pertencem a pastas.                                                    |
+| **Tarefas**   | - Criar método para criação de novas pastas.<br>                                                                                                                          |
+|               | - Criar método para exclusão de pastas.<br>                                                                                                                               |
+|               | - Criar método de atribuição de pasta a uma nota.<br>                                                                                                                     |
+|               | - Criar método para carregar as notas de uma pasta.                                                                                                                       |
+
+      
 **RF08** - Pesquisa de Notas por Título  
+  Descrição: O usuário deve conseguir fazer uma busca nas notas carregadas no painel, a busca considera o que for estiver escrito na barra de busca para 
+  critério de ordenação das notas carregas no painel.
+
+  Tarefas:
+      Criar um metodo que retorna uma lista ordenada conforme um critério passado com parâmetro.
+      Criar um metodo que carrega as Notas do painel conforme uma lista de ordenação.
+
+### RF08 - Pesquisa de Notas por Título
+
+| **Id**        | RF08                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Pesquisa de Notas por Título                                                                                                                                             |
+| **Descrição** | O usuário deve conseguir realizar busca nas notas carregadas no painel, com base no conteúdo digitado na barra de pesquisa.                                             |
+| **Tarefas**   | - Criar método que retorna lista de notas ordenada conforme critério passado como parâmetro.<br>                                                                         |
+|               | - Criar método que carrega as notas no painel conforme a lista de ordenação.                                                                                             |
+
+
 **RF09** - Edição de Dados Pessoais do Usuário  
+  Descrição: O usuário deve conseguir modificar seus dados pessoais no sistema.
+
+  Tarefas:
+      Criar a tela de edição de dados cadastrais.
+      Criar o metodo de edição de dados do usuario.
+      Criar um formulario que faz a mudança de um dado do usuario no sistema.
+
+### RF09 - Edição de Dados Pessoais do Usuário
+
+| **Id**        | RF09                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Edição de Dados Pessoais do Usuário                                                                                                                                      |
+| **Descrição** | O usuário deve conseguir modificar seus dados pessoais no sistema.                                                                                                       |
+| **Tarefas**   | - Criar tela de edição de dados cadastrais.<br>                                                                                                                           |
+|               | - Criar método de edição de dados do usuário.<br>                                                                                                                         |
+|               | - Criar formulário para atualização de dados.                                                                                                                             |
+
+
 **RF10** - Exclusão da Conta do Usuário  
+  Descrição: O usuario deve conseguir excluir sua conta do sistema.
+
+  Tarefas:
+      Criar o metodo de exclusão de Instancia do usuario, onde todas as tuplas relacionadas a esse usuario serão deletadas do sistema.
+
+### RF10 - Exclusão da Conta do Usuário
+
+| **Id**        | RF10                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Exclusão da Conta do Usuário                                                                                                                                             |
+| **Descrição** | O usuário deve conseguir excluir sua conta do sistema.                                                                                                                   |
+| **Tarefas**   | - Criar método de exclusão da instância do usuário, removendo todas as tuplas relacionadas no sistema.                                                                   |
+
+
 **RF11** - Gerenciamento de Usuários pelo Administrador  
+  Descrição: O usuario administrador deve ter permissões maior em relação ao sistema e suas funcionalidades, deve conseguir gerenciar os
+  usuarios, podendo ver as estatisticas de uso gerais do sistema, com permissões de exclusão de usuario, e podendo visualizar o log de 
+  suas atividades do sistema.
+
+Tarefas:
+	Criar uma forma de gerar e armazenar os registros das atividades e ações do usuario no sistema. 
+	Criar o metodo de exclusão do usuario no sistema.
+	Criar o metodo de gerar estatísticas
+	Crira a tela de visualização de estatísticas do sistema.
+
+### RF11 - Gerenciamento de Usuários pelo Administrador
+
+| **Id**        | RF11                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Gerenciamento de Usuários pelo Administrador                                                                                                                             |
+| **Descrição** | O administrador deve ter permissões elevadas, podendo visualizar estatísticas do sistema, excluir usuários e acessar o log de atividades.                                |
+| **Tarefas**   | - Criar método de geração e armazenamento de registros das atividades dos usuários.<br>                                                                                  |
+|               | - Criar método de exclusão de usuários.<br>                                                                                                                               |
+|               | - Criar método de geração de estatísticas.<br>                                                                                                                            |
+|               | - Criar tela para visualização das estatísticas do sistema.                                                                                                               |
+
+
 **RF12** - Recuperação de Senha
+  Descrição: O usuário deve ter algum suporte do sistema para conseguir recuperar sua senha, e, recuperar seu acesso ao sistema.
+
+  Tarefas:  
+      Criar a página de recuperação de senha.
+      Criar o metodo de verificação de senha
+      Criar a validação de verificacao.
+      Criar o metodo de atualização de senha.
+
+### RF12 - Recuperação de Senha
+
+| **Id**        | RF12                                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nome**      | Recuperação de Senha                                                                                                                                                      |
+| **Descrição** | O usuário deve ter suporte do sistema para recuperar sua senha e restaurar o acesso.                                                                                      |
+| **Tarefas**   | - Criar página de recuperação de senha.<br>                                                                                                                               |
+|               | - Criar método de verificação de identidade.<br>                                                                                                                          |
+|               | - Criar validação da verificação.<br>                                                                                                                                     |
+|               | - Criar método de atualização da senha.                                                                                                                                   |
 
 ---
 
