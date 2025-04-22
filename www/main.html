@@ -1,97 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notas</title>
+  <title>Do it</title>
+
+  <!--   <link rel="shortcut icon" href="/imagens/logo_preta.png" type="image/x-icon"> 
+  Consertar depois!!!   
+  -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-  
+  <script src="script.js"></script>
 
 </head>
+
 <body>
-  <aside>
-    <i> </i>
-    <i>🔔</i>
-    <i>⬇️</i>
-    <i>🗑️</i>
-  </aside>
 
-  <div class="main">
-    <header>
-      <div class="logo">
-        <span>🐙</span>
-        <div class="search-box">
-          <input type="text" placeholder="Buscar">
+  <header>
+    <section class="search">
+      <img src="/www/imagens/logo_branca.png" alt="Polvo escrevendo">
+      <div class="buscar">
+        <input type="text" placeholder=" 🍳    Buscar..." onkeydown="verificaEnter(event)">
+    
+      </div>
+      <svg id="user" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+        <path fill-rule="evenodd"
+          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+      </svg>
+    </section>
+  </header>
+
+  <main>
+
+
+    <aside>
+      <i class="folder_page_icon"></i>
+      <i class="bell_page_icon"></i>
+      <i class="archives_page_icon"></i>
+      <i class="trash_page_icon"></i>
+    </aside>
+
+    <section class="conteudo_notas">
+
+      <div class="criacao_de_notas">
+        <div class="criar-nota" onclick="abrirPopup('popupCriar')">
+          <input type="text" placeholder="Criar uma nota..." readonly>
+          <button type="button">+</button>
         </div>
       </div>
-      <div class="profile-icon"></div>
-    </header>
-
-    <div class="note-creator">
-      <input type="text" placeholder="Criar uma nota...">
-      <button>+</button>
-    </div>
-
-    <div class="notes-grid">
-      <div class="note-card">
-        <div class="note-title">Título</div>
-        <div>Usuário vai anotar aqui...</div>
-        <div class="note-footer">
-          <span>📅</span>
-          <span>🔍</span>
-          <span>✎</span>
+  
+      <div class="listagem_de_notas">
+        <div class="notas">
+  
+          <!-- O código em php vai gerar várias das divs a seguir, de acordo com o que estiver no banco de dados -->
+          <div class="nota" onclick="abrirPopup('popupCriar')">
+            <h4>Título</h4>
+            <p>Usuário vai anotar aqui…</p>
+            <div class="icones">
+              <button type="button" class="archive_button">🗑️</button>
+              <button type="button" class="">📥</button>
+            </div>
+          </div>
+          
+  
         </div>
+  
       </div>
 
-      <div class="note-card">
-        <div class="note-title">Título</div>
-        <ul>
-          <li><input type="checkbox" checked> A fazer 1</li>
-          <li><input type="checkbox" checked> A fazer 2</li>
-        </ul>
-        <div class="note-footer">
-          <span>📅</span>
-          <span>🔍</span>
-          <span>✎</span>
+    </section>
+
+    <!-- Popups -->
+    <div id="popupCriar" class="popup" onclick="fecharPopup(event, this)">
+      <div class="conteudo" onclick="event.stopPropagation()">
+        <input type="text" class="titulo-input" placeholder="Título" />
+    
+        <textarea class="texto-input" placeholder="Escreva seu texto aqui..."></textarea>
+    
+        <div class="linha-icones">
+          <button class="icone botao1"></button>
+          <button class="icone botao2"></button>
+          <button class="icone botao3"></button>
         </div>
-      </div>
-
-      <!-- Repita os cards abaixo para simular mais notas -->
-      <div class="note-card">
-        <div class="note-title">Título</div>
-        <div>Usuário vai anotar aqui...</div>
-        <div class="note-footer">
-          <span>🔍</span>
-          <span>✎</span>
-        </div>
-      </div>
-
-     
-
-
-
-
-      <div class="note-card">
-        <div class="note-title">Título</div>
-        <div>Usuário vai anotar aqui...</div>
-        <div class="note-footer">
-          <span>📅</span>
-          <span>🔍</span>
-          <span>✎</span>
-        </div>
-      </div>
-
-      <div class="note-card">
-        <div class="note-title">Título</div>
-        <div>Usuário vai anotar aqui...</div>
-        <div class="note-footer">
-          <span>📅</span>
-          <span>🔍</span>
-          <span>✎</span>
+    
+        <div class="footer-form">
+          <button class="salvar-botao">Salvar</button>
         </div>
       </div>
     </div>
-  </div>
+
 </body>
+
 </html>
