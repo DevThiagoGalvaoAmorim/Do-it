@@ -1,3 +1,8 @@
+<?php
+require_once 'conexao_db/conexao.php';
+//require_once 'conexao_db/notas_crud.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,7 +23,7 @@
 
   <header>
     <section class="search">
-      <img src="/www/imagens/logo_branca.png" alt="Polvo escrevendo">
+      <img src="/imagens/logo_branca.png" alt="Polvo escrevendo">
       <div class="buscar">
         <input type="text" placeholder=" 🍳    Buscar..." onkeydown="verificaEnter(event)">
     
@@ -97,13 +102,17 @@
         <div class="notas">
   
           <!-- O código em php vai gerar várias das divs a seguir, de acordo com o que estiver no banco de dados -->
-          <div class="nota" onclick="abrirPopup('popupCriar')">
+          <!--<div class="nota" onclick="abrirPopup('popupCriar')">
             <h4>Título</h4>
             <p>Usuário vai anotar aqui…</p>
             <div class="icones">
               <button type="button" class="archive_button">🗑️</button>
               <button type="button" class="">📥</button>
             </div>
+          </div> -->
+
+          <div class="listagem_de_notas">
+            <div class="notas"></div>
           </div>
           
   
@@ -127,7 +136,7 @@
         </div>
     
         <div class="footer-form">
-          <button class="salvar-botao">Salvar</button>
+          <button class="salvar-botao" onclick="criarNota()">Salvar</button>
         </div>
       </div>
     </div>
