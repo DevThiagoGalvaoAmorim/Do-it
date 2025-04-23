@@ -62,62 +62,83 @@ body {
     margin-right: 10px;
 }
 
-/* estilizando elemtentos do aside */
+/* BARRA LATERAL */
 
-aside {
-    width: 5rem;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+.sidebar {
+  background-color: #ffffff;
+  color: white;
+  height: 100vh;
+  width: 80px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  border: 1px solid black;
 }
 
-aside i {
-    margin: 20px 0;
-    font-size: 20px;
-    cursor: pointer;
+.sidebar.expanded {
+  width: 220px;
 }
 
-.folder_page_icon {
-    background-image: url('/www/imagens/icones/folder_black.png');
-    width: 3rem;
-    height: 3rem;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
+.toggle-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 18px;
 }
 
-.bell_page_icon {
-    background-image: url('/www/imagens/icones/bell_black.png');
-    width: 3rem;
-    height: 3rem;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
+.toggle-btn svg {
+  margin-right: 15px;
 }
 
-.archives_page_icon {
-    background-image: url('/www/imagens/icones/archive_black.png');
-    width: 3rem;
-    height: 3rem;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
+.toggle-btn span {
+  white-space: nowrap;
 }
 
-.trash_page_icon {
-    background-image: url('/www/imagens/icones/trash_can_black.png');
-    width: 3rem;
-    height: 3rem;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 9px;
 }
 
+.menu li {
+  width: 100%;
+}
 
+.menu a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.menu svg {
+  min-width: 20px;
+  margin: 0 15px;
+  width: 35px;
+  height: 35px;
+}
+
+.menu span {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar.expanded .menu span {
+  opacity: 1;
+}
 
 /* estilizando elementos da main  */
 
