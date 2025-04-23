@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+// Definir o ID do usuário fixo
+$_SESSION['id_usuario'] = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,8 +22,8 @@
     </div>
     <nav class="nav-links">
       <a href="#">Sobre</a>
-      <a href="main.html" class="btn-outline">Login</a>
-      <a href="main.html" class="btn-dark">Registrar</a>
+      <a href="main.php" class="btn-outline">Login</a>
+      <a href="main.php" class="btn-dark">Registrar</a>
     </nav>
   </header>
 
@@ -26,7 +33,7 @@
         <div class="hero-text">
           <h1>Transforme anotações em produtividade</h1>
           <p>Do it é um app de anotações intuitivo para quem precisa registrar ideias e tarefas rapidamente</p>
-          <a href="main.html" class="btn-dark">ACESSE</a>
+          <a href="main.php" class="btn-dark">ACESSE</a>
         </div>
         <div class="hero-image">
           <img src="imagens/polvo_landing.png" alt="Do it App Interface">
