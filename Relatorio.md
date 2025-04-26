@@ -1,4 +1,4 @@
-### Iteração 1 – Cadastro e Notas
+### Iteração 1 – Navegação e criação das notas da tela principa 
 
 | Feature                                                                                          | Autor                          | Revisor                        |   |
 |--------------------------------------------------------------------------------------------------|--------------------------------|--------------------------------|---|
@@ -11,3 +11,12 @@
 | Implementar barra de pesquisa de notas por título (RF08)                                         | Guilherme da Silva Souza       | Ruam Marcos Maciel dos Santos  |❌|
 | Conexão básica do banco de dados com tabelas de usuários e notas                                 | Douglas Alves da Cruz          | Guilherme da Silva Carvalho    |❌|
 | Prototipação das telas                                                                           | Todos os membros do grupo      | Raphael Sales de Souza         |✅|
+
+### Iteração 2 – Organização em módulos
+
+| Feature                                                                                          | Autor                            | Revisor                          |   |
+|--------------------------------------------------------------------------------------------------|----------------------------------|----------------------------------|---|
+| Desenvolver a funcionalidade das pastas                                                          | Ruam Marcos e Guilherme da Silva | Thiago Galvão e Douglas Alves    |❌|
+| Desenvolver a funcionalidade de notificação                                                      | Thiago Galvão e Douglas Alves    | Ruam Marcos e Guilherme da Silva |❌|
+| Desenvolver o gerenciamento de arquivados e excluidos                                            | João Sestari e Raphael Sales     | Todos os membros do grupo        |❌|
+
