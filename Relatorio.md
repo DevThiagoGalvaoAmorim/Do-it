@@ -1,4 +1,4 @@
-### Iteração 1 – Navegação e criação das notas da tela principa 
+### Iteração 1 – Navegação e criação das notas da tela principal
 
 | Feature                                                                                          | Autor                          | Revisor                        |   |
 |--------------------------------------------------------------------------------------------------|--------------------------------|--------------------------------|---|
