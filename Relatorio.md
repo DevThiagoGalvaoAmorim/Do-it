@@ -1,12 +1,13 @@
 ### Iteração 1 – Cadastro e Notas
 
-| Feature                                                                                         | Autor                          | Revisor                        |
-|--------------------------------------------------------------------------------------------------|--------------------------------|--------------------------------|
-| Front-End da Tela Principal                                                                                       | Ruam Marcos Maciel dos Santos           | Thiago Galvâo Amorim    |
-| Banco de Dados do Sistema                                                                      | Raphael Sales  | Douglas Alves da Cruz          |
-| Tela de Visualização de Notas Criadas                                                            | Thiago Galvão Amorim    | Ruam Marcos Maciel dos Santos  |
-| Permitir ao usuário visualizar todas as suas notas cadastradas (RF03)                            | Ruam Marcos Maciel dos Santos  | Douglas Alves da Cruz          |
-| Implementar barra de pesquisa de notas por título (RF08)                                         | João Sestari Galvão    | Ruam Marcos Maciel dos Santos            |
-| Exibir notas filtradas por título buscado pelo usuário                                           | João Sestari Galvão        | Thiago Galvâo Amorim           |
-| Conexão básica do banco de dados com tabelas de usuários e notas                               | Douglas Alves da Cruz          | Guilherme da Silva Carvalho    |
-| Prototipação e estilização das telas com HTML/CSS                                                | Thiago Galvâo Amorim           | Raphael Sales de Souza         |
+| Feature                                                                                          | Autor                          | Revisor                        |   |
+|--------------------------------------------------------------------------------------------------|--------------------------------|--------------------------------|---|
+| Front-End da Tela Principal                                                                      | Ruam Marcos e Thiago Galvão    | Douglas Alves da Cruz          |❌|
+| Interação com o icone de usuário e alteração dos dados cadastrados                               | Raphael Sales                  | João Sestari                   |❌|
+| Banco de Dados do Sistema                                                                        | Raphael Sales                  | João Sestari                   |❌|
+| Criação do rodapé da página                                                                      | João Sestari                   | Ruam Marcos Maciel dos Santos  |❌|
+| Permitir ao usuário visualizar todas as suas notas cadastradas (RF03)                            | Todos os membros do grupo      | Todos os membros do grupo      |❌|
+| Criação da Landing Page                                                                          | Guilherme da Silva Souza       | Thiago Galvão                  |✅|
+| Implementar barra de pesquisa de notas por título (RF08)                                         | Guilherme da Silva Souza       | Ruam Marcos Maciel dos Santos  |❌|
+| Conexão básica do banco de dados com tabelas de usuários e notas                                 | Douglas Alves da Cruz          | Guilherme da Silva Carvalho    |❌|
+| Prototipação das telas                                                                           | Todos os membros do grupo      | Raphael Sales de Souza         |✅|
