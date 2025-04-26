@@ -16,6 +16,7 @@
 
 | Feature                                                                                          | Autor                            | Revisor                          |   |
 |--------------------------------------------------------------------------------------------------|----------------------------------|----------------------------------|---|
+| Criação da tela de administrador                                                                 | Ruam Marcos e Thiago Galvão      | João Sestari e Raphael Sales     |❌|
 | Desenvolver a funcionalidade das pastas                                                          | Ruam Marcos e Guilherme da Silva | Thiago Galvão e Douglas Alves    |❌|
 | Desenvolver a funcionalidade de notificação                                                      | Thiago Galvão e Douglas Alves    | Ruam Marcos e Guilherme da Silva |❌|
 | Desenvolver o gerenciamento de arquivados e excluidos                                            | João Sestari e Raphael Sales     | Todos os membros do grupo        |❌|
