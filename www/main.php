@@ -47,7 +47,7 @@ require_once 'conexao_db/conexao.php';
 
       <ul class="menu">
           <li>
-              <a href="#">
+              <a href="./folder.html">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-folder-fill" viewBox="0 0 16 16">
                       <path
@@ -57,7 +57,7 @@ require_once 'conexao_db/conexao.php';
               </a>
           </li>
           <li>
-              <a href="#">
+              <a href="./notification.html">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-bell-fill" viewBox="0 0 16 16">
                       <path
