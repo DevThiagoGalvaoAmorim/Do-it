@@ -92,7 +92,7 @@ require_once 'conexao_db/conexao.php';
     <section class="conteudo_notas">
 
       <div class="criacao_de_notas">
-        <div class="criar-nota" onclick="abrirPopup('popupCriar')">
+        <div class="criar-nota" onclick="abrirPopupCriar('popupCriar')">
           <input type="text" placeholder="Criar uma nota..." readonly>
           <button type="button">+</button>
         </div>
@@ -125,6 +125,7 @@ require_once 'conexao_db/conexao.php';
     <!-- Popups -->
     <div id="popupCriar" class="popup" onclick="fecharPopup(event, this)">
       <div class="conteudo" onclick="event.stopPropagation()">
+        <input type="hidden" class="id-input" value="">
         <input type="text" class="titulo-input" placeholder="Título" />
     
         <textarea class="texto-input" placeholder="Escreva seu texto aqui..."></textarea>
@@ -136,7 +137,7 @@ require_once 'conexao_db/conexao.php';
         </div>
     
         <div class="footer-form">
-          <button class="salvar-botao" onclick="criarNota()">Salvar</button>
+          <button class="salvar-botao" onclick="salvarNota()">Salvar</button>
         </div>
       </div>
     </div>
