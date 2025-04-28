@@ -2,7 +2,7 @@
 
 | Feature                                                                                          | Autor                          | Revisor                        |   |
 |--------------------------------------------------------------------------------------------------|--------------------------------|--------------------------------|---|
-| Front-End da Tela Principal                                                                      | Ruam Marcos e Thiago Galvão    | Douglas Alves da Cruz          |❌|
+| Front-End da Tela Principal                                                                      | Ruam Marcos e Thiago Galvão    | Douglas Alves da Cruz          |✅|
 | Interação com o icone de usuário e alteração dos dados cadastrados                               | Raphael Sales                  | João Sestari                   |❌|
 | Banco de Dados do Sistema                                                                        | Raphael Sales                  | João Sestari                   |❌|
 | Criação do rodapé da página                                                                      | João Sestari                   | Ruam Marcos Maciel dos Santos  |❌|
