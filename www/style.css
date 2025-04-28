@@ -13,7 +13,16 @@ body {
     height: 100vh;
 }
 
-/* estilizando elementos do header */
+
+
+
+/* ========================
+HEADER
+======================== */
+
+.logo {
+  width: 64px;
+}
 
 .search {
     display: flex;
@@ -62,7 +71,12 @@ body {
     margin-right: 10px;
 }
 
-/* BARRA LATERAL */
+
+
+
+/* ========================
+SIDEBAR
+======================== */
 
 .sidebar {
   background-color: #ffffff;
@@ -140,208 +154,164 @@ body {
   opacity: 1;
 }
 
-/* estilizando elementos da main  */
+
+
+
+/* ========================
+MAIN
+======================== */
 
 main {
-    flex: 1;
     display: flex;
-    flex-direction: row;
 }
 
 .conteudo_notas {
-    margin-top: 1rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  margin-top: 1rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.listagem_de_notas {
+  width: 70rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
 }
 
 .criacao_de_notas {
-    width: 44rem;
-    align-items: center;
+  width: 44rem;
+  display: flex; /* faltava o display para alinhar */
+  flex-direction: column;
 }
 
-
 .criar-nota {
-    display: flex;
-    height: 4rem;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 8px 12px;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    margin-bottom: 16px;
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-bottom: 16px;
+  width: 100%; /* para pegar o tamanho da criacao_de_notas */
+  box-sizing: border-box;
 }
 
 .criar-nota input {
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 1.2rem;
-    flex: 1;
-    margin-right: 8px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.2rem;
+  flex: 1;
+  margin-right: 8px;
 }
 
 .criar-nota button {
-    background: none;
-    border: none;
-    font-size: 1.2em;
-    cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
 }
-.nota {
-    width: 250px;
-    height: 200px;
-    margin: 30px;
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-    border: 1px solid #0099ff; /* contorno azul */
-  }
-  
-  .nota:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .nota h4 {
-    font-size: 1.5rem;
-    color: #999;
-    margin: 0 0 20px 0;
-    font-weight: normal;
-  }
-  
-  .nota p {
-    color: #999;
-    font-size: 1.2rem;
-    margin: 0;
-    flex-grow: 1;
-  }
-  
-  .icones {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .icones button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: #aaa;
-    cursor: pointer;
-    padding: 4px;
-    transition: color 0.2s ease;
-  }
-  
-  .icones button:hover {
-    color: #333;
-  }
 
-  .popup {
-    
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .conteudo {
-    background: white;
-    border-radius: 10px;
-    padding: 1rem;
-    width: 600px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  
-  .titulo-input {
-    padding: 0.7rem;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  .texto-input {
-    padding: 1rem;
-    height: 200px;
-    font-size: 1.1rem;
-    border: 2px solid #2196F3;
-    border-radius: 6px;
-    resize: none;
-  }
-  
-  .texto-input::placeholder,
-  .titulo-input::placeholder {
-    font-size: 1.2rem;
-    color: #aaa;
-  }
-  
-  .linha-icones {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 0.5rem;
-    align-items: center;
-  }
-  
-  .icone {
-    width: 32px;
-    height: 32px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    border: none;
-    cursor: pointer;
-    opacity: 0.5;
-  }
-  
-  .botao1 {
-    background-image: url('URL_DO_ICONE_1');
-  }
-  .botao2 {
-    background-image: url('URL_DO_ICONE_2');
-  }
-  .botao3 {
-    background-image: url('URL_DO_ICONE_3');
-  }
-
-  
-  .footer-form {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .salvar-botao {
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
 
 .popup .conteudo {
-    background: #fff;
-    padding: 20px;
-    border-radius: 6px;
-    min-width: 240px;
-    text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 240px;
+  width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-align: center;
 }
 
-/* Estilização da tela das pastas */
+.titulo-input {
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.texto-input {
+  padding: 1rem;
+  height: 200px;
+  font-size: 1.1rem;
+  border: 2px solid #2196F3;
+  border-radius: 6px;
+  resize: none;
+}
+
+.texto-input::placeholder,
+.titulo-input::placeholder {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+.linha-icones {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.icone {
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.botao1 {
+  background-image: url('URL_DO_ICONE_1');
+}
+
+.botao2 {
+  background-image: url('URL_DO_ICONE_2');
+}
+
+.botao3 {
+  background-image: url('URL_DO_ICONE_3');
+}
+
+.footer-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.salvar-botao {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+
+
+/* ========================
+FOLDER
+======================== */
 
 .folder-container {
   flex: 1;
@@ -425,7 +395,12 @@ main {
   color: #000000;
 }
 
-/* Estilização da tela das notificações */
+
+
+
+/* ========================
+NOTIFICATION
+======================== */
 
 .bell-container {
   flex: 1;
@@ -534,3 +509,121 @@ main {
 .bell svg:hover {
   color: white;
 }
+
+
+
+
+/* ========================
+TRASH
+======================== */
+
+.container-notas {
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem;
+  font-size: larger;
+  font-family: sans-serif;
+}
+
+.cabecalho-notas h2 {
+  font-weight: bold;
+  font-size: larger;
+  color: #999;
+  margin: 0 0 5px 0;
+}
+
+.cabecalho-notas hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 0 20px 0;
+}
+
+.listagem-de-notas {
+  display: flex;
+  width: 90rem;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.nota-lixeira {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  width: 300px;
+  height: 260px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #999;
+}
+
+.nota-titulo {
+  margin: 0 0 5px 0;
+  font-weight: normal;
+}
+
+.nota-texto {
+  color: #bbb;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.nota-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.nota-checklist li {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nota-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.nota-botoes button {
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.nota-botoes button:hover {
+  color: #666;
+}
+
+
+
+
+/* ========================
+ARCHIVES
+======================== */
+
+.nota-arquivada {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  width: 300px;
+  height: 260px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #999;
+}
+
+
+/* ========================
+LANDING PAGE
+======================== */
+/* 
+Colocar a estilização da Landing Page aqui */
