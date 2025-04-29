@@ -334,9 +334,162 @@ main {
   
 
 .popup .conteudo {
-    background: #fff;
-    padding: 20px;
-    border-radius: 6px;
-    min-width: 240px;
+    background-image: url('imagens/fundo usuario popup.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 15px;
+    padding: 1rem;
+    width: 484px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    color: #fff; 
+    min-width: 484px;
     text-align: center;
+}
+
+.popup .conteudo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    border-radius: 15px;
+    z-index: -1;
+}
+
+/* Estilos para o popup de perfil */
+.perfil-conteudo {
+  max-width: 500px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  position: relative;
+}
+
+.perfil-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.perfil-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.perfil-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.perfil-avatar svg {
+  width: 80px;
+  height: 80px;
+  color: #fff;
+}
+
+.campo-form {
+  margin-bottom: 15px;
+}
+
+.campo-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.campo-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 22px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+}
+
+.botoes-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.botao-salvar {
+  background-color: #0099ff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 22px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.botao-salvar:hover {
+  background-color: #007acc;
+}
+
+.botao-configuracoes, .botao-sobre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.botao-configuracoes:hover, .botao-sobre:hover {
+  background-color: #444;
+}
+
+.botao-sair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 22px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.botao-sair:hover {
+  background-color: #e60000;
+}
+
+
+#user {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#user:hover {
+  transform: scale(1.1);
 }

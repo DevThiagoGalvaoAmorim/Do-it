@@ -80,3 +80,26 @@ function deletarNota(id) {
     alert('Nota deletada com sucesso!');
     carregarNotas(); // Atualizar a listagem de notas
 }
+
+// Função para abrir o popup de perfil do usuário
+function abrirPerfilUsuario() {
+  document.getElementById('popupPerfil').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+// Função para abrir a página de configurações
+function abrirConfiguracoes() {
+  // Implementar redirecionamento para a página de configurações
+  alert('Funcionalidade de configurações em desenvolvimento');
+}
+
+// Função para abrir a página sobre
+function abrirSobre() {
+  // Implementar redirecionamento para a página sobre
+  alert('Funcionalidade sobre em desenvolvimento');
+}
+
+// Função para sair
+function sair() {
+  window.location.href = 'logout.php';
+}
