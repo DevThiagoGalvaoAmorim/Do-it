@@ -185,15 +185,16 @@ function carregarNotas() {
           // Abre o popup
           abrirPopupEditar("popupCriar", nota);
         });
-
+        divNota.className = "nota";
         divNota.innerHTML = `
-                <h4>${nota.titulo}</h4>
-                <p>${nota.descricao}</p>
-                <div class="icones">
-                    <button type="button" class="archive_button">🗑️</button>
-                    <button type="button" class="">📥</button>
-                </div>
-            `;
+          <h4 class="nota-titulo">${nota.titulo}</h4>
+          <p class="nota-texto">${nota.descricao}</p>
+          <div class="nota-botoes">
+        <button class="nota-botao">📦</button>
+        <button type="button" class="archive_button nota-botao">🗑️</button>
+        <button class="nota-botao">✏️</button>
+    </div>
+`;
 
         container.appendChild(divNota);
       });

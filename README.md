@@ -18,7 +18,8 @@ O Sistema de Notas é uma aplicação voltada para organização pessoal de info
  
 ### Requisitos Funcionais do Projeto
 
-
+### Protótipo
+Link do Figma:[Clique aqui](https://www.figma.com/proto/NkrOmzGeP9iJk7x515aj9f/Do-it---Prototype001?node-id=1-3&p=f&t=rdSItcbIqmxTrU6p-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3)
 
 ### RF01 - Cadastro de Usuário
 
@@ -95,7 +96,7 @@ O Sistema de Notas é uma aplicação voltada para organização pessoal de info
 
 
 
-### RF07 - Organização em Pastas
+### RF07 - Organização em Módulos
 
 | **Id**        | RF07                                                                                                                                                                      |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -228,7 +229,19 @@ Como usuário, desejo criar, editar, excluir e buscar notas de forma rápida e p
 | **US05** | Criar Navegação entre Telas – Navegar entre a página inicial e o painel de notas. |
 
 ---
-## Iteração 2 – Login, Cadastro e Controle de Sessão  
+## Iteração 2 - Gerenciamento das notas
+
+**Valor:** 
+Garantir que o usuário seja capaz de organizar suas notas em pastas.
+
+**Objetivo:** 
+Como usuário, desejo organizar em pastas, definir prazo e remover minhas notas criadas.
+
+**Requisitos Relacionados:** 
+- RF07 - Organização em módulos 
+
+---
+## Iteração 3 – Login, Cadastro e Controle de Sessão  
 
 **Valor:**  
 Garantir que o usuário possa acessar sua área pessoal de forma segura, por meio de cadastro, login e controle de sessão, permitindo que apenas usuários autorizados acessem suas anotações e demais funcionalidades do sistema.
