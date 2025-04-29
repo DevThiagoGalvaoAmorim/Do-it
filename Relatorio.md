@@ -9,7 +9,7 @@
 | Permitir ao usuário visualizar todas as suas notas cadastradas (RF03)                            | Todos os membros do grupo      | Todos os membros do grupo      |❌|
 | Criação da Landing Page                                                                          | Guilherme da Silva Carvalho    | Thiago Galvão                  |✅|
 | Implementar barra de pesquisa de notas por título (RF08)                                         | Guilherme da Silva Carvalho    | Ruam Marcos Maciel dos Santos  |❌|
-| Conexão básica do banco de dados com tabelas de usuários e notas                                 | Douglas Alves da Cruz          | Guilherme da Silva Carvalho    |❌|
+| Conexão básica do banco de dados com tabelas de usuários e notas                                 | Douglas Alves da Cruz          | Guilherme da Silva Carvalho    |✅|
 | Prototipação das telas                                                                           | Todos os membros do grupo      | Raphael Sales de Souza         |✅|
 
 ### Iteração 2 – Organização em módulos

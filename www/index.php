@@ -1,8 +1,23 @@
 <?php
 session_start();
+require_once __DIR__ .'/conexao_db/conexao.php';
 
-// Definir o ID do usuário fixo
-$_SESSION['id_usuario'] = 1;
+$_SESSION['nome'] = 'user';
+$_SESSION['email'] = 'example@email';
+$_SESSION['senha'] = '123';
+
+$stmt = $pdo->query("SELECT * FROM usuarios WHERE id = 1");
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
+if($data == false){
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha);");
+    $stmt->execute([
+        ':nome' => $_SESSION['nome'],
+        ':email' => $_SESSION['email'],
+        ':senha' => $_SESSION['senha']
+    ]);
+}
+
+
 ?>
 
 <!DOCTYPE html>

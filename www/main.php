@@ -27,33 +27,18 @@ require_once 'conexao_db/conexao.php';
     <section class="conteudo_notas">
       
       <div class="criacao_de_notas">
-        <div class="criar-nota" onclick="abrirPopup('popupCriar')">
+        <div class="criar-nota" onclick="abrirPopupCriar('popupCriar')">
           <input type="text" placeholder="Criar uma nota..." readonly>
           <button type="button">+</button>
         </div>
       </div>
 
-      <div class="listagem-de-notas">
-
-          <?php
-              $a = 0;
-
-              while ($a < 10) {
-                  echo '
-                      <div class="nota-arquivada">
-                          <h3 class="nota-titulo">Título</h3>
-                          <p class="nota-texto">Usuário vai anotar aqui...</p>
-                          <div class="nota-botoes">
-                              <button>📦</button>
-                              <button>🗑️</button>
-                              <button>✏️</button>
-                          </div>
-                      </div>
-                  ';
-                  $a++;
-              }
-          ?>
-
+      <div class="listagem_de_notas">
+        <div class="notas">
+          <div class="listagem_de_notas">
+            <div class="notas"></div>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -61,6 +46,7 @@ require_once 'conexao_db/conexao.php';
     <!-- Popups -->
     <div id="popupCriar" class="popup" onclick="fecharPopup(event, this)">
       <div class="conteudo" onclick="event.stopPropagation()">
+        <input type="hidden" class="id-input" value="">
         <input type="text" class="titulo-input" placeholder="Título" />
     
         <textarea class="texto-input" placeholder="Escreva seu texto aqui..."></textarea>
@@ -72,7 +58,7 @@ require_once 'conexao_db/conexao.php';
         </div>
     
         <div class="footer-form">
-          <button class="salvar-botao" onclick="criarNota(event, this)">Salvar</button>
+          <button class="salvar-botao" onclick="salvarNota()">Salvar</button>
         </div>
       </div>
     </div>
