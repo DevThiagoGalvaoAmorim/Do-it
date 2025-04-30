@@ -15,7 +15,7 @@ require_once 'conexao_db/conexao.php';
   Consertar depois!!!   
   -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
