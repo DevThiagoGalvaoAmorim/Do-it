@@ -1,0 +1,495 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+}
+
+body {
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* estilizando elementos do header */
+
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background-color: black;
+  padding: 10px;
+}
+
+.search img {
+  width: 100px;
+}
+
+.buscar {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.buscar input {
+  border-radius: 20px;
+  padding: 1rem;
+  width: 50rem;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+}
+
+.buscar input::placeholder {
+  color: white;
+}
+
+.buscar svg {
+  color: white;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+}
+
+#user {
+  color: white;
+  width: 45px;
+  height: 45px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+/* BARRA LATERAL */
+
+.sidebar {
+background-color: #ffffff;
+color: white;
+height: 100vh;
+width: 80px;
+transition: width 0.3s ease;
+overflow: hidden;
+border: 1px solid black;
+}
+
+.sidebar.expanded {
+width: 220px;
+}
+
+.toggle-btn {
+background-color: #333;
+color: white;
+border: none;
+width: 100%;
+padding: 15px;
+display: flex;
+align-items: center;
+cursor: pointer;
+font-family: "Roboto Condensed", sans-serif;
+font-size: 18px;
+}
+
+.toggle-btn svg {
+margin-right: 15px;
+}
+
+.toggle-btn span {
+white-space: nowrap;
+}
+
+.menu {
+list-style: none;
+padding: 0;
+margin-top: 9px;
+}
+
+.menu li {
+width: 100%;
+}
+
+.menu a {
+color: rgb(0, 0, 0);
+text-decoration: none;
+display: flex;
+align-items: center;
+padding: 15px;
+transition: background-color 0.3s;
+}
+
+.menu a:hover {
+background-color: #000000;
+color: white;
+}
+
+.menu svg {
+min-width: 20px;
+margin: 0 15px;
+width: 35px;
+height: 35px;
+}
+
+.menu span {
+white-space: nowrap;
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.sidebar.expanded .menu span {
+opacity: 1;
+}
+
+/* estilizando elementos da main  */
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.conteudo_notas {
+  margin-top: 1rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.criacao_de_notas {
+  width: 44rem;
+  align-items: center;
+}
+
+
+.criar-nota {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.criar-nota input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.2rem;
+  flex: 1;
+  margin-right: 8px;
+}
+
+.criar-nota button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.nota {
+  width: 250px;
+  height: 200px;
+  margin: 30px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid #0099ff; /* contorno azul */
+}
+
+.nota:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nota h4 {
+  font-size: 1.5rem;
+  color: #999;
+  margin: 0 0 20px 0;
+  font-weight: normal;
+}
+
+.nota p {
+  color: #999;
+  font-size: 1.2rem;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.icones {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.icones button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #aaa;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.icones button:hover {
+  color: #333;
+}
+
+.popup {
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteudo {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.titulo-input {
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.texto-input {
+  padding: 1rem;
+  height: 200px;
+  font-size: 1.1rem;
+  border: 2px solid #2196F3;
+  border-radius: 6px;
+  resize: none;
+}
+
+.texto-input::placeholder,
+.titulo-input::placeholder {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+.linha-icones {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.icone {
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.botao1 {
+  background-image: url('URL_DO_ICONE_1');
+}
+.botao2 {
+  background-image: url('URL_DO_ICONE_2');
+}
+.botao3 {
+  background-image: url('URL_DO_ICONE_3');
+}
+
+
+.footer-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.salvar-botao {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+.popup .conteudo {
+  background-image: url('imagens/fundo usuario popup.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 15px;
+  padding: 1rem;
+  width: 484px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  color: #fff; 
+  min-width: 484px;
+  text-align: center;
+}
+
+.popup .conteudo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); 
+  border-radius: 15px;
+  z-index: -1;
+}
+
+/* Estilos para o popup de perfil */
+.perfil-conteudo {
+max-width: 500px;
+background-color: #000;
+color: #fff;
+border-radius: 10px;
+padding: 25px;
+position: relative;
+}
+
+.perfil-header {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 25px;
+text-align: center;
+}
+
+.perfil-avatar {
+width: 100px;
+height: 100px;
+border-radius: 100%;
+background-color: #333;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 15px;
+}
+
+.perfil-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 50%;
+}
+
+.perfil-avatar svg {
+width: 80px;
+height: 80px;
+color: #fff;
+}
+
+.campo-form {
+margin-bottom: 15px;
+}
+
+.campo-form label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+color: #ffffff;
+}
+
+.campo-form input {
+width: 100%;
+padding: 10px;
+border-radius: 22px;
+border: 1px solid #333;
+background-color: #222;
+color: #fff;
+}
+
+.botoes-perfil {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-top: 20px;
+}
+
+.botao-salvar {
+background-color: #0099ff;
+color: white;
+border: none;
+padding: 12px;
+border-radius: 22px;
+cursor: pointer;
+font-weight: bold;
+transition: background-color 0.3s;
+}
+
+.botao-salvar:hover {
+background-color: #007acc;
+}
+
+.botao-configuracoes, .botao-sobre {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background-color: #333;
+color: white;
+border: none;
+padding: 12px;
+border-radius: 22px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.botao-configuracoes:hover, .botao-sobre:hover {
+background-color: #444;
+}
+
+.botao-sair {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background-color: #ff4d4d;
+color: white;
+border: none;
+padding: 12px;
+border-radius: 22px;
+cursor: pointer;
+margin-top: 10px;
+transition: background-color 0.3s;
+}
+
+.botao-sair:hover {
+background-color: #e60000;
+}
+
+
+#user {
+cursor: pointer;
+transition: transform 0.3s;
+}
+
+#user:hover {
+transform: scale(1.1);
+}
