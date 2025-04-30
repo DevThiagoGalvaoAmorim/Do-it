@@ -64,6 +64,7 @@ require_once 'conexao_db/conexao.php';
     </div>
 
     <script src="script.js"></script>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
