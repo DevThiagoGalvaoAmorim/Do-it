@@ -41,15 +41,17 @@ HEADER
     display: flex;
     align-items: center;
     margin-left: auto;
+    width: 70%; 
 }
 
 .buscar input {
     border-radius: 20px;
     padding: 1rem;
-    width: 50rem;
+    width: 100%; 
     border: 1px solid white;
     background-color: black;
     color: white;
+    font-size: 16px; 
 }
 
 .buscar input::placeholder {
@@ -665,8 +667,26 @@ ARCHIVES
 }
 
 
-/* ========================
-LANDING PAGE
-======================== */
-/* 
-Colocar a estilização da Landing Page aqui */
+
+
+/* Estilização dos resultados da busca */
+.no-results {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* Estilização da barra de busca */
+#searchInput {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Estilização do foco da barra de busca */
+#searchInput:focus {
+    outline: none;
+    border-color: #000;
+}
