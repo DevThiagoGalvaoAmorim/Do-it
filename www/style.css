@@ -167,6 +167,12 @@ main {
     display: flex;
 }
 
+.notas {
+  display: flex;
+  flex-direction: wrap;
+  height: fit-content;
+}
+
 .conteudo_notas {
   margin-top: 1rem;
   align-items: center;
@@ -177,9 +183,7 @@ main {
 
 .listagem_de_notas {
   width: 70rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; 
+  align-items: center;
 }
 
 .criacao_de_notas {
@@ -586,6 +590,7 @@ TRASH
 .listagem-de-notas {
   display: flex;
   width: 90rem;
+  height: auto;
   flex-wrap: wrap;
   gap: 20px;
 }
