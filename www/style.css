@@ -1,16 +1,16 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-size: large;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
 }
 
 body {
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 
@@ -25,52 +25,52 @@ HEADER
 }
 
 .search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    background-color: black;
-    padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background-color: black;
+  padding: 10px;
 }
 
 .search img {
-    width: 100px;
+  width: 100px;
 }
 
 .buscar {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    width: 70%; 
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  width: 70%;
 }
 
 .buscar input {
-    border-radius: 20px;
-    padding: 1rem;
-    width: 100%; 
-    border: 1px solid white;
-    background-color: black;
-    color: white;
-    font-size: 16px; 
+  border-radius: 20px;
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  font-size: 16px;
 }
 
 .buscar input::placeholder {
-    color: white;
+  color: white;
 }
 
 .buscar svg {
-    color: white;
-    height: 20px;
-    width: 20px;
-    margin-left: 10px;
+  color: white;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
 }
 
 #user {
-    color: white;
-    width: 45px;
-    height: 45px;
-    margin-left: auto;
-    margin-right: 10px;
+  color: white;
+  width: 45px;
+  height: 45px;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 
@@ -164,7 +164,7 @@ MAIN
 ======================== */
 
 main {
-    display: flex;
+  display: flex;
 }
 
 .notas {
@@ -188,7 +188,8 @@ main {
 
 .criacao_de_notas {
   width: 44rem;
-  display: flex; /* faltava o display para alinhar */
+  display: flex;
+  /* faltava o display para alinhar */
   flex-direction: column;
 }
 
@@ -202,7 +203,8 @@ main {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin-bottom: 16px;
-  width: 100%; /* para pegar o tamanho da criacao_de_notas */
+  width: 100%;
+  /* para pegar o tamanho da criacao_de_notas */
   box-sizing: border-box;
 }
 
@@ -228,7 +230,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
   align-items: center;
@@ -240,7 +242,7 @@ main {
   border-radius: 10px;
   min-width: 240px;
   width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -550,7 +552,7 @@ NOTIFICATION
   background-color: #000000;
 }
 
-.bell svg{
+.bell svg {
   width: 20px;
   height: 20px;
 }
@@ -597,7 +599,7 @@ TRASH
 
 .nota-lixeira {
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   width: 300px;
   height: 260px;
@@ -660,7 +662,7 @@ ARCHIVES
 
 .nota-arquivada {
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   width: 300px;
   height: 260px;
@@ -676,22 +678,113 @@ ARCHIVES
 
 /* Estilização dos resultados da busca */
 .no-results {
-    text-align: center;
-    padding: 20px;
-    color: #666;
+  text-align: center;
+  padding: 20px;
+  color: #666;
 }
 
 /* Estilização da barra de busca */
 #searchInput {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 /* Estilização do foco da barra de busca */
 #searchInput:focus {
-    outline: none;
-    border-color: #000;
+  outline: none;
+  border-color: #000;
+}
+
+/*Footer*/
+
+footer {
+  background-color: #111;
+}
+
+.footerContainer {
+  width: 100%;
+  padding: 70px 30px 20px;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.socialIcons a {
+  text-decoration: none;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.socialIcons a i {
+  font-size: 2em;
+  color: black;
+  opacity: 0.9;
+}
+
+/* hover effect no icone do github*/
+.socialIcons a:hover {
+  background-color: #111;
+  transition: 0.5s;
+}
+
+.socialIcons a:hover i {
+  color: white;
+  transition: 0.5s;
+}
+
+.footerNav {
+  margin: 10px 0;
+}
+
+.footerNav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.footerNav ul li a {
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+  font-size: 1.3em;
+  opacity: 0.7;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.footerNav ul li a:hover {
+  opacity: 1;
+}
+
+.footerBottom {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+}
+
+.footerBottom p {
+  color: white;
+  font-size: 1.2em;
+  opacity: 0.7;
+}
+
+@media (max-width:700px) {
+  .footerNav {
+    flex-direction: column;
+  }
+
+  .footerNav ul li {
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+  }
 }
