@@ -1,80 +1,93 @@
 <?php
-require_once 'conexao.php';
+session_start();
+require_once __DIR__ .'/conexao_db/conexao.php';
 
-$errorMessage = null; 
+$_SESSION['nome'] = 'user';
+$_SESSION['email'] = 'example@email';
+$_SESSION['senha'] = '123';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    $sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
-
-    try {
-        $buscar = $pdo->prepare($sql);
-        $buscar->execute(['email' => $email, 'senha' => $senha]);
-
-        $resultado = $buscar->fetch(PDO::FETCH_ASSOC);
-
-        if ($resultado) {
-            header("Location: main.php");
-            exit();
-        } else {
-           echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
-                alert('Erro ao fazer login. E-mail ou senha incorretos! Tente novamente.');
-            }); </script>";
-        }
-    } catch (PDOException $e) {
-        echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
-                alert('Erro ao buscar usuário: " . $e->getMessage() . "');
-            }); </script>";
-    }
+$stmt = $pdo->query("SELECT * FROM usuarios WHERE id = 1");
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
+if($data == false){
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha);");
+    $stmt->execute([
+        ':nome' => $_SESSION['nome'],
+        ':email' => $_SESSION['email'],
+        ':senha' => $_SESSION['senha']
+    ]);
 }
+
+
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Do !t</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do it</title>
+  <link rel="stylesheet" href="landing_page.css">
 </head>
-
 <body>
 
-    <div class="container">
-        <div class="left-panel">
-            <div class="welcome">BEM VINDO</div>
-            <div class="login-title">Novo Login</div>
-            <button class="create-button"><a href="cadastrar.php">Criar conta</a></button>
+  <header class="navbar">
+    <div class="logo">
+      <img src="imagens/logo_preta.png" alt="Do it Logo">
+      <span class="logo-text">Do it</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Sobre</a>
+      <a href="main.php" class="btn-outline">Login</a>
+      <a href="main.php" class="btn-dark">Registrar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Transforme anotações em produtividade</h1>
+          <p>Do it é um app de anotações intuitivo para quem precisa registrar ideias e tarefas rapidamente</p>
+          <a href="main.php" class="btn-dark">ACESSE</a>
         </div>
+        <div class="hero-image">
+          <img src="imagens/polvo_landing.png" alt="Do it App Interface">
+        </div>
+      </div>
+    </section>
 
-        <div class="right-panel">
-            <h1 class="title">Do !t</h1>
-            <div class="profile">
-                <img src="/image/Login_DO_IT.png" alt="not found">
-            </div>
+    <section class="features">
+      <div class="features-image">
+        <img src="imagens/logo_preta.png" alt="Do it Features">
+      </div>
+      <div class="features-text">
+        <h2>"Anote tudo, lembre de tudo"</h2>
+        <p>Anotar tarefas e pensamentos nunca foi tão simples. Chega de bagunça mental e listas espalhadas</p>
+        <ul>
+          <li>• Interface limpa, intuitiva e rápida: abra, anote, siga em frente.</li>
+          <li>• Do it traz praticidade de verdade.</li>
+          <li>• Notas rápidas, vida organizada</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-
-            <form action="index.php" method="POST">
-
-                <div class="input-group">
-                    <input type="text" name="email" class="input-control" placeholder="Usuário" required>
-                </div>
-
-                <div class="input-group">
-                    <input type="password" name="senha" class="input-control" placeholder="Senha" required>
-                </div>
-
-                <button type="submit" class="login-button">Entrar</button>
-            </form>
+  <footer class="footer">
+    <div class="footer-content">
+        <p>© 2025. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos e Condições</a>
+            <a href="#">Política de Cookies</a>
+        </div>
+        <div class="footer-right">
+            <a href="#"><img src="imagens/icones/icons8-facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="imagens/icones/icons8-instagram.svg" alt="Instagram"></a>
+            <a href="#"><img src="imagens/icones/icons8-twitter.svg" alt="Twitter"></a>
+            <a href="#"><img src="imagens/icones/icons8-linkedin.svg" alt="LinkedIn"></a>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
+  </footer>
 
+</body>
 </html>
