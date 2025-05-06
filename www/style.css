@@ -73,6 +73,37 @@ HEADER
   margin-right: 10px;
 }
 
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.header-logo img {
+  height: 30px;
+  width: auto;
+}
+
+.header-content h1 {
+  color: white;
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.header-actions {
+  min-width: 80px; 
+}
+
+.admin-header .header-logo img,
+.search .header-logo img {
+  height: 50px; 
+  width: auto;
+  margin: 10px 0;
+}
+
 
 
 
@@ -787,4 +818,113 @@ footer {
     text-align: center;
     margin: 10px;
   }
+}
+
+/* Admin Page Styles */
+.admin-container {
+    padding: 20px;
+    flex: 1;
+}
+
+.admin-sidebar {
+    width: 200px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+.admin-logo {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.admin-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.admin-nav {
+    margin-top: 20px;
+}
+
+.admin-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.admin-nav a.active {
+    background-color: #333;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.sair-btn {
+    background-color: #ee6b6b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-box {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.action-btn {
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.delete-btn {
+    background-color: #ff3333;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
 }
