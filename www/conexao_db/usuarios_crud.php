@@ -2,72 +2,57 @@
 session_start();
 require_once __DIR__ .'/conexao.php';
 
+function criarUsuario($nome, $email, $senha) {
+    global $pdo;
 
-$action = $_POST['action'] ?? null;
-
-try {
-    if ($action === 'create') {
-        $id = $_POST['id'] ?? '';
-        $nome = $_POST['nome'] ?? '';
-        $email = $_POST['email'] ?? '';
-        $senha = $_POST['senha'] ?? '';
-    
-        if ($id_usuario) {
-            // Inserir a nota com o ID do usuário
-            $stmt = $pdo->prepare("INSERT INTO usuarios (id, nome, email, senha) VALUES (:id, :nome, :email, :senha)");
-            $stmt->execute([
-                ':id' => $id,
-                ':nome' => $nome,
-                ':email' => $email,
-                ':senha' => $senha
-            ]);
-    
-            echo json_encode(['success' => true, 'message' => 'Nota criada com sucesso!']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'ID do usuário não fornecido.']);
-        }
-    } elseif ($action === 'read') {
-        // Ler todas as notas
-        $stmt = $pdo->query("SELECT * FROM usuarios");
-        $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        echo json_encode($usuarios);
-    } elseif ($action === 'update') {
-        // Atualizar uma nota
-        $id = $_POST['id'] ?? null; // ID da nota a ser atualizada
-        $nome = $_POST['nome'] ?? '';
-        $email = $_POST['email'] ?? '';
-        $senha = $_POST['senha'] ?? '';
-    
-        if ($id) {
-            $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
-            $stmt->execute([
-                ':nome' => $nome,
-                ':email' => $email,
-                ':senha' => $senha,
-                ':id' => $id
-            ]);
-    
-            echo json_encode(['success' => true, 'message' => 'Dados atualizados com sucesso!']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'ID da nota']);
-        }
-    } elseif ($action === 'delete') {
-        // Deletar uma nota
-        $id = $_POST['id'];
-
-        if ($id) {
-            $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = :id");
-            $stmt->execute([':id' => 1]);
-
-            echo json_encode(['success' => true, 'message' => 'Nota deletada com sucesso!']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'titulo da nota não fornecido.']);
-        }
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Ação inválida.']);
+    $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
+    $stmt->execute([':email' => $email]);
+    if ($stmt->rowCount() > 0) {
+        throw new Exception("E-mail já cadastrado.");
     }
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
+
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
+    $stmt->execute([
+        ':nome' => $nome,
+        ':email' => $email,
+        ':senha' => $senha
+    ]);
+}
+
+function listarUsuarios() {
+    global $pdo;
+
+    $stmt = $pdo->query("SELECT * FROM usuarios");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function atualizarUsuario($id, $nome, $email, $senha) {
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
+    $stmt->execute([':email' => $email, ':id' => $id]);
+    if ($stmt->rowCount() > 0) {
+        throw new Exception("E-mail já cadastrado.");
+    }
+
+    $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
+    $stmt->execute([
+        ':nome' => $nome,
+        ':email' => $email,
+        ':senha' => $senha,
+        ':id' => $id
+    ]);
+}
+
+function deletarUsuario($id) {
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    if ($stmt->rowCount() == 0) {
+        throw new Exception("Usuário não encontrado.");
+    }
+    $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = :id");
+    $stmt->execute([':id' => $id]);
 }
 ?>
