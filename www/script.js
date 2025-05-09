@@ -23,13 +23,13 @@ function abrirPopupCriar(id) {
   // Limpa os campos do formulário ao abrir o popup
   const tituloInput = document.querySelector(".titulo-input");
   const descricaoInput = document.querySelector(".texto-input");
-  const idInput = document.querySelector(".id-input"); // Campo oculto para o ID
+  const idInput = document.querySelector(".id-input");
 
-  if (tituloInput) tituloInput.value = ""; // Limpa o campo de título
-  if (descricaoInput) descricaoInput.value = ""; // Limpa o campo de descrição
-  if (idInput) idInput.value = ""; // Limpa o campo oculto de ID
+  if (tituloInput) tituloInput.value = "";
+  if (descricaoInput) descricaoInput.value = ""; 
+  if (idInput) idInput.value = "";
 
-  popup.style.display = "flex"; // Exibe o popup
+  popup.style.display = "flex";
 }
 
 function abrirPopupEditar(id, nota) {
