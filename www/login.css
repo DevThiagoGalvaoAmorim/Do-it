@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,200;1,14..32,200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(./imagens/background-login.png);
+    background-repeat: no-repeat;
+    background-size: 192vh;
+    background-position: 0px -70px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.884);
+    width: 844px;
+    height: 594px;
+    border-radius: 45px;
+}
+
+.loginbox {
+    display: grid;
+    grid-template-columns: 300px 500px;
+    grid-template-rows: 594px;
+}
+
+.btn-cadastrar {
+    background-color: rgb(209, 209, 209);
+    border-bottom-left-radius: 45px;
+    border-top-left-radius: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+}
+
+.btn-cadastrar h2 {
+    margin-top: 40px;
+    border-bottom: 1px solid black;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.548);
+}
+
+.btn-cadastrar button {
+    padding: 15px;
+    width: 140px;
+    border-radius: 45px;
+    border: none;
+    color: white;
+    background-color: black;
+    font-family: 'Roboto';
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btn-cadastrar button:hover {
+    background-color: rgba(0, 0, 0, 0.767);
+}
+
+.content-login {
+    border-left: 2px solid rgba(0, 0, 0, 0.555);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.content-login img {
+    width: 160px;
+    height: 140px;
+}
+
+.content-login .lock {
+    background-image: url(./imagens/lock-fill.svg);
+    background-repeat: no-repeat;
+    padding: 2px;
+    padding-left: 20px;
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.content-login .user {
+    background-image: url(./imagens/person-fill.svg);
+    background-repeat: no-repeat;
+    padding: 2px;
+    padding-left: 20px;
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.content-login a {
+    color: rgba(0, 0, 0, 0.445);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.445);
+    font-family: 'Roboto', sans-serif;
+    transform-style: flat;
+}
+
+.content-login a:hover {
+    color: black;
+}
+
+.content-login button{
+    padding: 12px;
+    width: 110px;
+    border-radius: 45px;
+    border: none;
+    background-color: #0A4FFF;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.content-login button:hover{
+    padding: 15px;
+    background-color: #002581;
+}
