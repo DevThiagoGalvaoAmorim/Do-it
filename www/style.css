@@ -37,6 +37,11 @@ HEADER
   width: 100px;
 }
 
+.search a {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
 .buscar {
   display: flex;
   align-items: center;
@@ -65,12 +70,17 @@ HEADER
   margin-left: 10px;
 }
 
-#user {
+.user {
+  border: 3px solid rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 100px;
   color: white;
-  width: 45px;
-  height: 45px;
-  margin-left: auto;
-  margin-right: 10px;
+  height: 95px;
+  transition: 0.4s;
+}
+
+.user:hover {
+  border: 3px solid rgb(255, 255, 255);
 }
 
 .header-content {
@@ -94,12 +104,12 @@ HEADER
 }
 
 .header-actions {
-  min-width: 80px; 
+  min-width: 80px;
 }
 
 .admin-header .header-logo img,
 .search .header-logo img {
-  height: 50px; 
+  height: 50px;
   width: auto;
   margin: 10px 0;
 }
@@ -729,7 +739,9 @@ ARCHIVES
   border-color: #000;
 }
 
-/*Footer*/
+/*=================
+Footer
+===================*/
 
 footer {
   background-color: #111;
@@ -737,7 +749,7 @@ footer {
 
 .footerContainer {
   width: 100%;
-  padding: 70px 30px 20px;
+  padding: 30px 10px 10px;
 }
 
 .socialIcons {
@@ -749,14 +761,13 @@ footer {
 
 .socialIcons a {
   text-decoration: none;
-  padding: 10px;
-  background-color: white;
-  border-radius: 50%;
 }
 
-.socialIcons a i {
-  font-size: 2em;
-  color: black;
+.socialIcons a svg {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  color: rgb(255, 255, 255);
   opacity: 0.9;
 }
 
@@ -766,8 +777,8 @@ footer {
   transition: 0.5s;
 }
 
-.socialIcons a:hover i {
-  color: white;
+.socialIcons a svg:hover {
+  color: rgb(161, 161, 161);
   transition: 0.5s;
 }
 
@@ -822,109 +833,109 @@ footer {
 
 /* Admin Page Styles */
 .admin-container {
-    padding: 20px;
-    flex: 1;
+  padding: 20px;
+  flex: 1;
 }
 
 .admin-sidebar {
-    width: 200px;
-    background-color: black;
-    color: white;
-    padding: 20px;
-    height: 100vh;
+  width: 200px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  height: 100vh;
 }
 
 .admin-logo {
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #333;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #333;
 }
 
 .admin-logo img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .admin-nav {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .admin-nav a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    margin-bottom: 5px;
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 5px;
 }
 
 .admin-nav a.active {
-    background-color: #333;
+  background-color: #333;
 }
 
 .admin-content {
-    flex: 1;
-    padding: 20px;
+  flex: 1;
+  padding: 20px;
 }
 
 .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .admin-title {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .sair-btn {
-    background-color: #ee6b6b;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
+  background-color: #ee6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .users-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .users-table th,
 .users-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .search-box {
-    padding: 8px;
-    width: 100%;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .action-btn {
-    background-color: #0066ff;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 4px;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 4px;
 }
 
 .delete-btn {
-    background-color: #ff3333;
+  background-color: #ff3333;
 }
 
 .page-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }

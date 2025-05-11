@@ -123,7 +123,8 @@ body {
     color: black;
 }
 
-.content-login button {
+.content-login .btn-enter {
+    text-align: center;
     padding: 12px;
     width: 110px;
     border-radius: 45px;
@@ -136,7 +137,7 @@ body {
     transition: 0.4s;
 }
 
-.content-login button:hover {
+.content-login .btn-enter:hover {
     padding: 15px;
     background-color: #002581;
 }
