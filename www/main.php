@@ -20,11 +20,11 @@ require_once 'conexao_db/conexao.php';
   <?php include 'header.php'; ?>
 
   <main>
-    
+
     <?php include 'sidebar.php'; ?>
 
     <section class="conteudo_notas">
-      
+
       <div class="criacao_de_notas">
         <div class="criar-nota" onclick="abrirPopupCriar('popupCriar')">
           <input type="text" placeholder="Criar uma nota..." readonly>
@@ -47,23 +47,27 @@ require_once 'conexao_db/conexao.php';
       <div class="conteudo" onclick="event.stopPropagation()">
         <input type="hidden" class="id-input" value="">
         <input type="text" class="titulo-input" placeholder="Título" />
-    
+
         <textarea class="texto-input" placeholder="Escreva seu texto aqui..."></textarea>
-    
+
         <div class="linha-icones">
           <button class="icone botao1"></button>
           <button class="icone botao2"></button>
           <button class="icone botao3"></button>
         </div>
-    
+
         <div class="footer-form">
           <button class="salvar-botao" onclick="salvarNota()">Salvar</button>
         </div>
       </div>
     </div>
+  </main>
 
-    <script src="script.js"></script>
+  <footer>
     <?php include 'footer.php'; ?>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

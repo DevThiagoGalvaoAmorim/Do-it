@@ -54,7 +54,13 @@
             </div>
         </section>
 
-        <script src="script.js"></script>
+    </main>
+
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 

@@ -17,7 +17,7 @@
 
     <main>
 
-        <?php include 'sidebar.php'; ?> 
+        <?php include 'sidebar.php'; ?>
 
         <section class="folder-container">
             <div class="new-folder">
@@ -51,12 +51,16 @@
                         </svg>
                         <span>New Folder 1</span>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
+    </main>
 
-        <script src="script.js"></script>
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
