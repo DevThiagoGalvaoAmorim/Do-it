@@ -74,18 +74,20 @@ body {
     font-size: 15px;
 }
 
-.content-sign a {
+.content-sign .jatenhoconta {
     text-decoration: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     color: rgba(0, 0, 0, 0.5);
     font-family: 'Roboto', sans-serif;
 }
 
-.content-sign a:hover {
+.content-sign .jatenhoconta:hover {
     color: black;
 }
 
-.content-sign button {
+.content-sign .btn-sign {
+    text-decoration: none;
+    text-align: center;
     padding: 12px;
     width: 110px;
     border-radius: 45px;
@@ -98,7 +100,7 @@ body {
     transition: 0.4s;
 }
 
-.content-sign button:hover{
+.content-sign .btn-sign:hover{
     padding: 15px;
     color: #002581;
     color: white;
