@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body id="body">
 
     <?php include 'header.php'; ?>
 
@@ -54,6 +54,7 @@
     <footer>
         <?php include 'footer.php'; ?>
     </footer>
+    <script src="./js/search.js"></script>
 </body>
 
 </html>

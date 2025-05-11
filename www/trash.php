@@ -11,27 +11,27 @@
 
 </head>
 
-<body>
+<body id="body">
 
     <?php include 'header.php'; ?>
 
     <main>
 
-        <?php include 'sidebar.php'; ?> 
+        <?php include 'sidebar.php'; ?>
 
         <div class="container-notas">
-  <div class="cabecalho-notas">
-    <h2>Lixeira</h2>
-    <hr>
-  </div>
+            <div class="cabecalho-notas">
+                <h2>Lixeira</h2>
+                <hr>
+            </div>
 
-  <div class="listagem-de-notas">
-   
-    <?php
-        $a = 0;
+            <div class="listagem-de-notas">
 
-        while ($a < 10) {
-            echo '
+                <?php
+                $a = 0;
+
+                while ($a < 10) {
+                    echo '
                 <div class="nota-lixeira">
                     <h3 class="nota-titulo">Título</h3>
                     <p class="nota-texto">Usuário vai anotar aqui...</p>
@@ -40,17 +40,18 @@
                     </div>
                 </div>
             ';
-            $a++;
-        }
-    ?>
+                    $a++;
+                }
+                ?>
 
-  </div>
-</div>
+            </div>
+        </div>
     </main>
 
     <footer>
         <?php include 'footer.php'; ?>
     </footer>
+    <script src="./js/search.js"></script>
 </body>
 
 </html>

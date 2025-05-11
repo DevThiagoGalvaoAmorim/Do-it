@@ -16,16 +16,16 @@ function searchItems() {
 
 function displayResults(results) {
     const container = document.querySelector('.listagem_de_notas .notas');
-    
-   
+
+
     container.innerHTML = '';
-    
+
     if (results.length === 0) {
         container.innerHTML = '<p class="no-results">Nenhum resultado encontrado.</p>';
         return;
     }
-    
-   
+
+
     results.forEach(nota => {
         const divNota = document.createElement('div');
         divNota.className = 'nota';
@@ -76,3 +76,30 @@ const debouncedSearch = debounce(() => searchItems(), 300);
 
 
 document.getElementById('searchInput').addEventListener('input', debouncedSearch);
+
+/*============
+Modo noturno
+==============*/
+
+let lighting = document.getElementById('lighting');
+let body = document.getElementById('body')
+
+if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('Dark');
+    lighting.classList.add('Dark');
+}
+
+lighting.addEventListener('click', () => {
+    lighting.classList.toggle('Dark');
+    body.classList.toggle('Dark')
+
+    let imgElement = lighting.querySelector('img');
+
+    if (lighting.classList.contains('Dark')) {
+        imgElement.src = "./imagens/icons8-moon-48.png";
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        imgElement.src = "./imagens/icons8-sun-50.png";
+        localStorage.setItem('darkMode', 'disabled');
+    }
+});
