@@ -15,7 +15,7 @@ require_once 'conexao_db/conexao.php';
 
 </head>
 
-<body>
+<body id="body">
 
   <?php include 'header.php'; ?>
 
@@ -68,6 +68,7 @@ require_once 'conexao_db/conexao.php';
   </footer>
 
   <script src="script.js"></script>
+  <script src="./js/search.js"></script>
 </body>
 
 </html>

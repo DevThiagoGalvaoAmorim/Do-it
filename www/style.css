@@ -13,8 +13,9 @@ body {
   height: 100vh;
 }
 
-
-
+body.Dark {
+  background-color: rgb(71, 71, 71) !important;
+}
 
 /* ========================
 HEADER
@@ -29,7 +30,7 @@ HEADER
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  background-color: black;
+  background-image: url(./imagens/Captura\ de\ tela\ 2025-05-11\ 153111.png);
   padding: 10px;
 }
 
@@ -45,7 +46,7 @@ HEADER
 .buscar {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-left: 120px;
   width: 70%;
 }
 
@@ -59,28 +60,43 @@ HEADER
   font-size: 16px;
 }
 
+body.Dark .buscar input {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+body.Dark .buscar input::placeholder {
+  color: rgb(0, 0, 0);
+}
+
 .buscar input::placeholder {
   color: white;
 }
 
-.buscar svg {
-  color: white;
-  height: 20px;
-  width: 20px;
-  margin-left: 10px;
+.light {
+  margin-left: 190px;
+  cursor: pointer;
+}
+
+.light img {
+  width: 45px;
+  height: 45px;
+  transition: 0.4s;
 }
 
 .user {
   border: 3px solid rgb(0, 0, 0);
   cursor: pointer;
   border-radius: 100px;
-  color: white;
   height: 95px;
-  transition: 0.4s;
 }
 
 .user:hover {
   border: 3px solid rgb(255, 255, 255);
+}
+
+body.Dark .a-user {
+  background-color: none;
 }
 
 .header-content {
@@ -114,9 +130,6 @@ HEADER
   margin: 10px 0;
 }
 
-
-
-
 /* ========================
 SIDEBAR
 ======================== */
@@ -131,12 +144,17 @@ SIDEBAR
   border: 1px solid black;
 }
 
+body.Dark .sidebar {
+  background-color: black;
+  border-right: 1px solid rgb(165, 165, 165);
+}
+
 .sidebar.expanded {
   width: 220px;
 }
 
 .toggle-btn {
-  background-color: #333;
+  background-color: #252525;
   color: white;
   border: none;
   width: 100%;
@@ -175,10 +193,23 @@ SIDEBAR
   transition: background-color 0.3s;
 }
 
+body.Dark a {
+  color: rgb(255, 255, 255);
+}
+
 .menu a:hover {
   background-color: #000000;
   color: white;
 }
+
+/*body.Dark a:hover {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+--------Conserta depois-------
+
+*/
 
 .menu svg {
   min-width: 20px;
@@ -196,9 +227,6 @@ SIDEBAR
 .sidebar.expanded .menu span {
   opacity: 1;
 }
-
-
-
 
 /* ========================
 MAIN
@@ -235,6 +263,7 @@ main {
 }
 
 .criar-nota {
+  background-color: rgb(255, 255, 255);
   display: flex;
   height: 4rem;
   align-items: center;
@@ -249,10 +278,14 @@ main {
   box-sizing: border-box;
 }
 
+body.Dark .criar-nota {
+  border: 1px solid #000000;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
 .criar-nota input {
   border: none;
   outline: none;
-  background: transparent;
   font-size: 1.2rem;
   flex: 1;
   margin-right: 8px;
@@ -278,7 +311,7 @@ main {
 }
 
 .popup .conteudo {
-  background: #fff;
+  background: #ffffff38;
   padding: 20px;
   border-radius: 10px;
   min-width: 240px;
@@ -288,6 +321,10 @@ main {
   flex-direction: column;
   gap: 0.8rem;
   text-align: center;
+}
+
+body.Dark .popup .conteudo {
+  background: #00000049;
 }
 
 .titulo-input {
@@ -301,7 +338,7 @@ main {
   padding: 1rem;
   height: 200px;
   font-size: 1.1rem;
-  border: 2px solid #2196F3;
+  border: 2px solid #d8d8d8;
   border-radius: 6px;
   resize: none;
 }
@@ -309,7 +346,7 @@ main {
 .texto-input::placeholder,
 .titulo-input::placeholder {
   font-size: 1.2rem;
-  color: #aaa;
+  color: #00000073;
 }
 
 .linha-icones {
@@ -348,11 +385,20 @@ main {
 }
 
 .salvar-botao {
-  background: none;
+  background: #0066ff;
+  padding: 5px;
+  border-radius: 45px;
   border: none;
-  color: #aaa;
+  color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.salvar-botao:hover {
+  padding: 8px;
+  color: #ffffff;
+  background-color: #0056d6;
 }
 
 .nota {
@@ -463,11 +509,9 @@ FOLDER
 }
 
 .folder {
-  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: background-color 0.3s ease;
 }
 
 .folder svg {
@@ -477,18 +521,27 @@ FOLDER
   color: #00000079;
 }
 
+body.Dark .folder svg {
+  color: rgb(255, 255, 255);
+}
+
 .folder span {
   color: #575757d0;
   cursor: default;
   font-weight: 550;
 }
 
+body.Dark .folder span {
+  color: white;
+}
+
 .folder svg:hover {
   color: #000000;
 }
 
-
-
+body.Dark .folder svg:hover {
+  color: #d8d8d8;
+}
 
 /* ========================
 NOTIFICATION

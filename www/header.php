@@ -11,10 +11,13 @@
             <input type="text" id="searchInput" placeholder=" 🔍︎ Buscar..." onkeyup="searchItems()" onkeydown="verificaEnter(event)">
         </div>
 
+        <div class="light" id="lighting">
+            <img class="sun" src="./imagens/icons8-sun-50.png" alt="sun">
+        </div>
+
         <a href="#">
             <img src="./imagens/astronauta-user.png" alt="user-astronaut" class="user">
         </a>
 
     </section>
-    <script src="/js/search.js"></script>
 </header>
