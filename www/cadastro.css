@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+body {
+    background-image: url(./imagens/background-login.png);
+    background-repeat: no-repeat;
+    background-size: 192vh;
+    background-position: 0px -70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content-sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    background-color: rgba(255, 255, 255, 0.918);
+    border-radius: 45px;
+    width: 540px;
+    height: 641px;
+}
+
+.content-sign img {
+    width: 160px;
+    height: 140px;
+}
+
+.content-sign .user {
+    background-image: url(./imagens/person-fill.svg);
+    background-repeat: no-repeat;
+    padding: 2px;
+    padding-left: 20px;
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.content-sign .email {
+    background-image: url(./imagens/envelope-fill.svg);
+    background-repeat: no-repeat;
+    padding: 2px;
+    padding-left: 20px;
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.content-sign .lock {
+    background-image: url(./imagens/lock-fill.svg);
+    background-repeat: no-repeat;
+    padding: 2px;
+    padding-left: 20px;
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.content-sign a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+}
+
+.content-sign a:hover {
+    color: black;
+}
+
+.content-sign button {
+    padding: 12px;
+    width: 110px;
+    border-radius: 45px;
+    border: none;
+    background-color: #0A4FFF;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.content-sign button:hover{
+    padding: 15px;
+    color: #002581;
+    color: white;
+}
