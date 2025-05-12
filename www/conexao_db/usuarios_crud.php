@@ -20,8 +20,22 @@ function criarUsuario($nome, $email, $senha) {
 
         return $pdo->lastInsertId();
     } catch (Exception $e) {
+        echo 
         return false;       
-        throw new Exception("Erro ao criar usuário: " . $e->getMessage());
+    }
+}
+
+function buscarUsuario($email, $senha) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("SELECT id, nome, senha FROM usuarios WHERE email = :email AND senha = :senha");
+        $stmt->execute([
+            ':email' => $email,
+            ':senha' => $senha
+        ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        return false;
     }
 }
 
@@ -80,4 +94,4 @@ function deletarUsuario($id) {
         throw new Exception("Erro ao deletar usuário: " . $e->getMessage());
     }
 }
-?>
+?> 
