@@ -1,4 +1,5 @@
 <?php
+require_once 'safe_page.php';
 require_once 'conexao_db/conexao.php';
 ?>
 
