@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <section class="container">
+    <form class="container" method="POST" action="cadastro.php">
         <div class="content-sign">
             <img src="./imagens/logo_preta.png" alt="polvo-user">
-            <input type="text" placeholder="Usuário" class="user">
-            <input type="text" placeholder="Email" class="email">
-            <input type="password" placeholder="Senha" class="lock">
-            <a href="./login.html" class="jatenhoconta">Já tenho conta</a>
-            <a href="./login.html" class="btn-sign">Cadastre-se</a>
+            <input type="text" placeholder="Usuário" class="user" name="nome" required>
+            <input type="email" placeholder="Email" class="email" name="email" required>
+            <input type="password" placeholder="Senha" class="lock" name="senha" required>
+            <a href="./login.php" class="jatenhoconta">Já tenho conta</a>
+            <button type="submit" class="btn-sign">Cadastre-se</button>
         </div>
-    </section>
+    </form>
 </body>
 
 </html>

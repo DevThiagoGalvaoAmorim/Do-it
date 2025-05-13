@@ -37,8 +37,8 @@ if($data == false){
     </div>
     <nav class="nav-links">
       <a href="#">Sobre</a>
-      <a href="./login.html" class="btn-outline">Login</a>
-      <a href="./cadastro.html" class="btn-dark">Registrar</a>
+      <a href="./login.php" class="btn-outline">Login</a>
+      <a href="./cadastro.php" class="btn-dark">Registrar</a>
     </nav>
   </header>
 
