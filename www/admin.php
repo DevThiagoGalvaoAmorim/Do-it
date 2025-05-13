@@ -1,5 +1,6 @@
 <?php
 require_once 'safe_page.php';
+require_once 'conexao_db/usuarios_crud.php';
 ?>
 
 <!DOCTYPE html>
@@ -49,16 +50,22 @@ require_once 'safe_page.php';
                 </thead>
                 <tbody>
                     <?php
-                    // Simular dados de usuários
-                    for ($i = 0; $i < 7; $i++) {
-                        echo "<tr>
-                            <td>exemplo123</td>
-                            <td>exemplo123@mail</td>
-                            <td>
-                                <button class='action-btn'>✏️</button>
-                                <button class='action-btn delete-btn'>🗑️</button>
-                            </td>
-                        </tr>";
+                    // Buscar usuários reais do banco de dados
+                    $usuarios = listarUsuarios();
+                    
+                    if ($usuarios) {
+                        foreach ($usuarios as $user) {
+                            echo "<tr>
+                                <td>{$user['nome']}</td>
+                                <td>{$user['email']}</td>
+                                <td>
+                                    <button class='action-btn edit-btn' data-id='{$user['id']}'>✏️</button>
+                                    <button class='action-btn delete-btn' data-id='{$user['id']}'>🗑️</button>
+                                </td>
+                            </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>Nenhum usuário encontrado</td></tr>";
                     }
                     ?>
                 </tbody>
