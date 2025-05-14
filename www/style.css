@@ -655,9 +655,6 @@ NOTIFICATION
   color: white;
 }
 
-
-
-
 /* ========================
 TRASH
 ======================== */
@@ -747,9 +744,6 @@ TRASH
   color: #666;
 }
 
-
-
-
 /* ========================
 ARCHIVES
 ======================== */
@@ -766,9 +760,6 @@ ARCHIVES
   justify-content: space-between;
   color: #999;
 }
-
-
-
 
 /* Estilização dos resultados da busca */
 .no-results {
@@ -1021,4 +1012,14 @@ footer {
 
 .filtro-btn:hover {
     opacity: 0.8;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.sort-buttons .filtro-btn {
+    margin: 0;
 }
