@@ -992,3 +992,33 @@ footer {
   margin-bottom: 20px;
   color: #333;
 }
+
+.criacao_de_notas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.filtro-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.filtro-btn img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.filtro-btn img.flip {
+    transform: rotate(180deg);
+}
+
+.filtro-btn:hover {
+    opacity: 0.8;
+}

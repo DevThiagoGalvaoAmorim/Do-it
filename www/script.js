@@ -1,3 +1,5 @@
+let ascending = true;  // Add this variable at the top of your script file
+
 const toggleBtn = document.querySelector(".toggle-btn");
 const sidebar = document.querySelector(".sidebar");
 
@@ -249,4 +251,28 @@ function abrirSobre() {
 // Função para sair
 function sair() {
   window.location.href = 'logout.php';
+}
+
+function sortNotes() {
+  const container = document.querySelector('.listagem_de_notas .notas');
+  const filterIcon = document.querySelector('.filtro-btn img');
+  const notas = Array.from(container.children);
+
+  notas.sort((a, b) => {
+    const titleA = a.querySelector('.nota-titulo').textContent.toLowerCase();
+    const titleB = b.querySelector('.nota-titulo').textContent.toLowerCase();
+    return ascending ? titleA.localeCompare(titleB) : titleB.localeCompare(titleA);
+  });
+
+  // Clear container and append sorted notes
+  container.innerHTML = '';
+  notas.forEach(nota => {
+    container.appendChild(nota);
+  });
+
+  // Toggle icon rotation
+  filterIcon.classList.toggle('flip', !ascending);
+
+  // Toggle the sort direction for next click
+  ascending = !ascending;
 }
