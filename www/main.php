@@ -31,6 +31,14 @@ require_once 'conexao_db/conexao.php';
           <input type="text" placeholder="Criar uma nota..." readonly>
           <button type="button">+</button>
         </div>
+        <div class="sort-buttons">
+          <button class="filtro-btn" onclick="sortNotes()">
+            <img src="imagens/icones/filtro.png" alt="Filtrar notas">
+          </button>
+          <button class="filtro-btn" onclick="sortByDate()">
+            <img src="imagens/icones/calendar_down.png" alt="Ordenar por data">
+          </button>
+        </div>
       </div>
 
       <div class="listagem_de_notas">

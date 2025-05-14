@@ -1,3 +1,6 @@
+let ascending = true;  // Add this variable at the top of your script file
+let dateAscending = true;
+
 const toggleBtn = document.querySelector(".toggle-btn");
 const sidebar = document.querySelector(".sidebar");
 
@@ -166,6 +169,8 @@ function carregarNotas() {
         divNota.className = "nota";
         divNota.dataset.id = nota.id;
 
+        divNota.dataset.date = nota.data_hora;
+
         divNota.addEventListener("click", (event) => {
           if (event.target.tagName === "BUTTON") {
             return;
@@ -249,4 +254,48 @@ function abrirSobre() {
 // Função para sair
 function sair() {
   window.location.href = 'logout.php';
+}
+
+
+// Funções parar ordenar as notas
+function sortNotes() {
+  const container = document.querySelector('.listagem_de_notas .notas');
+  const filterIcon = document.querySelector('.filtro-btn img');
+  const notas = Array.from(container.children);
+
+  notas.sort((a, b) => {
+    const titleA = a.querySelector('.nota-titulo').textContent.toLowerCase();
+    const titleB = b.querySelector('.nota-titulo').textContent.toLowerCase();
+    return ascending ? titleA.localeCompare(titleB) : titleB.localeCompare(titleA);
+  });
+
+  container.innerHTML = '';
+  notas.forEach(nota => {
+    container.appendChild(nota);
+  });
+
+  //Roda icone de filtro
+  filterIcon.classList.toggle('flip', !ascending);
+
+  ascending = !ascending;
+}
+
+function sortByDate() {
+  const container = document.querySelector('.listagem_de_notas .notas');
+  const calendarIcon = document.querySelector('img[src*="calendar_down"]');
+  const notas = Array.from(container.children);
+
+  notas.sort((a, b) => {
+    const dateA = new Date(a.dataset.date);
+    const dateB = new Date(b.dataset.date);
+    return dateAscending ? dateA - dateB : dateB - dateA;
+  });
+
+  container.innerHTML = '';
+  notas.forEach(nota => {
+    container.appendChild(nota);
+  });
+
+  calendarIcon.classList.toggle('flip', !dateAscending);
+  dateAscending = !dateAscending;
 }
