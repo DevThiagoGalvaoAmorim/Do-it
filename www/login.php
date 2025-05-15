@@ -14,7 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
             $_SESSION['email'] = $usuario['email'];
-            header('Location: main.php');
+            $_SESSION['tipo'] = $usuario['tipo'] ?? 'user';
+            
+            // Redirecionar com base no tipo de usuário
+            if (isset($usuario['tipo']) && $usuario['tipo'] === 'admin') {
+                header('Location: admin.php');
+            } else {
+                header('Location: main.php');
+            }
             exit;
         } else {
             echo '<script>alert("Email ou senha incorretos!");</script>';
