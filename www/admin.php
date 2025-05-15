@@ -65,5 +65,10 @@ require_once 'safe_page.php';
             </table>
         </div>
     </main>
+
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
+
 </body>
 </html>
