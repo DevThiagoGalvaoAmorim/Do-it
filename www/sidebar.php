@@ -1,3 +1,7 @@
+<?php
+require_once 'safe_page.php';
+?>
+
 <section class="sidebar">
 
 <button class="toggle-btn">

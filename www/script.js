@@ -1,3 +1,6 @@
+let ascending = true;  // Add this variable at the top of your script file
+let dateAscending = true;
+
 const toggleBtn = document.querySelector(".toggle-btn");
 const sidebar = document.querySelector(".sidebar");
 
@@ -5,8 +8,7 @@ const sidebar = document.querySelector(".sidebar");
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("archive_button")) {
     const notaEl = event.target.closest(".nota"); // Seleciona o elemento da nota
-    const titulo = notaEl.querySelector("h4").textContent; // Obtém o título da nota
-    deletarNota(titulo); // Chama a função para deletar a nota
+    deletarNota(notaEl); // Passa o elemento da nota para a função
   }
 });
 
@@ -23,13 +25,13 @@ function abrirPopupCriar(id) {
   // Limpa os campos do formulário ao abrir o popup
   const tituloInput = document.querySelector(".titulo-input");
   const descricaoInput = document.querySelector(".texto-input");
-  const idInput = document.querySelector(".id-input"); // Campo oculto para o ID
+  const idInput = document.querySelector(".id-input");
 
-  if (tituloInput) tituloInput.value = ""; // Limpa o campo de título
-  if (descricaoInput) descricaoInput.value = ""; // Limpa o campo de descrição
-  if (idInput) idInput.value = ""; // Limpa o campo oculto de ID
+  if (tituloInput) tituloInput.value = "";
+  if (descricaoInput) descricaoInput.value = ""; 
+  if (idInput) idInput.value = "";
 
-  popup.style.display = "flex"; // Exibe o popup
+  popup.style.display = "flex";
 }
 
 function abrirPopupEditar(id, nota) {
@@ -167,6 +169,8 @@ function carregarNotas() {
         divNota.className = "nota";
         divNota.dataset.id = nota.id;
 
+        divNota.dataset.date = nota.data_hora;
+
         divNota.addEventListener("click", (event) => {
           if (event.target.tagName === "BUTTON") {
             return;
@@ -176,10 +180,12 @@ function carregarNotas() {
           const tituloInput = document.querySelector(".titulo-input");
           const descricaoInput = document.querySelector(".texto-input");
           const idInput = document.querySelector(".id-input"); // Campo oculto para o ID
+          
           if (tituloInput && descricaoInput && idInput) {
             tituloInput.value = nota.titulo;
             descricaoInput.value = nota.descricao;
             idInput.value = nota.id; // Define o ID da nota no campo oculto
+            console.log("ID da nota:", nota.id); // Exibe o ID no console
           }
 
           // Abre o popup
@@ -204,10 +210,11 @@ function carregarNotas() {
     });
 }
 
-function deletarNota(titulo) {
+function deletarNota(notaEl) {
+  const id = notaEl.dataset.id; // Obtém o ID da nota do atributo data-id
   const formData = new FormData();
   formData.append("action", "delete");
-  formData.append("titulo", titulo);
+  formData.append("id", id);
 
   fetch("conexao_db/notas_crud.php", {
     method: "POST",
@@ -247,4 +254,48 @@ function abrirSobre() {
 // Função para sair
 function sair() {
   window.location.href = 'logout.php';
+}
+
+
+// Funções parar ordenar as notas
+function sortNotes() {
+  const container = document.querySelector('.listagem_de_notas .notas');
+  const filterIcon = document.querySelector('.filtro-btn img');
+  const notas = Array.from(container.children);
+
+  notas.sort((a, b) => {
+    const titleA = a.querySelector('.nota-titulo').textContent.toLowerCase();
+    const titleB = b.querySelector('.nota-titulo').textContent.toLowerCase();
+    return ascending ? titleA.localeCompare(titleB) : titleB.localeCompare(titleA);
+  });
+
+  container.innerHTML = '';
+  notas.forEach(nota => {
+    container.appendChild(nota);
+  });
+
+  //Roda icone de filtro
+  filterIcon.classList.toggle('flip', !ascending);
+
+  ascending = !ascending;
+}
+
+function sortByDate() {
+  const container = document.querySelector('.listagem_de_notas .notas');
+  const calendarIcon = document.querySelector('img[src*="calendar_down"]');
+  const notas = Array.from(container.children);
+
+  notas.sort((a, b) => {
+    const dateA = new Date(a.dataset.date);
+    const dateB = new Date(b.dataset.date);
+    return dateAscending ? dateA - dateB : dateB - dateA;
+  });
+
+  container.innerHTML = '';
+  notas.forEach(nota => {
+    container.appendChild(nota);
+  });
+
+  calendarIcon.classList.toggle('flip', !dateAscending);
+  dateAscending = !dateAscending;
 }

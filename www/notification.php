@@ -1,3 +1,7 @@
+<?php
+require_once 'safe_page.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +15,7 @@
 
 </head>
 
-<body>
+<body id="body">
 
     <?php include 'header.php'; ?>
 
@@ -54,8 +58,14 @@
             </div>
         </section>
 
-        <script src="script.js"></script>
+    </main>
 
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="./js/search.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
+require_once 'safe_page.php';
 require_once 'conexao_db/conexao.php';
-//require_once 'conexao_db/notas_crud.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,20 +16,28 @@ require_once 'conexao_db/conexao.php';
 
 </head>
 
-<body>
+<body id="body">
 
   <?php include 'header.php'; ?>
 
   <main>
-    
+
     <?php include 'sidebar.php'; ?>
 
     <section class="conteudo_notas">
-      
+
       <div class="criacao_de_notas">
         <div class="criar-nota" onclick="abrirPopupCriar('popupCriar')">
           <input type="text" placeholder="Criar uma nota..." readonly>
           <button type="button">+</button>
+        </div>
+        <div class="sort-buttons">
+          <button class="filtro-btn" onclick="sortNotes()">
+            <img src="imagens/icones/filtro.png" alt="Filtrar notas">
+          </button>
+          <button class="filtro-btn" onclick="sortByDate()">
+            <img src="imagens/icones/calendar_down.png" alt="Ordenar por data">
+          </button>
         </div>
       </div>
 
@@ -48,23 +56,28 @@ require_once 'conexao_db/conexao.php';
       <div class="conteudo" onclick="event.stopPropagation()">
         <input type="hidden" class="id-input" value="">
         <input type="text" class="titulo-input" placeholder="Título" />
-    
+
         <textarea class="texto-input" placeholder="Escreva seu texto aqui..."></textarea>
-    
+
         <div class="linha-icones">
           <button class="icone botao1"></button>
           <button class="icone botao2"></button>
           <button class="icone botao3"></button>
         </div>
-    
+
         <div class="footer-form">
           <button class="salvar-botao" onclick="salvarNota()">Salvar</button>
         </div>
       </div>
     </div>
+  </main>
 
-    <script src="script.js"></script>
+  <footer>
     <?php include 'footer.php'; ?>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="./js/search.js"></script>
 </body>
 
 </html>

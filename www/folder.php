@@ -1,3 +1,7 @@
+<?php
+require_once 'safe_page.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,13 +15,13 @@
 
 </head>
 
-<body>
+<body id="body">
 
     <?php include 'header.php'; ?>
 
     <main>
 
-        <?php include 'sidebar.php'; ?> 
+        <?php include 'sidebar.php'; ?>
 
         <section class="folder-container">
             <div class="new-folder">
@@ -51,12 +55,17 @@
                         </svg>
                         <span>New Folder 1</span>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
+    </main>
 
-        <script src="script.js"></script>
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
+    <script src="script.js"></script>
+    <script src="./js/search.js"></script>
 </body>
 
 </html>

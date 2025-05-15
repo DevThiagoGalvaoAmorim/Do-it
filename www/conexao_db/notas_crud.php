@@ -58,15 +58,15 @@ try {
         }
     } elseif ($action === 'delete') {
         // Deletar uma nota
-        $titulo = $_POST['titulo'];
+        $id = $_POST['id'];
 
-        if ($titulo) {
-            $stmt = $pdo->prepare("DELETE FROM notas WHERE titulo = :titulo AND id_usuario = :id");
-            $stmt->execute([':titulo' => $titulo, ':id' => 1]);
+        if ($id) {
+            $stmt = $pdo->prepare("DELETE FROM notas WHERE id = :id AND id_usuario = :id_usuario");
+            $stmt->execute([':id' => $id, ':id_usuario' => 1]);
 
             echo json_encode(['success' => true, 'message' => 'Nota deletada com sucesso!']);
         } else {
-            echo json_encode(['success' => false, 'message' => 'titulo da nota não fornecido.']);
+            echo json_encode(['success' => false, 'message' => 'id da nota não fornecido.']);
         }
     } else {
         echo json_encode(['success' => false, 'message' => 'Ação inválida.']);

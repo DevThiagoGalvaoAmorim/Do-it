@@ -1,3 +1,7 @@
+<?php
+require_once 'safe_page.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,27 +15,27 @@
 
 </head>
 
-<body>
+<body id="body">
 
     <?php include 'header.php'; ?>
 
     <main>
 
-        <?php include 'sidebar.php'; ?> 
+        <?php include 'sidebar.php'; ?>
 
         <div class="container-notas">
-  <div class="cabecalho-notas">
-    <h2>Notas Arquivadas</h2>
-    <hr>
-  </div>
+            <div class="cabecalho-notas">
+                <h2>Notas Arquivadas</h2>
+                <hr>
+            </div>
 
-  <div class="listagem-de-notas">
+            <div class="listagem-de-notas">
 
-    <?php
-        $a = 0;
+                <?php
+                $a = 0;
 
-        while ($a < 10) {
-            echo '
+                while ($a < 10) {
+                    echo '
                 <div class="nota-arquivada">
                     <h3 class="nota-titulo">Título</h3>
                     <p class="nota-texto">Usuário vai anotar aqui...</p>
@@ -42,14 +46,19 @@
                     </div>
                 </div>
             ';
-            $a++;
-        }
-    ?>
+                    $a++;
+                }
+                ?>
 
-  </div>
-</div>
+            </div>
+        </div>
 
     </main>
+
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
+    <script src="./js/search.js"></script>
 </body>
 
 </html>
