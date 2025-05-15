@@ -7,7 +7,7 @@
 body {
     background-image: url(./imagens/background-login.png);
     background-repeat: no-repeat;
-    background-size: 192vh;
+    background-size: 100%;
     background-position: 0px -70px;
     display: flex;
     justify-content: center;

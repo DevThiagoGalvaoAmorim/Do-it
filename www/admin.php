@@ -31,7 +31,6 @@ require_once 'safe_page.php';
             <nav class="admin-nav">
                 <a href="#" class="active">Usuários</a>
                 <a href="#">Estatísticas</a>
-                <a href="#">Log De Atividades</a>
             </nav>
         </div>
 
