@@ -21,34 +21,42 @@ if($data == false){
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Do it</title>
   <link rel="stylesheet" href="landing_page.css">
+  <script src="js/parallax.js"></script>
+  <style>
+      .parallax-bg {
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-image: url('./imagens/fundo polvo.png');
+          background-size: cover;
+      }
+      
+      .content {
+          position: relative;
+          z-index: 1;
+      }
+  </style>
 </head>
 <body>
-
-  <header class="navbar">
-    <div class="logo">
-      <img src="imagens/logo_preta.png" alt="Do it Logo">
-      <span class="logo-text">Do it</span>
-    </div>
-    <nav class="nav-links">
-      <a href="#">Sobre</a>
-      <a href="./login.html" class="btn-outline">Login</a>
-      <a href="./cadastro.html" class="btn-dark">Registrar</a>
-    </nav>
-  </header>
-
-  <main>
+  <!-- Elemento de fundo com parallax -->
+  <div class="parallax-bg parallax" data-speed="0.3"></div>
+  
+  <div class="content">
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
           <h1>Transforme anotações em produtividade</h1>
           <p>Do it é um app de anotações intuitivo para quem precisa registrar ideias e tarefas rapidamente</p>
-          <a href="./login.html" class="btn-dark">ACESSE</a>
+          <a href="./login.php" class="btn-dark">ACESSE</a>
         </div>
         <div class="hero-image">
           <img src="imagens/polvo_landing.png" alt="Do it App Interface">
@@ -90,4 +98,10 @@ if($data == false){
   </footer>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar o efeito parallax
+        initParallax();
+    });
+</script>
 </html>

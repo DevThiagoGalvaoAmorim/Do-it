@@ -992,3 +992,64 @@ footer {
   margin-bottom: 20px;
   color: #333;
 }
+
+/* Estilos para efeito parallax e transições */
+.parallax {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(0);
+}
+
+/* Animação de entrada na página */
+.page-enter .transition-element {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.transition-element {
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação de saída da página */
+.page-transition .transition-element.animate-out {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+/* Velocidades diferentes para elementos */
+.parallax[data-speed="0.2"] {
+    z-index: 1;
+}
+
+.parallax[data-speed="0.4"] {
+    z-index: 2;
+}
+
+.parallax[data-speed="0.6"] {
+    z-index: 3;
+}
+
+/* Animação para a transição entre páginas */
+.page-transition .container,
+.page-transition main {
+    animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-30px); }
+}

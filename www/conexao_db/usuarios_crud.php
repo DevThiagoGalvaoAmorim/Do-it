@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Verificar se a sessão já está ativa antes de iniciá-la
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ .'/conexao.php';
 
 function criarUsuario($nome, $email, $senha) {
@@ -26,7 +29,7 @@ function criarUsuario($nome, $email, $senha) {
 function buscarUsuario($email, $senha) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare("SELECT id, nome, email FROM usuarios WHERE email = :email AND senha = :senha");
+        $stmt = $pdo->prepare("SELECT id, nome, email, tipo FROM usuarios WHERE email = :email AND senha = :senha");
         $stmt->execute([
             ':email' => $email,
             ':senha' => $senha

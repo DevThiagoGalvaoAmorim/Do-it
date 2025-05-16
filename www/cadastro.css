@@ -1,107 +1,116 @@
+/* Estilos básicos */
 * {
-    padding: 0;
     margin: 0;
-    box-sizing: content-box;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    background-image: url(./imagens/background-login.png);
-    background-repeat: no-repeat;
-    background-size: 192vh;
-    background-position: 0px -70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    z-index: 10;
 }
 
 .content-sign {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    width: 400px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    gap: 40px;
-    background-color: rgba(255, 255, 255, 0.918);
-    border-radius: 45px;
-    width: 540px;
-    height: 641px;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .content-sign img {
-    width: 160px;
-    height: 140px;
+    width: 100px;
+    margin-bottom: 20px;
 }
 
-.content-sign .user {
-    background-image: url(./imagens/person-fill.svg);
-    background-repeat: no-repeat;
-    padding: 2px;
-    padding-left: 20px;
-    width: 260px;
-    border: none;
-    border-bottom: 1px solid black;
-    background-color: rgba(255, 255, 255, 0);
-    outline: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+.content-sign input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.content-sign .email {
-    background-image: url(./imagens/envelope-fill.svg);
-    background-repeat: no-repeat;
-    padding: 2px;
-    padding-left: 20px;
-    width: 260px;
-    border: none;
-    border-bottom: 1px solid black;
-    background-color: rgba(255, 255, 255, 0);
-    outline: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-}
-
-.content-sign .lock {
-    background-image: url(./imagens/lock-fill.svg);
-    background-repeat: no-repeat;
-    padding: 2px;
-    padding-left: 20px;
-    width: 260px;
-    border: none;
-    border-bottom: 1px solid black;
-    background-color: rgba(255, 255, 255, 0);
-    outline: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-}
-
-.content-sign .jatenhoconta {
+.jatenhoconta {
+    margin: 15px 0;
+    color: #666;
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    color: rgba(0, 0, 0, 0.5);
-    font-family: 'Roboto', sans-serif;
 }
 
-.content-sign .jatenhoconta:hover {
-    color: black;
-}
-
-.content-sign .btn-sign {
-    text-decoration: none;
-    text-align: center;
-    padding: 12px;
-    width: 110px;
-    border-radius: 45px;
-    border: none;
-    background-color: #0A4FFF;
+.btn-sign {
+    background-color: #0066ff;
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.4s;
+    transition: all 0.3s ease;
 }
 
-.content-sign .btn-sign:hover{
-    padding: 15px;
-    color: #002581;
-    color: white;
+.btn-sign:hover {
+    background-color: #0052cc;
+    padding: 12px 35px;
+}
+
+/* Elementos de fundo com parallax */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./imagens/background-login.png');
+    background-size: cover;
+    z-index: -2;
+}
+
+.planet {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-image: url('./imagens/polvo_landing.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: -50px;
+    right: 50px;
+    z-index: -1;
+}
+
+/* Estilos para transição de página */
+.page-transition .container {
+    animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-30px); }
+}
+
+/* Estilos para elementos com transição */
+.transition-element {
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.transition-element.animate-out {
+    opacity: 0;
+    transform: translateY(-50px);
 }

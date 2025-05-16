@@ -97,8 +97,8 @@ body {
     font-size: 15px;
 }
 
-.content-login .user {
-    background-image: url(./imagens/person-fill.svg);
+.content-login .email {
+    background-image: url(./imagens/envelope-fill.svg);
     background-repeat: no-repeat;
     padding: 2px;
     padding-left: 20px;
@@ -140,4 +140,63 @@ body {
 .content-login .btn-enter:hover {
     padding: 15px;
     background-color: #002581;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+}
+
+.input-container input {
+    padding-left: 35px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Elementos de fundo com parallax */
+/* Adicione estas regras ao final do arquivo login.css */
+
+/* Correção para o posicionamento dos elementos de fundo */
+.stars {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: url('./imagens/background-login.png');
+    background-size: cover;
+}
+
+.planet {
+    position: fixed !important;
+    bottom: -50px;
+    right: 50px;
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilos para transição de página */
+.page-transition .container {
+    animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-30px); }
 }
