@@ -72,21 +72,8 @@ if($data == false){
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-        <p>© 2025. Todos os direitos reservados.</p>
-        <div class="footer-links">
-            <a href="#">Política de Privacidade</a>
-            <a href="#">Termos e Condições</a>
-            <a href="#">Política de Cookies</a>
-        </div>
-        <div class="footer-right">
-            <a href="#"><img src="imagens/icones/icons8-facebook.svg" alt="Facebook"></a>
-            <a href="#"><img src="imagens/icones/icons8-instagram.svg" alt="Instagram"></a>
-            <a href="#"><img src="imagens/icones/icons8-twitter.svg" alt="Twitter"></a>
-            <a href="#"><img src="imagens/icones/icons8-linkedin.svg" alt="LinkedIn"></a>
-        </div>
-    </div>
+  <footer>
+    <?php include 'footer.php'; ?>
   </footer>
 
 </body>

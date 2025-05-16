@@ -309,5 +309,10 @@ if (isset($_POST['action']) && $_POST['action'] === 'update') {
             }
         }
     </script>
+  
 </body>
+
+<footer>
+     <?php include 'footer.php'; ?>
+</footer>
 </html>
