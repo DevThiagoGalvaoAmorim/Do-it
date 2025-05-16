@@ -8,7 +8,9 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin' && !isset($_GET['r
     exit;
 }
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Verificar se já está logado como admin
 if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
