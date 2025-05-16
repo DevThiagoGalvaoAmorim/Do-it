@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" name="email" placeholder="Email@exemplo.com" class="email transition-element">
                 <input type="password" name="senha" placeholder="Senha" class="lock transition-element">
                 <a href="" class="transition-element">Esqueceu a senha</a>
-                <button class="btn-enter transition-element" type="submit" onclick="if(this.form.checkValidity()) { parallaxTransition('main.php'); return false; }">Entrar</button>
+                <button class="btn-enter transition-element" type="submit">Entrar</button>
             </div>
 
         </div>

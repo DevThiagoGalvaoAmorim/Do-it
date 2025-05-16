@@ -29,34 +29,10 @@ require_once 'conexao_db/conexao.php';
 
       <section class="conteudo_notas transition-element">
 
-<<<<<<< HEAD
         <div class="criacao_de_notas transition-element">
           <div class="criar-nota transition-element" onclick="abrirPopupCriar('popupCriar')">
             <input type="text" placeholder="Criar uma nota..." readonly>
             <button type="button">+</button>
-=======
-    <section class="conteudo_notas">
-
-      <div class="criacao_de_notas">
-        <div class="criar-nota" onclick="abrirPopupCriar('popupCriar')">
-          <input type="text" placeholder="Criar uma nota..." readonly>
-          <button type="button">+</button>
-        </div>
-        <div class="sort-buttons">
-          <button class="filtro-btn" onclick="sortNotes()">
-            <img src="imagens/icones/filtro.png" alt="Filtrar notas">
-          </button>
-          <button class="filtro-btn" onclick="sortByDate()">
-            <img src="imagens/icones/calendar_down.png" alt="Ordenar por data">
-          </button>
-        </div>
-      </div>
-
-      <div class="listagem_de_notas">
-        <div class="notas">
-          <div class="listagem_de_notas">
-            <div class="notas"></div>
->>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
           </div>
         </div>
 
