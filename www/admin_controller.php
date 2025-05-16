@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 // Removido o session_start() daqui, pois já é chamado em usuarios_crud.php
-=======
-session_start();
->>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
 require_once 'conexao_db/conexao.php';
 require_once 'conexao_db/usuarios_crud.php';
 
@@ -103,11 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         echo json_encode(['success' => true, 'usuarios' => $usuarios]);
         exit;
     } elseif ($_GET['action'] === 'get' && isset($_GET['id'])) {
-<<<<<<< HEAD
         $usuario = obterUsuarioPorId($_GET['id']); // Using the correct function name 'obterUsuarioPorId' that exists in usuarios_crud.php
-=======
-        $usuario = buscarUsuarioPorId($_GET['id']);
->>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
         
         if ($usuario) {
             header('Content-Type: application/json');

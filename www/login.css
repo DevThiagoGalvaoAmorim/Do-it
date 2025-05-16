@@ -162,7 +162,6 @@ body {
     height: 40px;
     border-radius: 5px;
     border: 1px solid #ddd;
-<<<<<<< HEAD
 }
 
 /* Elementos de fundo com parallax */
@@ -200,6 +199,4 @@ body {
 @keyframes fadeOut {
     from { opacity: 1; transform: translateY(0); }
     to { opacity: 0; transform: translateY(-30px); }
-=======
->>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
 }
