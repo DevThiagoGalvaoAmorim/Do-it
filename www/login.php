@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="content-login">
                 <img src="./imagens/logo_preta.png" alt="user-polvo">
                 <!-- Adicionados os atributos name -->
-                <input type="text" name="email" placeholder="Email@exemplo.com" class="user">
+                <input type="text" name="email" placeholder="Email@exemplo.com" class="lock">
                 <input type="password" name="senha" placeholder="Senha" class="lock">
                 <a href="">Esqueceu a senha</a>
                 <button class="btn-enter" type="submit">Entrar</button>

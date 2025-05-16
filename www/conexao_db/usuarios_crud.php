@@ -59,37 +59,52 @@ function buscarUsuarioPorId($id) {
     }
 }
 
-function atualizarUsuario($id, $nome, $email, $senha = null) {
+function atualizarUsuario($id, $nome, $email, $senha = null, $tipo = null) {
     global $pdo;
     try {
         // Verificar se o email já existe para outro usuário
-        $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
-        $stmt->execute([
-            ':email' => $email,
-            ':id' => $id
-        ]);
-        if ($stmt->rowCount() > 0) {
-            throw new Exception("E-mail já está sendo usado por outro usuário.");
+        if (!empty($email)) {
+            $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
+            $stmt->execute([
+                ':email' => $email,
+                ':id' => $id
+            ]);
+            if ($stmt->rowCount() > 0) {
+                throw new Exception("E-mail já está sendo usado por outro usuário.");
+            }
         }
         
-        // Se a senha foi fornecida, atualiza com a senha
-        if (!empty($senha)) {
-            $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
-            $stmt->execute([
-                ':nome' => $nome,
-                ':email' => $email,
-                ':senha' => $senha,
-                ':id' => $id
-            ]);
-        } else {
-            // Se a senha não foi fornecida, mantém a senha atual
-            $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email WHERE id = :id");
-            $stmt->execute([
-                ':nome' => $nome,
-                ':email' => $email,
-                ':id' => $id
-            ]);
+        // Construir a query de atualização com base nos parâmetros fornecidos
+        $campos = [];
+        $params = [':id' => $id];
+        
+        if (!empty($nome)) {
+            $campos[] = "nome = :nome";
+            $params[':nome'] = $nome;
         }
+        
+        if (!empty($email)) {
+            $campos[] = "email = :email";
+            $params[':email'] = $email;
+        }
+        
+        if (!empty($senha)) {
+            $campos[] = "senha = :senha";
+            $params[':senha'] = $senha;
+        }
+        
+        if (!empty($tipo)) {
+            $campos[] = "tipo = :tipo";
+            $params[':tipo'] = $tipo;
+        }
+        
+        if (empty($campos)) {
+            return false; // Nada para atualizar
+        }
+        
+        $query = "UPDATE usuarios SET " . implode(", ", $campos) . " WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
         
         return $stmt->rowCount() > 0;
     } catch (Exception $e) {
