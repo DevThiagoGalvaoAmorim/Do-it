@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ .'/conexao_db/conexao.php';
+require_once __DIR__ . '/conexao_db/conexao.php';
 
 $_SESSION['nome'] = 'user';
 $_SESSION['email'] = 'example@email';
@@ -8,7 +8,7 @@ $_SESSION['senha'] = '123';
 
 $stmt = $pdo->query("SELECT * FROM usuarios WHERE id = 1");
 $data = $stmt->fetch(PDO::FETCH_ASSOC);
-if($data == false){
+if ($data == false) {
     $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha);");
     $stmt->execute([
         ':nome' => $_SESSION['nome'],
@@ -16,19 +16,37 @@ if($data == false){
         ':senha' => $_SESSION['senha']
     ]);
 }
-
-
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Do it</title>
   <link rel="stylesheet" href="landing_page.css">
+  <script src="js/parallax.js"></script>
+  <style>
+      .parallax-bg {
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-image: url('./imagens/fundo polvo.png');
+          background-size: cover;
+      }
+
+      .content {
+          position: relative;
+          z-index: 1;
+      }
+  </style>
 </head>
 <body>
+  <!-- Elemento de fundo com parallax -->
+  <div class="parallax-bg parallax" data-speed="0.3"></div>
 
   <header class="navbar">
     <div class="logo">
@@ -76,5 +94,10 @@ if($data == false){
     <?php include 'footer.php'; ?>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        initParallax();
+    });
+  </script>
 </body>
 </html>

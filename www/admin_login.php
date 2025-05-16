@@ -2,7 +2,15 @@
 require_once 'conexao_db/conexao.php';
 require_once 'conexao_db/usuarios_crud.php';
 
-session_start();
+// Verificar se já está logado como admin e não está vindo de um redirecionamento
+if (isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin' && !isset($_GET['redirect'])) {
+    header('Location: admin.php');
+    exit;
+}
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Verificar se já está logado como admin
 if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
@@ -31,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
                 $_SESSION['email'] = $usuario['email'];
-                $_SESSION['admin'] = true;
+                $_SESSION['tipo'] = 'admin';
                 
                 header('Location: admin.php');
                 exit;
@@ -55,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="login.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="js/parallax.js"></script>
     <title>Login Administrador - Do it</title>
     <style>
         .erro {
@@ -62,9 +71,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: 15px;
             text-align: center;
         }
+        
+        /* Correção para o posicionamento dos elementos de fundo */
+        .stars {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('./imagens/background-login.png');
+            background-size: cover;
+        }
+        
+        .planet {
+            position: fixed !important;
+            bottom: -50px;
+            right: 50px;
+            z-index: -1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
+    <!-- Elementos de fundo com parallax -->
+    <div class="stars parallax" data-speed="0.2"></div>
+    <div class="planet parallax" data-speed="0.4"></div>
+    
     <form class="container" method="POST" action="">
         <div class="content-login">
             <img src="./imagens/logo_preta.png" alt="polvo-user">

@@ -1,7 +1,7 @@
 <?php
 require_once 'conexao_db/conexao.php';
 
-$email = "ruam@mail.com";
+$email = "admin@teste.com";
 
 try {
     // Verificar se o usuário existe e qual é a senha armazenada
@@ -20,7 +20,7 @@ try {
     }
     
     // Testar login com a senha fornecida
-    $senha_teste = "123";
+    $senha_teste = "senha123";
     $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND senha = :senha");
     $stmt->execute([
         ':email' => $email,
@@ -28,7 +28,7 @@ try {
     ]);
     
     if ($stmt->rowCount() > 0) {
-        echo "<br>Login com senha '123' funcionaria!";
+        echo "<br>Login com senha 'senha123' funcionaria!";
     } else {
         echo "<br>Login com senha '123' NÃO funcionaria!";
     }
