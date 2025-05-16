@@ -80,7 +80,6 @@ function salvarNota() {
   const pasta = document.querySelector(".pasta-input")
     ? document.querySelector(".pasta-input").value.trim()
     : ""; // Caso tenha um campo para pasta
-  //const id_usuario = 1; // ID do usuário fixo no momento
   const id = document.querySelector(".id-input").value.trim(); // Obtém o ID da nota do campo oculto
 
   // Validação dos campos
@@ -94,7 +93,6 @@ function salvarNota() {
   formData.append("titulo", titulo);
   formData.append("descricao", descricao);
   formData.append("pasta", pasta);
-  //formData.append("id_usuario", id_usuario);
 
   // Decidir entre criar ou atualizar
   if (id) {
