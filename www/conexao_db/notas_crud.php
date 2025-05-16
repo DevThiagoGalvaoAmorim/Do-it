@@ -2,7 +2,6 @@
 session_start();
 require_once __DIR__ .'/conexao.php';
 
-
 $action = $_POST['action'] ?? null;
 
 try {
@@ -11,7 +10,7 @@ try {
         $descricao = $_POST['descricao'] ?? '';
         $pasta = $_POST['pasta'] ?? '';
         $tipo = $_POST['tipo'] ?? 'Checklist';
-        $id_usuario = $_SESSION['id'] ?? 1; 
+        $id_usuario = $_SESSION['id']; 
     
         if ($id_usuario) {
             // Inserir a nota com o ID do usuário
