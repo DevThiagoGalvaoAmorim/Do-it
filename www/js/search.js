@@ -87,6 +87,12 @@ let body = document.getElementById('body')
 if (localStorage.getItem('darkMode') === 'enabled') {
     body.classList.add('Dark');
     lighting.classList.add('Dark');
+
+    let imgElement = lighting.querySelector('img');
+    imgElement.src = "./imagens/icons8-moon-48.png";
+} else {
+    let imgElement = lighting.querySelector('img');
+    imgElement.src = "./imagens/icons8-sun-50.png";
 }
 
 lighting.addEventListener('click', () => {
@@ -98,8 +104,8 @@ lighting.addEventListener('click', () => {
     if (lighting.classList.contains('Dark')) {
         imgElement.src = "./imagens/icons8-moon-48.png";
         localStorage.setItem('darkMode', 'enabled');
-    } else {
-        imgElement.src = "./imagens/icons8-sun-50.png";
-        localStorage.setItem('darkMode', 'disabled');
+    }
+    else {
+        imgElement.src = "./imagens/icons8-sun-50.png"; localStorage.setItem('darkMode', 'disabled');
     }
 });

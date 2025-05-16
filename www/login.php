@@ -126,10 +126,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="content-login">
                 <img src="./imagens/logo_preta.png" alt="user-polvo" class="transition-element">
                 <!-- Adicionados os atributos name -->
+<<<<<<< HEAD
                 <input type="text" name="email" placeholder="Email@exemplo.com" class="email transition-element">
                 <input type="password" name="senha" placeholder="Senha" class="lock transition-element">
                 <a href="" class="transition-element">Esqueceu a senha</a>
                 <button class="btn-enter transition-element" type="submit" onclick="if(this.form.checkValidity()) { parallaxTransition('main.php'); return false; }">Entrar</button>
+=======
+                <input type="text" name="email" placeholder="Email@exemplo.com" class="lock">
+                <input type="password" name="senha" placeholder="Senha" class="lock">
+                <a href="">Esqueceu a senha</a>
+                <button class="btn-enter" type="submit">Entrar</button>
+>>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
             </div>
 
         </div>

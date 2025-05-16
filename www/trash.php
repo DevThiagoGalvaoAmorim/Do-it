@@ -1,3 +1,7 @@
+<?php
+require_once 'safe_page.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

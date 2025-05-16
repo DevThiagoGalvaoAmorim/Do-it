@@ -2,8 +2,15 @@
 require_once 'conexao_db/conexao.php';
 require_once 'conexao_db/usuarios_crud.php';
 
+<<<<<<< HEAD
 // Verificar se já está logado como admin e não está vindo de um redirecionamento
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin' && !isset($_GET['redirect'])) {
+=======
+session_start();
+
+// Verificar se já está logado como admin
+if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+>>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
     header('Location: admin.php');
     exit;
 }
@@ -29,7 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
                 $_SESSION['email'] = $usuario['email'];
+<<<<<<< HEAD
                 $_SESSION['tipo'] = 'admin';
+=======
+                $_SESSION['admin'] = true;
+>>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
                 
                 header('Location: admin.php');
                 exit;
@@ -53,7 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="login.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<<<<<<< HEAD
     <script src="js/parallax.js"></script>
+=======
+>>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
     <title>Login Administrador - Do it</title>
     <style>
         .erro {
@@ -61,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: 15px;
             text-align: center;
         }
+<<<<<<< HEAD
         
         /* Correção para o posicionamento dos elementos de fundo */
         .stars {
@@ -92,6 +107,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="stars parallax" data-speed="0.2"></div>
     <div class="planet parallax" data-speed="0.4"></div>
     
+=======
+    </style>
+</head>
+<body>
+>>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
     <form class="container" method="POST" action="">
         <div class="content-login">
             <img src="./imagens/logo_preta.png" alt="polvo-user">

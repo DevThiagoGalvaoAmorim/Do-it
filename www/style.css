@@ -655,9 +655,6 @@ NOTIFICATION
   color: white;
 }
 
-
-
-
 /* ========================
 TRASH
 ======================== */
@@ -747,9 +744,6 @@ TRASH
   color: #666;
 }
 
-
-
-
 /* ========================
 ARCHIVES
 ======================== */
@@ -766,9 +760,6 @@ ARCHIVES
   justify-content: space-between;
   color: #999;
 }
-
-
-
 
 /* Estilização dos resultados da busca */
 .no-results {
@@ -993,6 +984,7 @@ footer {
   color: #333;
 }
 
+<<<<<<< HEAD
 /* Estilos para efeito parallax e transições */
 .parallax {
     position: relative;
@@ -1052,4 +1044,220 @@ footer {
 @keyframes fadeOut {
     from { opacity: 1; transform: translateY(0); }
     to { opacity: 0; transform: translateY(-30px); }
+=======
+.criacao_de_notas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.filtro-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.filtro-btn img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.filtro-btn img.flip {
+  transform: rotate(180deg);
+}
+
+.filtro-btn:hover {
+  opacity: 0.8;
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sort-buttons .filtro-btn {
+  margin: 0;
+}
+
+/* ========================
+ADMIN STATS PAGE
+======================== */
+
+.admin-stats-header {
+  background-color: black;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.admin-stats-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.admin-stats-header-logo img {
+  width: 50px;
+  height: auto;
+}
+
+.admin-stats-header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.admin-stats-header-actions .admin-stats-sair-btn {
+  background-color: #ee6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.admin-stats-sidebar {
+  width: 200px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+}
+
+.admin-stats-logo {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.admin-stats-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.admin-stats-nav {
+  margin-top: 20px;
+}
+
+.admin-stats-nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.admin-stats-nav a.active {
+  background-color: #333;
+}
+
+.admin-stats-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.admin-stats-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.admin-stats-sair-btn {
+  background-color: #ee6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.admin-stats-main {
+  display: flex;
+}
+
+.admin-stats-main-content {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  background-color: #f5f5f5;
+  flex: 1;
+}
+
+.admin-stats-card {
+  background-color: #ccc;
+  border-radius: 15px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.admin-stats-big-number {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.admin-stats-full-width {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-stats-pie-chart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.admin-stats-pie-chart {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(#5a4fcf 0% 33%, #d18ad3 33% 66%, #8ed1c0 66% 100%);
+}
+
+.admin-stats-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.admin-stats-legend div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-stats-color-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.admin-stats-tarefa {
+  background: #5a4fcf;
+}
+
+.admin-stats-lembrete {
+  background: #d18ad3;
+}
+
+.admin-stats-anotacao {
+  background: #8ed1c0;
+>>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
 }
