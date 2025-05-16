@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         echo json_encode(['success' => true, 'usuarios' => $usuarios]);
         exit;
     } elseif ($_GET['action'] === 'get' && isset($_GET['id'])) {
-        $usuario = buscarUsuarioPorId($_GET['id']);
+        $usuario = obterUsuarioPorId($_GET['id']); // Using the correct function name 'obterUsuarioPorId' that exists in usuarios_crud.php
         
         if ($usuario) {
             header('Content-Type: application/json');

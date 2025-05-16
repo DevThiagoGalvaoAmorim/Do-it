@@ -95,3 +95,14 @@ function deletarUsuario($id) {
         throw new Exception("Erro ao deletar usuário: " . $e->getMessage());
     }
 }
+
+function obterUsuarioPorId($id) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("SELECT id, nome, email, tipo FROM usuarios WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        return false;
+    }
+}
