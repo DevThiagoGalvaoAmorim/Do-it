@@ -31,7 +31,8 @@ try {
         // Ler todas as notas do usuário
         $id_usuario = $_SESSION['id'];
         if($id_usuario){
-            $stmt = $pdo->query("SELECT * FROM notas WHERE id_usuario = :id_usuario");
+            $stmt = $pdo->prepare("SELECT * FROM notas WHERE id_usuario = :id_usuario");
+            $stmt->execute([':id_usuario' => $id_usuario]);
             $notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
             echo json_encode(['success' => false, 'message' => 'ID do usuário não encontrado']);
@@ -40,7 +41,7 @@ try {
     } elseif ($action === 'update') {
         // Atualizar uma nota
         $id = $_POST['id'] ?? null; // ID da nota a ser atualizada
-        $id_usuario = $_SESSION['id'] ?? 1;
+        $id_usuario = $_SESSION['id'];
         $titulo = $_POST['titulo'] ?? '';
         $descricao = $_POST['descricao'] ?? '';
         $pasta = $_POST['pasta'] ?? '';
