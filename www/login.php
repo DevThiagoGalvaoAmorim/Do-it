@@ -1,25 +1,33 @@
 <?php
+session_start();
 require_once 'conexao_db/conexao.php';
 require_once 'conexao_db/usuarios_crud.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['senha'])) {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
 
-    $resultadoBusca = buscarUsuario($email, $senha);
-
-    if ($resultadoBusca) {
-        session_start();
-        $_SESSION['id'] = $resultadoBusca['id'];
-        $_SESSION['nome'] = $resultadoBusca['nome'];
-        $_SESSION['email'] = $resultadoBusca['email'];
-        header('Location: main.php');
-        exit;
+    if (!empty($email) && !empty($senha)) {
+        $usuario = buscarUsuario($email, $senha);
+        
+        if ($usuario) {
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['tipo'] = $usuario['tipo'] ?? 'user';
+            
+            // Redirecionar com base no tipo de usuário
+            if (isset($usuario['tipo']) && $usuario['tipo'] === 'admin') {
+                header('Location: admin.php');
+            } else {
+                header('Location: main.php');
+            }
+            exit;
+        } else {
+            echo '<script>alert("Email ou senha incorretos!");</script>';
+        }
     } else {
-        session_start();
-        $_SESSION = [];
-        session_destroy();
-        echo '<script>alert("Erro ao fazer login. Credenciais não encontradas!");</script>';
+        echo '<script>alert("Preencha todos os campos!");</script>';
     }
 }
 ?>
@@ -47,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['senh
             <div class="content-login">
                 <img src="./imagens/logo_preta.png" alt="user-polvo">
                 <!-- Adicionados os atributos name -->
-                <input type="text" name="email" placeholder="Email@exemplo.com" class="user">
+                <input type="text" name="email" placeholder="Email@exemplo.com" class="lock">
                 <input type="password" name="senha" placeholder="Senha" class="lock">
                 <a href="">Esqueceu a senha</a>
                 <button class="btn-enter" type="submit">Entrar</button>

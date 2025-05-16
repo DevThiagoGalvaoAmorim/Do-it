@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ .'/conexao.php';
 
-function criarUsuario($nome, $email, $senha) {
+function criarUsuario($nome, $email, $senha, $tipo = 'user') {
     global $pdo;
     try{
         $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
@@ -11,11 +11,12 @@ function criarUsuario($nome, $email, $senha) {
             throw new Exception("E-mail já cadastrado.");
         }
 
-        $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
+        $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (:nome, :email, :senha, :tipo)");
         $stmt->execute([
             ':nome' => $nome,
             ':email' => $email,
-            ':senha' => $senha
+            ':senha' => $senha,
+            ':tipo' => $tipo
         ]);
         return $pdo->lastInsertId();
     } catch (Exception $e) {
@@ -40,55 +41,90 @@ function buscarUsuario($email, $senha) {
 function listarUsuarios() {
     global $pdo;
     try {
-        $stmt = $pdo->query("SELECT * FROM usuarios");
+        $stmt = $pdo->query("SELECT id, nome, email, tipo FROM usuarios ORDER BY nome");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         return false;
-        throw new Exception("Erro ao listar usuários: " . $e->getMessage());
     }
 }
 
-function atualizarUsuario($id, $nome, $email, $senha) {
+function buscarUsuarioPorId($id) {
     global $pdo;
-
     try {
-        $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
-        $stmt->execute([':email' => $email, ':id' => $id]);
-        if ($stmt->rowCount() > 0) {
-            throw new Exception("E-mail já cadastrado.");
-        }
-
-        $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
-        $stmt->execute([
-            ':nome' => $nome,
-            ':email' => $email,
-            ':senha' => $senha,
-            ':id' => $id
-        ]);
-        return true;
-
+        $stmt = $pdo->prepare("SELECT id, nome, email, tipo FROM usuarios WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         return false;
-        throw new Exception("Erro ao atualizar usuário: " . $e->getMessage());
     }
-    
+}
+
+function atualizarUsuario($id, $nome, $email, $senha = null, $tipo = null) {
+    global $pdo;
+    try {
+        // Verificar se o email já existe para outro usuário
+        if (!empty($email)) {
+            $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
+            $stmt->execute([
+                ':email' => $email,
+                ':id' => $id
+            ]);
+            if ($stmt->rowCount() > 0) {
+                throw new Exception("E-mail já está sendo usado por outro usuário.");
+            }
+        }
+        
+        // Construir a query de atualização com base nos parâmetros fornecidos
+        $campos = [];
+        $params = [':id' => $id];
+        
+        if (!empty($nome)) {
+            $campos[] = "nome = :nome";
+            $params[':nome'] = $nome;
+        }
+        
+        if (!empty($email)) {
+            $campos[] = "email = :email";
+            $params[':email'] = $email;
+        }
+        
+        if (!empty($senha)) {
+            $campos[] = "senha = :senha";
+            $params[':senha'] = $senha;
+        }
+        
+        if (!empty($tipo)) {
+            $campos[] = "tipo = :tipo";
+            $params[':tipo'] = $tipo;
+        }
+        
+        if (empty($campos)) {
+            return false; // Nada para atualizar
+        }
+        
+        $query = "UPDATE usuarios SET " . implode(", ", $campos) . " WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
+        
+        return $stmt->rowCount() > 0;
+    } catch (Exception $e) {
+        return false;
+    }
 }
 
 function deletarUsuario($id) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE id = :id");
-        $stmt->execute([':id' => $id]);
-        if ($stmt->rowCount() == 0) {
-            return false;
-            throw new Exception("Usuário não encontrado.");
+        // Proteger contra exclusão do próprio usuário logado
+        if (isset($_SESSION['id']) && $_SESSION['id'] == $id) {
+            throw new Exception("Você não pode excluir seu próprio usuário.");
         }
         
         $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = :id");
         $stmt->execute([':id' => $id]);
-        return true;
+        return $stmt->rowCount() > 0;
     } catch (Exception $e) {
         return false;
-        throw new Exception("Erro ao deletar usuário: " . $e->getMessage());
     }
 }
+?>
