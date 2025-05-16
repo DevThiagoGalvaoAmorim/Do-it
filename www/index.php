@@ -37,8 +37,8 @@ if($data == false){
     </div>
     <nav class="nav-links">
       <a href="#">Sobre</a>
-      <a href="./login.html" class="btn-outline">Login</a>
-      <a href="./cadastro.html" class="btn-dark">Registrar</a>
+      <a href="./login.php" class="btn-outline">Login</a>
+      <a href="./cadastro.php" class="btn-dark">Registrar</a>
     </nav>
   </header>
 
@@ -48,7 +48,7 @@ if($data == false){
         <div class="hero-text">
           <h1>Transforme anotações em produtividade</h1>
           <p>Do it é um app de anotações intuitivo para quem precisa registrar ideias e tarefas rapidamente</p>
-          <a href="./login.html" class="btn-dark">ACESSE</a>
+          <a href="./login.php" class="btn-dark">ACESSE</a>
         </div>
         <div class="hero-image">
           <img src="imagens/polvo_landing.png" alt="Do it App Interface">
