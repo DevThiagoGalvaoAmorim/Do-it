@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ .'/conexao_db/conexao.php';
+require_once __DIR__ . '/conexao_db/conexao.php';
 
 $_SESSION['nome'] = 'user';
 $_SESSION['email'] = 'example@email';
@@ -8,7 +8,7 @@ $_SESSION['senha'] = '123';
 
 $stmt = $pdo->query("SELECT * FROM usuarios WHERE id = 1");
 $data = $stmt->fetch(PDO::FETCH_ASSOC);
-if($data == false){
+if ($data == false) {
     $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha);");
     $stmt->execute([
         ':nome' => $_SESSION['nome'],
@@ -16,8 +16,6 @@ if($data == false){
         ':senha' => $_SESSION['senha']
     ]);
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +37,7 @@ if($data == false){
           background-image: url('./imagens/fundo polvo.png');
           background-size: cover;
       }
-      
+
       .content {
           position: relative;
           z-index: 1;
@@ -47,12 +45,8 @@ if($data == false){
   </style>
 </head>
 <body>
-<<<<<<< HEAD
   <!-- Elemento de fundo com parallax -->
   <div class="parallax-bg parallax" data-speed="0.3"></div>
-  
-  <div class="content">
-=======
 
   <header class="navbar">
     <div class="logo">
@@ -67,7 +61,6 @@ if($data == false){
   </header>
 
   <main>
->>>>>>> ace72197039c8ba0b59a3c63a1ec82d09ba39637
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
@@ -101,11 +94,10 @@ if($data == false){
     <?php include 'footer.php'; ?>
   </footer>
 
-</body>
-<script>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Inicializar o efeito parallax
         initParallax();
     });
-</script>
+  </script>
+</body>
 </html>

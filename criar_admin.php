@@ -4,14 +4,11 @@ require_once __DIR__ . '/www/conexao_db/usuarios_crud.php';
 
 $nome = "Administrador";
 $email = "admin2@teste.com";
-$senha = "senha123";
+$senha = "senha123"; // senha em texto puro
 $tipo = "admin";
 
-// Criptografar a senha
-$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-// Criar o usuário
-$id = criarUsuario($nome, $email, $senhaHash, $tipo);
+// Criar o usuário com a senha em texto puro (será criptografada dentro da função)
+$id = criarUsuario($nome, $email, $senha, $tipo);
 
 if ($id) {
     echo "✅ Usuário administrador criado com sucesso! ID: $id\n";
