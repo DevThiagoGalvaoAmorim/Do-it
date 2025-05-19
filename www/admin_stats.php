@@ -1,5 +1,6 @@
 <?php
 require_once 'safe_page.php';
+require_once 'admin_safe_page.php';
 ?>
 
 <!DOCTYPE html>
