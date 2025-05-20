@@ -16,13 +16,26 @@
 
 | Feature                                                                                          | Autor                            | Revisor                          |   |
 |--------------------------------------------------------------------------------------------------|----------------------------------|----------------------------------|---|
-| Ordenação das notas                                                                              | Guilherme da Silva Carvalho      | João Sestari                     |❌|
-| Criação das telas de administrador(Tela usuários)                                                | Guilherme da Silva Carvalho      | Thiago Galvão Amorim             |❌|
-| Criação das telas de administrador(Estátisticas e Log de atividades)                             | João Sestari                     | Thiago Galvão Amorim             |❌|
-| Controle de sessão de usuário e administrador                                                    | João Sestari                     | Ruam Marcos                      |❌|
-| Criação das telas de login e cadastro                                                            | Thiago Galvão Amorim             | Raphael Sales                    |❌|
-| CRUD do usuário e início de sessão                                                               | Ruam Marcos e Douglas Alves      | Douglas Alves                    |❌|
-| CRUD do Administrador e início de sessão                                                         | Raphael Sales                    | Guilherme da Silva               |❌|
-| Gerenciamento dos usuários da tela de administrador                                              | Raphael Sales                    | Ruam Marcos                      |❌|
+| Ordenação das notas                                                                              | Guilherme da Silva Carvalho      | João Sestari                     |✅|
+| Criação das telas de administrador(Tela usuários)                                                | Guilherme da Silva Carvalho      | Thiago Galvão Amorim             |✅|
+| Criação das telas de administrador(Estátisticas e Log de atividades)                             | João Sestari                     | Thiago Galvão Amorim             |✅|
+| Controle de sessão de usuário e administrador                                                    | João Sestari                     | Ruam Marcos                      |✅|
+| Criação das telas de login e cadastro                                                            | Thiago Galvão Amorim             | Raphael Sales                    |✅|
+| CRUD do usuário e início de sessão                                                               | Ruam Marcos e Douglas Alves      | Douglas Alves                    |✅|
+| CRUD do Administrador e início de sessão                                                         | Raphael Sales                    | Guilherme da Silva               |✅|
+| Gerenciamento dos usuários da tela de administrador                                              | Raphael Sales                    | Ruam Marcos                      |✅|
 
+### Iteração 3 – Implementação da Arquitetura MVC e Novas Features
+
+| Feature                                                                                          | Autor                               | Revisor                            |   |
+|--------------------------------------------------------------------------------------------------|-------------------------------------|------------------------------------|---|
+| Implementação do padrão MVC nos Controllers                                                      | Guilherme da Silva Carvalho, Ruam Marcos | João Sestari                   |❌|
+| Implementação do padrão MVC nos Models                                                           | Douglas Alves da Cruz, Thiago Galvão Amorim | Raphael Sales              |❌|
+| Implementação do padrão MVC nos Views                                                            | João Sestari, Raphael Sales         | Guilherme da Silva Carvalho        |❌|
+| Implementar funcionalidade de recuperação de conta                                               | Ruam Marcos                         | Douglas Alves da Cruz              |❌|
+| Desenvolver tela de configurações do usuário                                                     | Douglas Alves da Cruz               | João Sestari                       |❌|
+| Criar tela popup de informações do usuário                                                       | Guilherme da Silva Carvalho         | Thiago Galvão Amorim               |❌|
+| Desenvolver estrutura de banco de dados para tela de notificações                                | Thiago Galvão Amorim                | Ruam Marcos                        |❌|
+| Desenvolver estrutura de banco de dados para a tela de lixeira                                   | João Sestari                        | Guilherme da Silva Carvalho        |❌|
+| Corrigir o back-end da tela de administrador e adicionar ícone na sidebar                        | Raphael Sales                       | Thiago Galvão Amorim               |❌|
 
