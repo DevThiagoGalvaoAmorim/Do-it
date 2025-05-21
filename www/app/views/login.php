@@ -1,5 +1,6 @@
 <?php
 require_once '../controllers/login_user.php';
+
 ?>
 
 <!DOCTYPE html>
