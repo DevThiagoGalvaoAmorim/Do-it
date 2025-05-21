@@ -1,6 +1,6 @@
 <?php
-require_once 'admin_safe_page.php';
-require_once 'conexao_db/usuarios_crud.php';
+require_once __DIR__ . '/app/controllers/admin_safe_page.php';
+require_once __DIR__ . '/app/models/usuario_crud.php';
 
 // Processar exclusão de usuário
 if (isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['id'])) {
