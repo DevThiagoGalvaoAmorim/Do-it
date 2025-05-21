@@ -1,9 +1,5 @@
 <?php
-$host = 'mysql';
-$port = 3306;
-$db   = 'doitdb';
-$user = 'user';
-$pass = 'password';
+require_once '../config/conexao.php';
 
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
