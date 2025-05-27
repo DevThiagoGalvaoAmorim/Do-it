@@ -63,7 +63,7 @@ function atualizarUsuario($id, $nome, $email, $senha = null, $tipo = null) {
     global $pdo;
     try {
         // Verificar se o email já existe para outro usuário
-        if (!empty($email)) {
+        if (!empty($email) && $email != $_SESSION['email']) {
             $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
             $stmt->execute([
                 ':email' => $email,
@@ -105,6 +105,7 @@ function atualizarUsuario($id, $nome, $email, $senha = null, $tipo = null) {
         $query = "UPDATE usuarios SET " . implode(", ", $campos) . " WHERE id = :id";
         $stmt = $pdo->prepare($query);
         $stmt->execute($params);
+        $_SESSION['email'] = $email;
         
         return $stmt->rowCount() > 0;
     } catch (Exception $e) {
@@ -115,10 +116,11 @@ function atualizarUsuario($id, $nome, $email, $senha = null, $tipo = null) {
 function deletarUsuario($id) {
     global $pdo;
     try {
+        // lembrar de citar isso na hora do pull request
         // Proteger contra exclusão do próprio usuário logado
-        if (isset($_SESSION['id']) && $_SESSION['id'] == $id) {
-            throw new Exception("Você não pode excluir seu próprio usuário.");
-        }
+        //if (isset($_SESSION['id']) && $_SESSION['id'] == $id) {
+          //  throw new Exception("Você não pode excluir seu próprio usuário.");
+        //}
         
         $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = :id");
         $stmt->execute([':id' => $id]);
