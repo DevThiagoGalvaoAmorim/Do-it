@@ -29,13 +29,13 @@
 
 | Feature                                                                                          | Autor                               | Revisor                            |   |
 |--------------------------------------------------------------------------------------------------|-------------------------------------|------------------------------------|---|
-| Implementação do padrão MVC nos Controllers                                                      | Guilherme da Silva Carvalho, Ruam Marcos | João Sestari                   |❌|
-| Implementação do padrão MVC nos Models                                                           | Douglas Alves da Cruz, Thiago Galvão Amorim | Raphael Sales              |❌|
+| Implementação do padrão MVC na sessão usuario                                                    | Ruam, Thiago, Douglas               | João Sestari                       |✅|
+| Implementação do padrão MVC na sessão administrador                                              | Guilherme, João Sestari, Douglas    | Raphael Sales                      |❌|
 | Implementação do padrão MVC nos Views                                                            | João Sestari, Raphael Sales         | Guilherme da Silva Carvalho        |❌|
 | Implementar funcionalidade de recuperação de conta                                               | Ruam Marcos                         | Douglas Alves da Cruz              |❌|
-| Desenvolver tela de configurações do usuário                                                     | Douglas Alves da Cruz               | João Sestari                       |❌|
+| Desenvolver tela de configurações do usuário                                                     | Douglas Alves da Cruz               | João Sestari                       |✅|
 | Criar tela popup de informações do usuário                                                       | Guilherme da Silva Carvalho         | Thiago Galvão Amorim               |❌|
-| Desenvolver estrutura de banco de dados para tela de notificações                                | Thiago Galvão Amorim                | Ruam Marcos                        |❌|
+| Desenvolver estrutura de banco de dados para tela de notificações                                | Thiago Galvão Amorim                | Ruam Marcos                        |✅|
 | Desenvolver estrutura de banco de dados para a tela de lixeira                                   | João Sestari                        | Guilherme da Silva Carvalho        |❌|
 | Corrigir o back-end da tela de administrador e adicionar ícone na sidebar                        | Raphael Sales                       | Thiago Galvão Amorim               |❌|
 
