@@ -1,9 +1,6 @@
-<?php
-require_once 'safe_page.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +9,7 @@ require_once 'safe_page.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
     <header class="admin-stats-header">
@@ -26,6 +24,7 @@ require_once 'safe_page.php';
         </div>
     </header>
 
+
     <main class="admin-stats-main">
         <div class="admin-stats-sidebar">
             <nav class="admin-stats-nav">
@@ -34,37 +33,41 @@ require_once 'safe_page.php';
             </nav>
         </div>
 
+
         <div class="admin-stats-main-content">
             <div class="admin-stats-card">
                 <p>Usuários Cadastrados</p>
-                <div class="admin-stats-big-number">320</div>
+                <div class="admin-stats-big-number"><?php echo $userCount; ?></div>
             </div>
             <div class="admin-stats-card">
                 <p>Notas Criadas</p>
-                <div class="admin-stats-big-number">2.153</div>
+                <div class="admin-stats-big-number"><?php echo $notesCreated; ?></div>
             </div>
             <div class="admin-stats-card admin-stats-full-width">
                 <p>Número de Usuários Novos Por Mês</p>
-                <div class="admin-stats-big-number">200</div>
+                <div class="admin-stats-big-number"><?php echo $newUsersPerMonth; ?></div>
             </div>
             <div class="admin-stats-card admin-stats-full-width">
                 <p><strong>Tipos De Notas Mais Usadas</strong></p>
                 <div class="admin-stats-pie-chart-container">
                     <div class="admin-stats-pie-chart"></div>
                     <div class="admin-stats-legend">
-                        <div><span class="admin-stats-color-box admin-stats-tarefa"></span> Tarefa</div>
-                        <div><span class="admin-stats-color-box admin-stats-lembrete"></span> Lembrete</div>
-                        <div><span class="admin-stats-color-box admin-stats-anotacao"></span> Anotação</div>
+                        <?php foreach ($noteTypesUsage as $type => $count): ?>
+                            <div><span class="admin-stats-color-box admin-stats-<?php echo strtolower($type); ?>"></span> <?php echo $type; ?> (<?php echo $count; ?>)</div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+
     <footer>
         <?php include 'footer.php'; ?>
     </footer>
 
+
 </body>
+
 
 </html>
