@@ -31,11 +31,26 @@
 |--------------------------------------------------------------------------------------------------|-------------------------------------|------------------------------------|---|
 | Implementação do padrão MVC na sessão usuario                                                    | Ruam, Thiago, Douglas               | João Sestari                       |✅|
 | Assegurar a integriadade das camadas CONTROLLER e MODEL                                                            | Ruam Marcos         | Guilherme da Silva Carvalho        |✅|
-| Implementação do padrão MVC na sessão administrador                                              | Guilherme, João Sestari, Douglas    | Raphael Sales                      |❌|
-| Implementação do padrão MVC nos Views                                                            | João Sestari, Raphael Sales         | Guilherme da Silva Carvalho        |❌|
+| Implementação do padrão MVC na sessão administrador                                              | Guilherme, João Sestari, Douglas    | Raphael Sales                      |✅|
+| Implementação do padrão MVC nos Views                                                            | João Sestari, Raphael Sales         | Guilherme da Silva Carvalho        |✅|
 | Desenvolver tela de configurações do usuário                                                     | Douglas Alves da Cruz               | João Sestari                       |✅|
-| Criar tela popup de informações do usuário                                                       | Guilherme da Silva Carvalho         | Thiago Galvão Amorim               |❌|
+| Criar tela popup de informações do usuário                                                       | Guilherme da Silva Carvalho         | Thiago Galvão Amorim               |✅|
 | Desenvolver estrutura de banco de dados para tela de notificações                                | Thiago Galvão Amorim                | Ruam Marcos                        |✅|
-| Desenvolver estrutura de banco de dados para a tela de lixeira                                   | João Sestari                        | Guilherme da Silva Carvalho        |❌|
-| Corrigir o back-end da tela de administrador e adicionar ícone na sidebar                        | Raphael Sales                       | Thiago Galvão Amorim               |❌|
+| Desenvolver estrutura de banco de dados para a tela de lixeira                                   | João Sestari                        | Guilherme da Silva Carvalho        |✅|
+| Corrigir o back-end da tela de administrador e adicionar ícone na sidebar                        | Raphael Sales                       | Thiago Galvão Amorim               |✅|
+
+
+
+<!-- precisamos melhorar a as features: do Ruam, 6°, 8°  e 9° -->
+
+### Iteração 4 – Acrescentar API ao projeto | Exposição SaaS
+
+| Feature                                                                     | Autor                       | Revisor                     |   |
+| --------------------------------------------------------------------------- | --------------------------- | --------------------------- | - |
+| **Implementar feature de renderização Markdown nas notas usando Marked.js** | Raphael Sales               | Thiago Galvão Amorim        | ❌  |
+| **Implementar autenticação de usuários usando Auth0**                       | Ruam Marcos                 | João Sestari                |  ❌ |
+| **Implementar envio de notificações por e-mail com Mailgun**                | Douglas Alves da Cruz       | Guilherme da Silva Carvalho | ❌  |
+| **Integrar Firebase Realtime Database para salvar e recuperar notas**       | João Sestari                | Raphael Sales               |  ❌ |
+| **Permitir upload e compartilhamento de arquivos usando File.io**           | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |  ❌ |
+| **Adicionar encurtamento de URLs das notas com shrtco.de**                  | Thiago Galvão Amorim        | Ruam Marcos                 |  ❌ |
 
