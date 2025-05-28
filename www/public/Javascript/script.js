@@ -1,8 +1,6 @@
 let ascending = true;  // Add this variable at the top of your script file
 let dateAscending = true;
 
-const toggleBtn = document.querySelector(".toggle-btn");
-const sidebar = document.querySelector(".sidebar");
 
 // Adicionar evento ao botão de deletar
 document.addEventListener("click", (event) => {
@@ -14,6 +12,8 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("DOMContentLoaded", carregarNotas);
 
+const toggleBtn = document.querySelector(".toggle-btn");
+const sidebar = document.querySelector(".sidebar");
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("expanded");
   content.classList.toggle("pushed");
@@ -214,7 +214,7 @@ function deletarNota(notaEl) {
   formData.append("action", "delete");
   formData.append("id", id);
 
-  fetch("/models/notas_crud.phpp", {
+  fetch("/models/notas_crud.php", {
     method: "POST",
     body: formData,
   })

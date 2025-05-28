@@ -2,10 +2,7 @@
 session_start();
 require_once __DIR__ . '/../controllers/safe_page.php';
 require_once __DIR__ . '/../models/usuarios_crud.php';
-
-
-
-
+require_once __DIR__ . '/../controllers/processar_perfil.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +13,7 @@ require_once __DIR__ . '/../models/usuarios_crud.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Dados</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <!-- <link rel="stylesheet" href="../public/css/style.css"> -->
     <link rel="stylesheet" href="../public/css/perfil.css">
 </head>
 
@@ -81,13 +78,17 @@ require_once __DIR__ . '/../models/usuarios_crud.php';
                             <!-- <label for="confirm-password">Confirme a Senha</label> -->
                             <input type="password" id="confirm-password" placeholder="Confirme a Senha">
                         </div>
-                        <button type="submit" class="save-btn"><i>💾</i>Salvar</button>
+                        <button type="submit" class="save-btn">
+                            <img src="../public/imagens/icones/salvar-perfil.png" alt="Salvar"
+                                style="width: 24px; height: 24px; vertical-align: middle;">
+                            Salvar
+                        </button>
                     </form>
                 </div>
                 <div class="delete-section">
                     <h3 style="color: #e57373;">Deletar Conta</h3>
                     <p style="color: #ccc;">Esta ação é irreversível. Tem certeza que deseja excluir sua conta?</p>
-                    <form method="POST" action="processar_perfil.php"
+                    <form method="POST" action="../controllers/processar_perfil.php"
                         onsubmit="return confirm('Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita.');">
                         <input type="hidden" name="acao" value="deletar">
                         <button type="submit"
@@ -104,6 +105,8 @@ require_once __DIR__ . '/../models/usuarios_crud.php';
   <footer>
     <?php include './partials/footer.php'; ?>
   </footer>
+
+  <script src="../public/javascript/perfil.js"></script>
 </body>
 
 </html>
