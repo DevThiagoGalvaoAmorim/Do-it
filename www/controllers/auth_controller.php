@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../conexao_db/conexao.php';
-require_once '../conexao_db/usuarios_crud.php';
+require_once __DIR__ . '/../conexao_db/conexao.php';
+require_once __DIR__ . '/../models/usuarios_crud.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

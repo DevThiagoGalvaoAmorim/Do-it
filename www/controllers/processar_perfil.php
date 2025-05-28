@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '../conexao_db/usuarios_crud.php';
+require_once __DIR__ . '../models/usuarios_crud.php';
 
 $idUsuario = $_SESSION['id'] ?? null;
 

@@ -5,9 +5,9 @@
 }
 
 body {
-    background-image: url(./imagens/background-login.png);
+    background-image: url(../imagens/background-login.png);
     background-repeat: no-repeat;
-    background-size: 192vh;
+    background-size: 100%;
     background-position: 0px -70px;
     display: flex;
     justify-content: center;
@@ -33,7 +33,7 @@ body {
 }
 
 .content-sign .user {
-    background-image: url(./imagens/person-fill.svg);
+    background-image: url(../imagens/person-fill.svg);
     background-repeat: no-repeat;
     padding: 2px;
     padding-left: 20px;
@@ -47,7 +47,7 @@ body {
 }
 
 .content-sign .email {
-    background-image: url(./imagens/envelope-fill.svg);
+    background-image: url(../imagens/envelope-fill.svg);
     background-repeat: no-repeat;
     padding: 2px;
     padding-left: 20px;
@@ -61,7 +61,7 @@ body {
 }
 
 .content-sign .lock {
-    background-image: url(./imagens/lock-fill.svg);
+    background-image: url(../imagens/lock-fill.svg);
     background-repeat: no-repeat;
     padding: 2px;
     padding-left: 20px;

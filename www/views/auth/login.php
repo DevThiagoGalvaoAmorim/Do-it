@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="../../public/css/login.css">
     <title>Do it</title>
 </head>
 
@@ -19,7 +19,7 @@
             </div>
 
             <div class="content-login">
-                <img src="./imagens/logo_preta.png" alt="user-polvo">
+                <img src="../../public/imagens/logo_preta.png" alt="user-polvo">
                 <!-- Adicionados os atributos name -->
                 <input type="text" name="email" placeholder="Email@exemplo.com" class="lock">
                 <input type="password" name="senha" placeholder="Senha" class="lock">

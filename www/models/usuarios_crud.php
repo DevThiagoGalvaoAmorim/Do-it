@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ .'../conexao_db/conexao.php';
+require_once __DIR__ . '/../conexao_db/conexao.php';
 
 function criarUsuario($nome, $email, $senha, $tipo = 'user') {
     global $pdo;
