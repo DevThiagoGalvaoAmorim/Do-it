@@ -49,8 +49,8 @@
 | --------------------------------------------------------------------------- | --------------------------- | --------------------------- | - |
 | **Implementar feature de renderização Markdown nas notas usando Marked.js** | Raphael Sales               | Thiago Galvão Amorim        | ❌  |
 | **Implementar autenticação de usuários usando Auth0**                       | Ruam Marcos                 | João Sestari                |  ❌ |
-| **Implementar envio de notificações por e-mail com Mailgun**                | Douglas Alves da Cruz       | Guilherme da Silva Carvalho | ❌  |
+| **Implementar envio de notificações por e-mail com Mailgun**                |    Thiago Galvão Amorim   | Guilherme da Silva Carvalho | ❌  |
 | **Integrar Firebase Realtime Database para salvar e recuperar notas**       | João Sestari                | Raphael Sales               |  ❌ |
 | **Permitir upload e compartilhamento de arquivos usando File.io**           | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |  ❌ |
-| **Adicionar encurtamento de URLs das notas com shrtco.de**                  | Thiago Galvão Amorim        | Ruam Marcos                 |  ❌ |
+| **Adicionar encurtamento de URLs das notas com shrtco.de**                  |   Douglas Alves da Cruz       | Ruam Marcos                 |  ❌ |
 
