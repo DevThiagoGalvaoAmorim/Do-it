@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '../conexao_db/conexao.php';
+require_once __DIR__ .'../../conexao_db/conexao.php';
 
 header("Content-Type: application/json");
 
@@ -8,7 +8,7 @@ $action = $_POST['action'] ?? null;
 $id_usuario = $_SESSION['id'] ?? null;
 
 if (!$id_usuario) {
-    echo json_encode(['success' => false, 'message' => 'Usuário não autenticado.']);
+    echo    json_encode(['success' => false, 'message' => 'Usuário não autenticado.']);
     exit;
 }
 

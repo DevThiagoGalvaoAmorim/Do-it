@@ -15,7 +15,7 @@
             <img class="sun" src="../../public/imagens/icons8-sun-50.png" alt="sun">
         </div>
 
-        <a href="./perfil.php">
+        <a href="perfil.php">
             <img src="../public/imagens/astronauta-user.png" alt="user-astronaut" class="user">
         </a>
 

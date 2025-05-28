@@ -1,6 +1,5 @@
 <?php
-require_once './controllers/safe_page.php';
-require_once './conexao_db/conexao.php';
+require_once __DIR__ . '/../controllers/safe_page.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ require_once './conexao_db/conexao.php';
     <title>Do it</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./public/css/stylePlus.css">
+    <link rel="stylesheet" href="../public/css/stylePlus.css">
 
 </head>
 
@@ -37,9 +36,9 @@ require_once './conexao_db/conexao.php';
         </section>
 
         <!-- Popup de criação -->
-        <div id="popupCriarLembrete" class="popup" onclick="fecharPopup(event, this)">
+        <div id="popupCriarLembrete" class="popup" onclick="fecharPopupLembrete(event, this)">
             <div class="conteudo" onclick="event.stopPropagation()">
-                <input type="hidden" class="id-lembrete-input" value="">
+                <input type="hidden" class="id-lembrete-input" value="">    
                 <input type="text" class="titulo-lembrete-input" placeholder="Título" />
 
                 <textarea class="descricao-lembrete-input" placeholder="Escreva seu lembrete..."></textarea>
@@ -59,8 +58,8 @@ require_once './conexao_db/conexao.php';
         <?php include './partials/footer.php'; ?>
     </footer>
 
-    <script src="./public/Javascript/scriptplus.js"></script>
-    <script src="./public/Javascript/search.js"></script>
+    <script src="../public/Javascript/scriptplus.js"></script>
+    <script src="../public/Javascript/search.js"></script>
 
 </body>
 

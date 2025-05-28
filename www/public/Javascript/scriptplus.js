@@ -4,8 +4,7 @@ function salvarLembrete() {
     const titulo = document.querySelector(".titulo-lembrete-input")?.value.trim() || "";
     const descricao = document.querySelector(".descricao-lembrete-input")?.value.trim() || "";
     const dataHora = document.querySelector("#datatime_lembrete")?.value.trim() || "";
-    const id = document.querySelector(".id-lembrete-input")?.value.trim() || ""; // ID oculto para edição
-
+    const id = document.querySelector(".id-lembrete-input")?.value.trim() || "";
     if (!titulo || !dataHora) {
         alert("Título e data são obrigatórios!");
         return;
@@ -23,7 +22,7 @@ function salvarLembrete() {
         formData.append("action", "create");
     }
 
-    fetch("../../controllers/conexao_db/lembrete_crud.php", {
+    fetch("/models/lembrete_crud.php", {
         method: "POST",
         body: formData,
     })
@@ -49,7 +48,7 @@ function salvarLembrete() {
 document.addEventListener("DOMContentLoaded", carregarLembretes);
 
 function carregarLembretes() {
-    fetch("../../controllers/conexao_db/lembrete_crud.php", {
+    fetch("/models/lembrete_crud.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ action: "read" })
@@ -98,7 +97,7 @@ function deletarLembrete(id) {
     formData.append("action", "delete");
     formData.append("id", id);
 
-    fetch("../../controllers/conexao_db/lembrete_crud.php", {
+    fetch("/models/lembrete_crud.php", {
         method: "POST",
         body: formData,
     })
@@ -151,28 +150,18 @@ function abrirPopupEditarLembrete(id, lembrete) {
     popup.style.display = "flex";
 }
 
-// // Fechar popup de lembretes
-// function fecharPopupLembrete(event, popupEl) {
-//     event.stopPropagation();
-//     if (!popupEl) {
-//         console.error("Erro: Elemento de popup não encontrado.");
-//         return;
-//     }
-
-//     popupEl.style.display = "none";
-//     const idInput = document.querySelector(".id-lembrete-input");
-//     if (idInput) idInput.value = "";
-// }
-
-function fecharPopLembrete(event, popupEl) {
+// Fechar popup de lembretes
+function fecharPopupLembrete(event, popupEl) {
     event.stopPropagation();
-    popupEl.style.display = "none";
-
-    // Limpa o campo oculto ao fechar o popup
-    const idInput = document.querySelector(".id-input");
-    if (idInput) {
-        idInput.value = "";
+    if (!popupEl) {
+        console.error("Erro: Elemento de popup não encontrado.");
+        return;
     }
+
+    popupEl.style.display = "none";
+    const idInput = document.querySelector(".id-lembrete-input");
+    if (idInput) idInput.value = "";
 }
+
 
 

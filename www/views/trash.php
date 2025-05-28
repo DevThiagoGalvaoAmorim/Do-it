@@ -1,5 +1,5 @@
 <?php
-require_once './controllers/safe_page.php';
+require_once __DIR__ . '/../controllers/safe_page.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,17 +11,17 @@ require_once './controllers/safe_page.php';
     <title>Lixeira</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 
 </head>
 
 <body id="body">
 
-    <?php include './partials/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
 
     <main>
 
-        <?php include './partials/sidebar.php'; ?>
+        <?php include 'partials/sidebar.php'; ?>
 
         <div class="container-notas">
             <div class="cabecalho-notas">
