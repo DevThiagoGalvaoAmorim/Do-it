@@ -1,5 +1,5 @@
 
-<?php
+<?
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,7 +17,7 @@
     </div>
     <nav class="nav-links">
       <a href="#">Sobre</a>
-      <a href="./login.html" class="btn-outline">Login</a>
+      <a href="./views/auth/login.html" class="btn-outline">Login</a>
       <a href="./cadastro.html" class="btn-dark">Registrar</a>
     </nav>
   </header>

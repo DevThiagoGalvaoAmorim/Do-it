@@ -1,30 +1,4 @@
 <?php
-require_once 'conexao_db/conexao.php';
-require_once 'conexao_db/usuarios_crud.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $senha = $_POST['senha'] ?? '';
-
-    // Aqui você pode processar os dados, como salvar no banco de dados
-    if (!empty($nome) && !empty($email) && !empty($senha)) {
-        $id = criarUsuario($nome, $email, $senha);
-
-        if ($id){
-            session_start(); // Inicia a sessão
-            $_SESSION['id'] = $id;
-            $_SESSION['nome'] = $nome;
-            $_SESSION['email'] = $email;
-            header('Location: main.php');
-            exit;
-        }
-
-    } else {
-        echo '<script>alert("Preencha todos os campos!");</script>';
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <form class="container" method="POST" action="">
+    <form class="container" method="POST" action="../../controllers/AuthController.php?action=login">
         <div class="content-sign">
             <img src="./imagens/logo_preta.png" alt="polvo-user">
             <input type="text" placeholder="Usuário" class="user" name="nome">
