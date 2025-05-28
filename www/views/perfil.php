@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once __DIR__ . './controllers/safe_page.php';
-require_once __DIR__ . './conexao_db/usuarios_crud.php';
+require_once __DIR__ . '../controllers/safe_page.php';
+require_once __DIR__ . '../models/usuarios_crud.php';
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +55,7 @@ require_once __DIR__ . './conexao_db/usuarios_crud.php';
 
                 <div>
                     <h2 class="edit-title">Editar Dados</h2>
-                    <form class="edit-form" method="post" action="processar_perfil.php">
+                    <form class="edit-form" method="post" action="../controllers/processar_perfil.php">
                         <input type="hidden" name="acao" value="salvar">
                         <div class="form-group">
                             <label for="name">Nome:</label>

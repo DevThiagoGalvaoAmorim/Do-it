@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form class="container" method="POST" action="../../controllers/auth_controller.php?action=login">
+    <form class="container" method="POST" action="../../controllers/auth_controller.php">
         <div class="content-sign">
             <img src="../../public/imagens/logo_preta.png" alt="polvo-user">
             <input type="text" placeholder="Usuário" class="user" name="nome">

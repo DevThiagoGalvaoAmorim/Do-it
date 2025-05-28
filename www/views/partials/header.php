@@ -12,7 +12,7 @@
         </div>
 
         <div class="light" id="lighting">
-            <img class="sun" src="../public/imagens/icons8-sun-50.png" alt="sun">
+            <img class="sun" src="../../public/imagens/icons8-sun-50.png" alt="sun">
         </div>
 
         <a href="./perfil.php">

@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'] ?? '';
     $nome = $_POST['nome'] ?? '';
 
-    if (!empty($nome)){
-        
+    if (empty($nome)){
+        #THE GOAT FIXED THE PROBLEM!!!
         if (!empty($email) && !empty($senha)) {
         $usuario = buscarUsuario($email, $senha);
         
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($usuario['tipo']) && $usuario['tipo'] === 'admin') {
                 header('Location: admin.php');
             } else {
-                header('Location: ../views/partials/main.php');
+                header('Location: ../views/main.php');
             }
             exit;
         } else {
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id'] = $id;
                 $_SESSION['nome'] = $nome;
                 $_SESSION['email'] = $email;
-                header('Location: ../views/partials/main.php');
+                header('Location: ../views/main.php');
                 exit;
             }
 

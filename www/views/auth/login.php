@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form class="container" id="container" method="POST" action="../../controllers/auth_controller.php?action=login">
+    <form class="container" id="container" method="POST" action="../../controllers/auth_controller.php">
         <div class="loginbox" id="loginbox">
 
             <div class="btn-cadastrar">

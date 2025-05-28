@@ -99,7 +99,7 @@ function salvarNota() {
     // Acionar o update
     formData.append("action", "update");
     formData.append("id", id); // Inclui o ID da nota no update
-    fetch("../../conexao_db/notas_crud.php", {
+    fetch("../../models/notas_crud.php", {
       method: "POST",
       body: formData,
     })
@@ -119,7 +119,7 @@ function salvarNota() {
   } else {
     // Acionar o create
     formData.append("action", "create");
-    fetch("../../conexao_db/notas_crud.php", {
+    fetch("../../models/notas_crud.php", {
       method: "POST",
       body: formData,
     })
@@ -149,7 +149,7 @@ function finalizarOperacao(mensagem) {
 }
 
 function carregarNotas() {
-  fetch("../../conexao_db/notas_crud.php", {
+  fetch("../../models/notas_crud.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -214,7 +214,7 @@ function deletarNota(notaEl) {
   formData.append("action", "delete");
   formData.append("id", id);
 
-  fetch("../../conexao_db/notas_crud.php", {
+  fetch("../../models/notas_crud.php", {
     method: "POST",
     body: formData,
   })
