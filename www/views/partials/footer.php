@@ -9,7 +9,7 @@
                          </svg>
                      </a>
                  </div>
-                 <li><a href="index.php">Home</a></li>
+                 <li><a href="../public/index.php">Home</a></li>
                  <li><a href="#">Sobre</a></li>
              </ul>
          </div>

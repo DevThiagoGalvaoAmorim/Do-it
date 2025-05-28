@@ -1,5 +1,5 @@
 <?php
-require_once 'safe_page.php';
+require_once '../controllers/safe_page.php';
 ?>
 
 <section class="sidebar">
@@ -30,7 +30,7 @@ require_once 'safe_page.php';
         </a>
     </li>
     <li>
-        <a href="archives.php">
+        <a href="./archives.php">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-archive-fill" viewBox="0 0 16 16">
                 <path
@@ -40,7 +40,7 @@ require_once 'safe_page.php';
         </a>
     </li>
     <li>
-        <a href="trash.php">
+        <a href="./trash.php">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-trash-fill" viewBox="0 0 16 16">
                 <path

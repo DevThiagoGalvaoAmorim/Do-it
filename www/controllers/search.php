@@ -1,6 +1,6 @@
 <?php
 require_once 'safe_page.php';
-require_once 'conexao_db/conexao.php';
+require_once '../conexao_db/conexao.php';
 
 if (isset($_GET['query'])) {
     $search = $_GET['query'];

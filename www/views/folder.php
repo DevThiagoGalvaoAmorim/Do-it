@@ -1,5 +1,5 @@
 <?php
-require_once 'safe_page.php';
+require_once './controllers/safe_page.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,17 +11,17 @@ require_once 'safe_page.php';
     <title>Pastas</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
 
 </head>
 
 <body id="body">
 
-    <?php include 'header.php'; ?>
+    <?php include './partials/header.php'; ?>
 
     <main>
 
-        <?php include 'sidebar.php'; ?>
+        <?php include './partials/sidebar.php'; ?>
 
         <section class="folder-container">
             <div class="new-folder">
@@ -62,10 +62,10 @@ require_once 'safe_page.php';
     </main>
 
     <footer>
-        <?php include 'footer.php'; ?>
+        <?php include './partials/footer.php'; ?>
     </footer>
-    <script src="script.js"></script>
-    <script src="./js/search.js"></script>
+    <script src="./public/javascript/script.js"></script>
+    <script src="./public/javascript/search.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ function searchItems() {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput.value.trim();
 
-    fetch(`search.php?query=${encodeURIComponent(query)}`)
+    fetch(`../../controllers/search.php?query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -89,10 +89,10 @@ if (localStorage.getItem('darkMode') === 'enabled') {
     lighting.classList.add('Dark');
 
     let imgElement = lighting.querySelector('img');
-    imgElement.src = "./imagens/icons8-moon-48.png";
+    imgElement.src = "../../public/imagens/icons8-moon-48.png";
 } else {
     let imgElement = lighting.querySelector('img');
-    imgElement.src = "./imagens/icons8-sun-50.png";
+    imgElement.src = "../../public/imagens/icons8-sun-50.png";
 }
 
 lighting.addEventListener('click', () => {
@@ -102,10 +102,10 @@ lighting.addEventListener('click', () => {
     let imgElement = lighting.querySelector('img');
 
     if (lighting.classList.contains('Dark')) {
-        imgElement.src = "./imagens/icons8-moon-48.png";
+        imgElement.src = "../../public/imagens/icons8-moon-48.png";
         localStorage.setItem('darkMode', 'enabled');
     }
     else {
-        imgElement.src = "./imagens/icons8-sun-50.png"; localStorage.setItem('darkMode', 'disabled');
+        imgElement.src = "../../public/imagens/icons8-sun-50.png"; localStorage.setItem('darkMode', 'disabled');
     }
 });

@@ -1,52 +1,7 @@
 <?php
 session_start();
-require_once __DIR__ . '/conexao_db/usuarios_crud.php';
-
-// Supondo que o ID do usuário está salvo na sessão
-$idUsuario = $_SESSION['id'] ?? null;
-
-// Atualizar dados
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'salvar') {
-    $nome = $_POST['nome'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $senha = $_POST['senha'] ?? null;
-    if ($senha === '') $senha = null; // Não atualizar senha se campo vazio
-
-    atualizarUsuario($idUsuario, $nome, $email, $senha);
-    // Opcional: recarregar os dados do usuário após atualização
-}
-
-// Deletar conta
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'deletar') {
-    deletarUsuario($idUsuario);
-    session_destroy();
-    header('Location: index.php');
-    exit;
-}
-
-// Buscar dados do usuário para exibir no formulário
-
-
-$qtdNotas = 0;
-$dataCriacao = '';
-if ($idUsuario) {
-    // Buscar quantidade de notas
-    require_once __DIR__ . '/conexao_db/conexao.php';
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM notas WHERE id_usuario = :id_usuario");
-    $stmt->execute([':id_usuario' => $idUsuario]);
-    $qtdNotas = $stmt->fetchColumn();
-
-    // Buscar data de criação do usuário
-    $stmt = $pdo->prepare("SELECT criado_em FROM usuarios WHERE id = :id");
-    $stmt->execute([':id' => $idUsuario]);
-    $dataCriacao = $stmt->fetchColumn();
-    if ($dataCriacao) {
-        setlocale(LC_TIME, 'pt_BR.utf8', 'pt_BR', 'Portuguese_Brazil.1252');
-        $dataCriacao = date('F \d\e Y', strtotime($dataCriacao));
-    }
-}
-
-$usuario = buscarUsuarioPorId($idUsuario);
+require_once __DIR__ . '../controllers/safe_page.php';
+require_once __DIR__ . '../models/usuarios_crud.php';
 ?>
 
 <!DOCTYPE html>
@@ -57,23 +12,16 @@ $usuario = buscarUsuarioPorId($idUsuario);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Dados</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="perfil.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="./public/css/perfil.css">
 </head>
 
 <body>
-    <!-- <header style="display: flex; align-items: center; padding: 16px 30px; background-color:#18191c;">
-       <a href="main.php">
-            <img src="./imagens/logo_branca.png" alt="Polvo escrevendo" class="logo" style="width: 90px;">
-        </a>
-    </header> -->
-
     <header>
         <section class="search">
 
             <li>
                 <a href="main.php">
-                    <img src="./imagens/logo_branca.png" alt="Polvo escrevendo" class="logo">
+                    <img src="./public/imagens/logo_branca.png" alt="Polvo escrevendo" class="logo">
                 </a>
             </li>
 
@@ -81,13 +29,13 @@ $usuario = buscarUsuarioPorId($idUsuario);
     </header>
 
     <div class="layout-container">
-        <?php include 'sidebar.php'; ?>
+        <?php include './partials/sidebar.php'; ?>
         <section class="background">
 
             <div class="main-container">
 
                 <div class="profile-container">
-                    <div class="background-perfil"></div> <!-- ADICIONE ESTA LINHA -->
+                    <div class="background-perfil"></div>
                     <div class="profile-pic-container">
                         <img src="./imagens/astronauta-user.png" alt="Foto de perfil" class="profile-pic">
                     </div>
@@ -107,7 +55,7 @@ $usuario = buscarUsuarioPorId($idUsuario);
 
                 <div>
                     <h2 class="edit-title">Editar Dados</h2>
-                    <form class="edit-form" method="post">
+                    <form class="edit-form" method="post" action="../controllers/processar_perfil.php">
                         <input type="hidden" name="acao" value="salvar">
                         <div class="form-group">
                             <label for="name">Nome:</label>
@@ -134,7 +82,7 @@ $usuario = buscarUsuarioPorId($idUsuario);
                 <div class="delete-section">
                     <h3 style="color: #e57373;">Deletar Conta</h3>
                     <p style="color: #ccc;">Esta ação é irreversível. Tem certeza que deseja excluir sua conta?</p>
-                    <form method="post"
+                    <form method="post action="processar_perfil.php""
                         onsubmit="return confirm('Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita.');">
                         <input type="hidden" name="acao" value="deletar">
                         <button type="submit"

@@ -1,6 +1,5 @@
 <?php
-require_once 'safe_page.php';
-require_once 'conexao_db/conexao.php';
+require_once __DIR__ . '/../controllers/safe_page.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,17 +11,17 @@ require_once 'conexao_db/conexao.php';
   <title>Do it</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../public/css/style.css">
 
 </head>
 
 <body id="body">
 
-  <?php include 'header.php'; ?>
+  <?php include './partials/header.php'; ?>
 
   <main>
 
-    <?php include 'sidebar.php'; ?>
+    <?php include './partials/sidebar.php'; ?>
 
     <section class="conteudo_notas">
 
@@ -33,10 +32,10 @@ require_once 'conexao_db/conexao.php';
         </div>
         <div class="sort-buttons">
           <button class="filtro-btn" onclick="sortNotes()">
-            <img src="imagens/icones/filtro.png" alt="Filtrar notas">
+            <img src="../public/imagens/icones/filtro.png" alt="Filtrar notas">
           </button>
           <button class="filtro-btn" onclick="sortByDate()">
-            <img src="imagens/icones/calendar_down.png" alt="Ordenar por data">
+            <img src="../public/imagens/icones/calendar_down.png" alt="Ordenar por data">
           </button>
         </div>
       </div>
@@ -73,11 +72,11 @@ require_once 'conexao_db/conexao.php';
   </main>
 
   <footer>
-    <?php include 'footer.php'; ?>
+    <?php include './partials/footer.php'; ?>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="./js/search.js"></script>
+  <script src="../public/javascript/script.js"></script>
+  <script src="../public/javascript/search.js"></script>
 </body>
 
 </html>
