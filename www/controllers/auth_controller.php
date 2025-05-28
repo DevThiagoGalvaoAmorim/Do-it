@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'conexao_db/conexao.php';
-require_once 'conexao_db/usuarios_crud.php';
+require_once '../conexao_db/conexao.php';
+require_once '../conexao_db/usuarios_crud.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($usuario['tipo']) && $usuario['tipo'] === 'admin') {
                 header('Location: admin.php');
             } else {
-                header('Location: main.php');
+                header('Location: ../views/partials/main.php');
             }
             exit;
         } else {
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id'] = $id;
                 $_SESSION['nome'] = $nome;
                 $_SESSION['email'] = $email;
-                header('Location: main.php');
+                header('Location: ../views/partials/main.php');
                 exit;
             }
 

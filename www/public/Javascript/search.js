@@ -2,7 +2,7 @@ function searchItems() {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput.value.trim();
 
-    fetch(`search.php?query=${encodeURIComponent(query)}`)
+    fetch(`../../controllers/search.php?query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {

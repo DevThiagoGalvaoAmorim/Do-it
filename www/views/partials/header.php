@@ -2,8 +2,8 @@
     <section class="search">
 
         <li>
-            <a href="main.php">
-                <img src="./imagens/logo_branca.png" alt="Polvo escrevendo" class="logo">
+            <a href="./main.php">
+                <img src="../public/imagens/logo_branca.png" alt="Polvo escrevendo" class="logo">
             </a>
         </li>
 
@@ -12,11 +12,11 @@
         </div>
 
         <div class="light" id="lighting">
-            <img class="sun" src="./imagens/icons8-sun-50.png" alt="sun">
+            <img class="sun" src="../public/imagens/icons8-sun-50.png" alt="sun">
         </div>
 
-        <a href="perfil.php">
-            <img src="./imagens/astronauta-user.png" alt="user-astronaut" class="user">
+        <a href="./perfil.php">
+            <img src="../public/imagens/astronauta-user.png" alt="user-astronaut" class="user">
         </a>
 
     </section>

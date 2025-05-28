@@ -23,7 +23,7 @@ function salvarLembrete() {
         formData.append("action", "create");
     }
 
-    fetch("conexao_db/lembrete_crud.php", {
+    fetch("../../controllers/conexao_db/lembrete_crud.php", {
         method: "POST",
         body: formData,
     })
@@ -49,7 +49,7 @@ function salvarLembrete() {
 document.addEventListener("DOMContentLoaded", carregarLembretes);
 
 function carregarLembretes() {
-    fetch("conexao_db/lembrete_crud.php", {
+    fetch("../../controllers/conexao_db/lembrete_crud.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ action: "read" })
@@ -98,7 +98,7 @@ function deletarLembrete(id) {
     formData.append("action", "delete");
     formData.append("id", id);
 
-    fetch("conexao_db/lembrete_crud.php", {
+    fetch("../../controllers/conexao_db/lembrete_crud.php", {
         method: "POST",
         body: formData,
     })

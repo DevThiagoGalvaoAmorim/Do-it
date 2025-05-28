@@ -1,6 +1,6 @@
 <?php
-require_once 'safe_page.php';
-require_once 'conexao_db/conexao.php';
+require_once './controllers/safe_page.php';
+require_once './conexao_db/conexao.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,16 +12,16 @@ require_once 'conexao_db/conexao.php';
     <title>Do it</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylePlus.css">
+    <link rel="stylesheet" href="./public/css/stylePlus.css">
 
 </head>
 
 <body id="body">
 
-    <?php include 'header.php'; ?>
+    <?php include './partials/header.php'; ?>
 
     <main>
-        <?php include 'sidebar.php'; ?>
+        <?php include './partials/sidebar.php'; ?>
 
         <section class="conteudo_lembretes">
             <div class="criacao_de_lembretes">
@@ -56,11 +56,11 @@ require_once 'conexao_db/conexao.php';
     </main>
 
     <footer>
-        <?php include 'footer.php'; ?>
+        <?php include './partials/footer.php'; ?>
     </footer>
 
-    <script src="./scriptplus.js"></script>
-    <script src="./js/search.js"></script>
+    <script src="./public/Javascript/scriptplus.js"></script>
+    <script src="./public/Javascript/search.js"></script>
 
 </body>
 
