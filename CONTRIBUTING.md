@@ -52,5 +52,5 @@
 | **Implementar envio de notificações por e-mail com Mailgun**                |    Thiago Galvão Amorim   | Guilherme da Silva Carvalho | ❌  |
 | **Integrar Firebase Realtime Database para salvar e recuperar notas**       | João Sestari                | Raphael Sales               |  ❌ |
 | **Permitir upload e compartilhamento de arquivos usando File.io**           | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |  ❌ |
-| **Adicionar encurtamento de URLs das notas com shrtco.de**                  |   Douglas Alves da Cruz       | Ruam Marcos                 |  ❌ |
+| **Implementar gráficos nas telas de administrador**                  |   Douglas Alves da Cruz       | Ruam Marcos                 |  ❌ |
 
