@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ .'../../conexao_db/conexao.php';
+require_once __DIR__ . '/../conexao_db/conexao.php';  // Fixed path
 require_once __DIR__ . '/cloudinary_service.php';
 
 $action = $_POST['action'] ?? null;
@@ -11,7 +11,7 @@ try {
         $descricao = $_POST['descricao'] ?? '';
         $pasta = $_POST['pasta'] ?? '';
         $tipo = $_POST['tipo'] ?? 'Checklist';
-        $id_usuario = $_SESSION['id']; 
+        $id_usuario = $_SESSION['id'] ?? null;  // Added null coalescing
         
         $imagem_url = null;
         $video_url = null;
@@ -36,6 +36,9 @@ try {
             }
         }
     
+        // Add debug (remove after fixing)
+        error_log("Session ID: " . ($id_usuario ?? 'NOT SET'));
+        
         if ($id_usuario) {
             // Inserir a nota com o ID do usuário e URLs de mídia
             $stmt = $pdo->prepare("INSERT INTO notas (titulo, descricao, pasta, tipo, id_usuario, imagem_url, video_url) VALUES (:titulo, :descricao, :pasta, :tipo, :id_usuario, :imagem_url, :video_url)");
@@ -51,7 +54,7 @@ try {
     
             echo json_encode(['success' => true, 'message' => 'Nota criada com sucesso!']);
         } else {
-            echo json_encode(['success' => false, 'message' => 'ID do usuário não fornecido.']);
+            echo json_encode(['success' => false, 'message' => 'Usuário não está logado ou sessão expirou.']);
         }
     } elseif ($action === 'read') {
         // Ler todas as notas do usuário

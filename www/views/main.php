@@ -56,7 +56,7 @@ require_once __DIR__ . '/../controllers/safe_page.php';
         <input type="hidden" class="id-input" value="">
         <input type="text" class="titulo-input" placeholder="Título" />
 
-        <textarea class="texto-input" placeholder="Escreva seu texto aqui..."></textarea>
+        <textarea class="texto-input" placeholder="Escreva seu texto aqui... (Suporte Markdown)"></textarea>
 
         <div class="linha-icones">
           <label for="imagem-input" class="icone botao1" title="Adicionar Imagem">📷</label>
@@ -90,8 +90,13 @@ require_once __DIR__ . '/../controllers/safe_page.php';
     <?php include './partials/footer.php'; ?>
   </footer>
 
-  <script src="../public/javascript/script.js"></script>
-  <script src="../public/javascript/search.js"></script>
+  <!-- Marked.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- DOMPurify para sanitização -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+  <script src="../public/Javascript/markdown.js"></script>
+  <script src="../public/Javascript/script.js"></script>
+  <script src="../public/Javascript/search.js"></script>
 </body>
 
 </html>
