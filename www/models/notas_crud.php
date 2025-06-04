@@ -36,8 +36,7 @@ try {
             }
         }
     
-        // Add debug (remove after fixing)
-        error_log("Session ID: " . ($id_usuario ?? 'NOT SET'));
+        // Debug logging removed for production
         
         if ($id_usuario) {
             // Inserir a nota com o ID do usuário e URLs de mídia
