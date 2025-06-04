@@ -166,7 +166,6 @@ function carregarNotas() {
         const divNota = document.createElement("div");
         divNota.className = "nota";
         divNota.dataset.id = nota.id;
-
         divNota.dataset.date = nota.data_hora;
 
         divNota.addEventListener("click", (event) => {
@@ -177,28 +176,43 @@ function carregarNotas() {
           // Preenche os campos do popup com os dados da nota
           const tituloInput = document.querySelector(".titulo-input");
           const descricaoInput = document.querySelector(".texto-input");
-          const idInput = document.querySelector(".id-input"); // Campo oculto para o ID
+          const idInput = document.querySelector(".id-input");
           
           if (tituloInput && descricaoInput && idInput) {
             tituloInput.value = nota.titulo;
             descricaoInput.value = nota.descricao;
-            idInput.value = nota.id; // Define o ID da nota no campo oculto
-            console.log("ID da nota:", nota.id); // Exibe o ID no console
+            idInput.value = nota.id;
+            console.log("ID da nota:", nota.id);
           }
 
-          // Abre o popup
           abrirPopupEditar("popupCriar", nota);
         });
-        divNota.className = "nota";
+        
+        // Detecta se tem Markdown e renderiza adequadamente
+        const isMarkdown = hasMarkdownSyntax(nota.descricao);
+        const previewText = isMarkdown 
+          ? truncateMarkdown(nota.descricao, 150)
+          : nota.descricao.length > 150 
+            ? nota.descricao.substring(0, 150) + '...'
+            : nota.descricao;
+        
         divNota.innerHTML = `
           <h4 class="nota-titulo">${nota.titulo}</h4>
-          <p class="nota-texto">${nota.descricao}</p>
+          <div class="nota-texto-container">
+            <p class="nota-texto">${previewText}</p>
+          </div>
           <div class="nota-botoes">
-        <button class="nota-botao">📦</button>
-        <button type="button" class="archive_button nota-botao">🗑️</button>
-        <button class="nota-botao">✏️</button>
-    </div>
-`;
+            <button class="nota-botao">📦</button>
+            <button type="button" class="archive_button nota-botao">🗑️</button>
+            <button class="nota-botao">✏️</button>
+          </div>
+        `;
+        
+        // Se tem Markdown, renderiza o preview com formatação
+        if (isMarkdown) {
+          const textoContainer = divNota.querySelector('.nota-texto');
+          renderMarkdownInElement(textoContainer, previewText);
+        }
 
         container.appendChild(divNota);
       });
