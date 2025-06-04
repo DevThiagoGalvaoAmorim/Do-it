@@ -12,8 +12,7 @@ try {
         $tipo = $_POST['tipo'] ?? 'Checklist';
         $id_usuario = $_SESSION['id'] ?? null;  // Added null coalescing
     
-        // Add debug (remove after fixing)
-        error_log("Session ID: " . ($id_usuario ?? 'NOT SET'));
+        // Debug logging removed for production
         
         if ($id_usuario) {
             // Inserir a nota com o ID do usuário
