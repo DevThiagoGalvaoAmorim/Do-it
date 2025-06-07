@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link rel="stylesheet" href="../../public/css/stats_admin.css">
 </head>
+
 
 <body>
     <header class="admin-stats-header">
@@ -22,6 +25,7 @@
         </div>
     </header>
 
+
     <main class="admin-stats-main">
         <div class="admin-stats-sidebar">
             <nav class="admin-stats-nav">
@@ -29,6 +33,7 @@
                 <a href="admin_stats.php">Estatísticas</a>
             </nav>
         </div>
+
 
         <div class="admin-stats-main-content">
             <div class="admin-stats-card">
@@ -40,24 +45,17 @@
                 <div class="admin-stats-big-number"><?php echo $notesCreated; ?></div>
             </div>
             <div class="admin-stats-card admin-stats-full-width">
-                <div class="chart-container">
-                    <div class="chart-title">Novos Usuários Por Mês</div>
-                    <div class="line-chart-wrapper">
-                        <svg id="lineChart" viewBox="0 0 800 400"></svg>
-                    </div>
-                </div>
+                <p>Número de Usuários Novos Por Mês</p>
+                <div class="admin-stats-big-number"><?php echo $newUsersPerMonth; ?></div>
             </div>
             <div class="admin-stats-card admin-stats-full-width">
                 <div class="chart-container">
-                    <div class="chart-title">Distribuição de Notas e Lembretes</div>
-                    <div class="pie-chart-wrapper">
-                        <svg id="pieChart" viewBox="0 0 400 400"></svg>
-                        <div id="chartLegend" class="chart-legend"></div>
-                    </div>
+                    <canvas id="pieChart"></canvas>
                 </div>
             </div>
         </div>
     </main>
+
 
     <footer>
         <?php include '../partials/footer.php'; ?>
@@ -65,5 +63,6 @@
     <script src="../../public/Javascript/graficos.js"></script>
 
 </body>
+
 
 </html>
