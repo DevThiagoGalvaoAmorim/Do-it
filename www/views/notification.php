@@ -38,7 +38,7 @@ require_once __DIR__ . '/../controllers/safe_page.php';
         <!-- Popup de criação -->
         <div id="popupCriarLembrete" class="popup" onclick="fecharPopupLembrete(event, this)">
             <div class="conteudo" onclick="event.stopPropagation()">
-                <input type="hidden" class="id-lembrete-input" value="">    
+                <input type="hidden" class="id-lembrete-input" value="">
                 <input type="text" class="titulo-lembrete-input" placeholder="Título" />
 
                 <textarea class="descricao-lembrete-input" placeholder="Escreva seu lembrete..."></textarea>
@@ -47,8 +47,10 @@ require_once __DIR__ . '/../controllers/safe_page.php';
                     <input type="datetime-local" name="datatime_lembrete" id="datatime_lembrete">
                 </div>
 
+                <div id="status"></div>
+
                 <div class="footer-form">
-                    <button class="salvar-botao" onclick="salvarLembrete()">Salvar</button>
+                    <button class="salvar-botao" id="sendEmail" onclick="salvarLembrete()">Salvar</button>
                 </div>
             </div>
         </div>
@@ -60,7 +62,7 @@ require_once __DIR__ . '/../controllers/safe_page.php';
 
     <script src="../public/Javascript/scriptplus.js"></script>
     <script src="../public/Javascript/search.js"></script>
-
+    <script src="../public/Javascript/sendemail.js"></script>
 </body>
 
 </html>
