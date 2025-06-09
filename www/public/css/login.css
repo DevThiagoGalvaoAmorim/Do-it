@@ -48,6 +48,16 @@ body {
     border-bottom: 1px solid black;
     border-width: 2px;
     border-color: rgba(0, 0, 0, 0.548);
+    align-items: center;
+}
+
+.recuperacao {
+    margin: 30px;
+}
+
+.texto-recuperacao{
+     font-family: 'Inter', sans-serif;
+    font-size: 20px;
 }
 
 .btn-cadastrar a {

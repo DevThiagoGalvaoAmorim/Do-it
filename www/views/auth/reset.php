@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/login.css">
     <title>Do it</title>
+    <style></style>
 </head>
 
 <body>
@@ -14,17 +15,17 @@
         <div class="loginbox" id="loginbox">
 
             <div class="btn-cadastrar">
-                <h2>Novo Login</h2>
-                <a href="cadastro.php">Criar conta</a>
+                <h2 class="recuperacao">Redefinir Senha</h2>
             </div>
 
             <div class="content-login">
                 <img src="../../public/imagens/logo_preta.png" alt="user-polvo">
                 <!-- Adicionados os atributos name -->
-                <input type="text" name="email" placeholder="Email@exemplo.com" class="lock">
-                <input type="password" name="senha" placeholder="Senha" class="lock">
-                <a href="accountRecovery.php">Esqueceu a senha</a>
-                <button class="btn-enter" type="submit">Entrar</button>
+                 <h3 class="texto-recuperacao">Insira a sua nova senha: </h3>
+                <input type="password" name="password" placeholder="Insira sua nova senha" class="lock">
+                <input type="password" name="password-confirm" placeholder="Confirme a senha" class="lock">
+                <a href="login.php">Fazer Login</a>
+                <button class="btn-enter" type="submit">Salvar Senha </button>
             </div>
 
         </div>
