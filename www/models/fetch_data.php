@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once __DIR__ .'../../conexao_db/conexao.php';
+require_once '../conexao_db/conexao.php';
 
 
 //tabela usuarios
@@ -30,9 +30,8 @@ function getUsuariosPorMes(){
                     MONTH(criado_em) as mes,
                     COUNT(*) as total
                   FROM usuarios 
-                  WHERE criado_em >= DATE_SUB(CURDATE(), INTERVAL 5 MONTH)
                   GROUP BY YEAR(criado_em), MONTH(criado_em)
-                  ORDER BY ano ASC, mes ASC"; // Ordenar do mais antigo para o mais recente
+                  ORDER BY ano ASC, mes ASC";
         
         $result = $pdo->query($query);
         return $result->fetchAll(PDO::FETCH_ASSOC);

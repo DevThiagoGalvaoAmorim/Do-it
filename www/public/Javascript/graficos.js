@@ -41,55 +41,49 @@ class PieChartSVG {
     }
 
     createChart() {
-        const total = this.data.reduce((sum, value) => sum + value, 0);
-        let currentAngle = 0;
+    this.container.innerHTML = '';
+    
+    let currentAngle = 0;
+    const total = this.data.reduce((sum, value) => sum + value, 0);
 
-        this.data.forEach((value, index) => {
-            const percentage = (value / total) * 100;
-            const angle = (value / total) * 360;
-            
-            if (angle > 0) {
-                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                const pathData = this.describeArc(this.centerX, this.centerY, this.radius, currentAngle, currentAngle + angle);
-                
-                path.setAttribute("d", pathData);
-                path.setAttribute("fill", this.colors[index]);
-                path.setAttribute("stroke", "#ffffff");
-                path.setAttribute("stroke-width", "2");
-                path.setAttribute("class", "pie-slice");
-                path.setAttribute("data-index", index);
-                path.setAttribute("data-label", this.labels[index]);
-                path.setAttribute("data-value", value);
-                path.setAttribute("data-percentage", percentage.toFixed(1));
-                
-                // Adicionar animação inicial
-                path.style.transformOrigin = `${this.centerX}px ${this.centerY}px`;
-                path.style.transform = "scale(0)";
-                
-                // Event listeners
-                path.addEventListener('mouseenter', (e) => this.onSliceHover(e, true));
-                path.addEventListener('mouseleave', (e) => this.onSliceHover(e, false));
-                path.addEventListener('click', (e) => this.onSliceClick(e));
-                
-                this.container.appendChild(path);
-                currentAngle += angle;
-            }
-        });
+    this.data.forEach((value, index) => {
+        const percentage = (value / total) * 100;
+        const sliceAngle = (value / total) * 360;
+        
+        const startAngle = currentAngle;
+        const endAngle = currentAngle + sliceAngle;
+        
+        const start = this.polarToCartesian(this.centerX, this.centerY, this.radius, endAngle);
+        const end = this.polarToCartesian(this.centerX, this.centerY, this.radius, startAngle);
+        
+        const largeArcFlag = sliceAngle <= 180 ? "0" : "1";
+        
+        const pathData = [
+            "M", this.centerX, this.centerY,
+            "L", start.x, start.y,
+            "A", this.radius, this.radius, 0, largeArcFlag, 0, end.x, end.y,
+            "Z"
+        ].join(" ");
 
-        // Adicionar título no centro
-        if (this.title) {
-            const titleText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            titleText.setAttribute("x", this.centerX);
-            titleText.setAttribute("y", this.centerY - 10);
-            titleText.setAttribute("text-anchor", "middle");
-            titleText.setAttribute("dominant-baseline", "middle");
-            titleText.setAttribute("font-size", "16");
-            titleText.setAttribute("font-weight", "bold");
-            titleText.setAttribute("fill", "#333");
-            titleText.textContent = this.title;
-            this.container.appendChild(titleText);
-        }
-    }
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", pathData);
+        path.setAttribute("fill", this.colors[index % this.colors.length]);
+        path.setAttribute("class", "pie-slice");
+        path.setAttribute("data-index", index);
+        path.setAttribute("data-value", value);
+        path.setAttribute("data-percentage", percentage.toFixed(1));
+        path.setAttribute("data-label", this.labels[index]);
+        
+        // Event listeners
+        path.addEventListener('mouseenter', (e) => this.onSliceHover(e, true));
+        path.addEventListener('mouseleave', (e) => this.onSliceHover(e, false));
+        path.addEventListener('click', (e) => this.onSliceClick(e));
+        
+        this.container.appendChild(path);
+        
+        currentAngle += sliceAngle;
+    });
+}
 
     createLegend() {
         const legendContainer = document.getElementById('chartLegend');
@@ -251,7 +245,7 @@ function loadDatabaseData() {
         if (notasCount === 0 && lembretesCount === 0) {
             const exampleData = [1, 1]; // Dados de exemplo
             const exampleLabels = ['Notas', 'Lembretes'];
-            const colors = ['#36A2EB', '#FF6384'];
+            const colors = ['#6B46C1', '#C084FC']; // Roxo para combinar com a imagem
             
             if (pieChartInstance) {
                 pieChartInstance.updateData(exampleData, exampleLabels, 'Dados do Sistema (Exemplo)');
@@ -268,7 +262,7 @@ function loadDatabaseData() {
             // Usar dados reais do banco
             const realData = [notasCount, lembretesCount];
             const realLabels = ['Notas', 'Lembretes'];
-            const colors = ['#36A2EB', '#FF6384'];
+            const colors = ['#6B46C1', '#C084FC']; // Roxo para combinar com a imagem
             
             if (pieChartInstance) {
                 pieChartInstance.updateData(realData, realLabels, 'Dados do Sistema');
@@ -288,7 +282,7 @@ function loadDatabaseData() {
         // Em caso de erro, usar dados de exemplo
         const fallbackData = [1, 1];
         const fallbackLabels = ['Notas', 'Lembretes'];
-        const colors = ['#36A2EB', '#FF6384'];
+        const colors = ['#6B46C1', '#C084FC'];
         
         if (pieChartInstance) {
             pieChartInstance.updateData(fallbackData, fallbackLabels, 'Dados do Sistema (Erro)');
@@ -304,8 +298,8 @@ function loadDatabaseData() {
     });
 }
 
-class LineChartSVG {
-    constructor(containerId, data, labels, title = '', color = '#36A2EB') {
+class BarChartSVG {
+    constructor(containerId, data, labels, title = '', color = '#6B46C1') {
         this.containerId = containerId;
         this.data = data;
         this.labels = labels;
@@ -332,82 +326,77 @@ class LineChartSVG {
 
     createChart() {
         const maxValue = Math.max(...this.data);
-        const minValue = Math.min(...this.data);
-        const valueRange = maxValue - minValue || 1;
+        const minValue = 0;
+        const valueRange = maxValue || 1;
         
-        // Criar pontos da linha
-        const points = this.data.map((value, index) => {
-            const x = this.padding.left + (index * this.chartWidth / (this.data.length - 1));
-            const y = this.padding.top + this.chartHeight - ((value - minValue) / valueRange * this.chartHeight);
-            return { x, y, value, label: this.labels[index] };
-        });
+        const barWidth = this.chartWidth / this.data.length * 0.8;
+        const barSpacing = this.chartWidth / this.data.length * 0.2;
 
-        // Criar linha
-        const pathData = points.map((point, index) => {
-            return `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`;
-        }).join(' ');
+        // Criar barras
+        this.data.forEach((value, index) => {
+            const barHeight = (value / valueRange) * this.chartHeight;
+            const x = this.padding.left + (index * (barWidth + barSpacing)) + (barSpacing / 2);
+            const y = this.padding.top + this.chartHeight - barHeight;
 
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", pathData);
-        path.setAttribute("stroke", this.color);
-        path.setAttribute("stroke-width", "3");
-        path.setAttribute("fill", "none");
-        path.setAttribute("stroke-linecap", "round");
-        path.setAttribute("stroke-linejoin", "round");
-        this.container.appendChild(path);
-
-        // Criar área sob a linha (gradiente)
-        const areaPath = pathData + ` L ${points[points.length - 1].x} ${this.padding.top + this.chartHeight} L ${points[0].x} ${this.padding.top + this.chartHeight} Z`;
-        const area = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        area.setAttribute("d", areaPath);
-        area.setAttribute("fill", this.color);
-        area.setAttribute("fill-opacity", "0.1");
-        this.container.appendChild(area);
-
-        // Criar pontos
-        points.forEach((point, index) => {
-            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("cx", point.x);
-            circle.setAttribute("cy", point.y);
-            circle.setAttribute("r", "6");
-            circle.setAttribute("fill", this.color);
-            circle.setAttribute("stroke", "white");
-            circle.setAttribute("stroke-width", "2");
-            circle.style.cursor = "pointer";
+            // Criar retângulo da barra com bordas arredondadas
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", x);
+            rect.setAttribute("y", y);
+            rect.setAttribute("width", barWidth);
+            rect.setAttribute("height", barHeight);
+            rect.setAttribute("fill", this.color);
+            rect.style.cursor = "pointer";
             
-            // Event listeners para pontos
-            circle.addEventListener('mouseenter', (e) => this.showLineTooltip(e, point));
-            circle.addEventListener('mouseleave', () => this.hideLineTooltip());
+            // Adicionar dados para tooltip
+            rect.setAttribute("data-value", value);
+            rect.setAttribute("data-label", this.labels[index]);
             
-            this.container.appendChild(circle);
+            // Animação inicial
+            rect.style.transformOrigin = `${x + barWidth/2}px ${this.padding.top + this.chartHeight}px`;
+            rect.style.transform = "scaleY(0)";
+            
+            // Event listeners
+            rect.addEventListener('mouseenter', (e) => this.showBarTooltip(e, value, this.labels[index]));
+            rect.addEventListener('mouseleave', () => this.hideBarTooltip());
+            rect.addEventListener('mouseenter', (e) => {
+                e.target.setAttribute("fill", this.lightenColor(this.color, 20));
+            });
+            rect.addEventListener('mouseleave', (e) => {
+                e.target.setAttribute("fill", this.color);
+            });
+            
+            this.container.appendChild(rect);
+
+            // Adicionar valor no topo da barra
+            if (value > 0) {
+                const valueText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                valueText.setAttribute("x", x + barWidth / 2);
+                valueText.setAttribute("y", y - 5);
+                valueText.setAttribute("text-anchor", "middle");
+                valueText.setAttribute("font-size", "12");
+                valueText.setAttribute("font-weight", "bold");
+                valueText.setAttribute("fill", "#333");
+                valueText.textContent = value;
+                this.container.appendChild(valueText);
+            }
         });
 
         // Criar eixos
-        this.createAxes(points, minValue, maxValue);
+        this.createAxes(maxValue);
 
-        // Criar título
-        if (this.title) {
-            const titleText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            titleText.setAttribute("x", this.width / 2);
-            titleText.setAttribute("y", 25);
-            titleText.setAttribute("text-anchor", "middle");
-            titleText.setAttribute("font-size", "18");
-            titleText.setAttribute("font-weight", "bold");
-            titleText.setAttribute("fill", "#333");
-            titleText.textContent = this.title;
-            this.container.appendChild(titleText);
-        }
+        // Animar barras
+        this.animateBars();
     }
 
-    createAxes(points, minValue, maxValue) {
+    createAxes(maxValue) {
         // Eixo X
         const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
         xAxis.setAttribute("x1", this.padding.left);
         xAxis.setAttribute("y1", this.padding.top + this.chartHeight);
         xAxis.setAttribute("x2", this.padding.left + this.chartWidth);
         xAxis.setAttribute("y2", this.padding.top + this.chartHeight);
-        xAxis.setAttribute("stroke", "#ddd");
-        xAxis.setAttribute("stroke-width", "1");
+        xAxis.setAttribute("stroke", "#666");
+        xAxis.setAttribute("stroke-width", "2");
         this.container.appendChild(xAxis);
 
         // Eixo Y
@@ -416,56 +405,68 @@ class LineChartSVG {
         yAxis.setAttribute("y1", this.padding.top);
         yAxis.setAttribute("x2", this.padding.left);
         yAxis.setAttribute("y2", this.padding.top + this.chartHeight);
-        yAxis.setAttribute("stroke", "#ddd");
-        yAxis.setAttribute("stroke-width", "1");
+        yAxis.setAttribute("stroke", "#666");
+        yAxis.setAttribute("stroke-width", "2");
         this.container.appendChild(yAxis);
 
         // Labels do eixo X
-        points.forEach((point, index) => {
+        const barWidth = this.chartWidth / this.data.length * 0.8;
+        const barSpacing = this.chartWidth / this.data.length * 0.2;
+        
+        this.labels.forEach((label, index) => {
+            const x = this.padding.left + (index * (barWidth + barSpacing)) + (barSpacing / 2) + (barWidth / 2);
             const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            text.setAttribute("x", point.x);
+            text.setAttribute("x", x);
             text.setAttribute("y", this.padding.top + this.chartHeight + 20);
             text.setAttribute("text-anchor", "middle");
             text.setAttribute("font-size", "12");
-            text.setAttribute("fill", "#666");
-            text.textContent = point.label;
+            text.setAttribute("fill", "#333");
+            text.textContent = label;
             this.container.appendChild(text);
         });
 
-        // Labels do eixo Y
+        // Linhas de grade horizontais apenas (sem os números)
         const steps = 5;
-        for (let i = 0; i <= steps; i++) {
-            const value = minValue + (maxValue - minValue) * (i / steps);
+        for (let i = 1; i <= steps; i++) { // Começar em 1 para pular a linha do zero
             const y = this.padding.top + this.chartHeight - (i / steps * this.chartHeight);
             
-            const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            text.setAttribute("x", this.padding.left - 10);
-            text.setAttribute("y", y + 4);
-            text.setAttribute("text-anchor", "end");
-            text.setAttribute("font-size", "12");
-            text.setAttribute("fill", "#666");
-            text.textContent = Math.round(value);
-            this.container.appendChild(text);
-
-            // Linhas de grade horizontais
-            if (i > 0) {
-                const gridLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                gridLine.setAttribute("x1", this.padding.left);
-                gridLine.setAttribute("y1", y);
-                gridLine.setAttribute("x2", this.padding.left + this.chartWidth);
-                gridLine.setAttribute("y2", y);
-                gridLine.setAttribute("stroke", "#f0f0f0");
-                gridLine.setAttribute("stroke-width", "1");
-                this.container.appendChild(gridLine);
-            }
+            const gridLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            gridLine.setAttribute("x1", this.padding.left);
+            gridLine.setAttribute("y1", y);
+            gridLine.setAttribute("x2", this.padding.left + this.chartWidth);
+            gridLine.setAttribute("y2", y);
+            gridLine.setAttribute("stroke", "#999");
+            gridLine.setAttribute("stroke-width", "1");
+            this.container.appendChild(gridLine);
         }
     }
 
-    showLineTooltip(event, point) {
-        const tooltip = this.getOrCreateLineTooltip();
+    animateBars() {
+        const bars = this.container.querySelectorAll('rect');
+        bars.forEach((bar, index) => {
+            setTimeout(() => {
+                bar.style.transition = 'transform 0.6s ease-out';
+                bar.style.transform = 'scaleY(1)';
+            }, index * 100);
+        });
+    }
+
+    lightenColor(color, percent) {
+        const num = parseInt(color.replace("#", ""), 16);
+        const amt = Math.round(2.55 * percent);
+        const R = (num >> 16) + amt;
+        const G = (num >> 8 & 0x00FF) + amt;
+        const B = (num & 0x0000FF) + amt;
+        return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+            (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+            (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+    }
+
+    showBarTooltip(event, value, label) {
+        const tooltip = this.getOrCreateBarTooltip();
         tooltip.innerHTML = `
-            <strong>${point.label}</strong><br>
-            Usuários: ${point.value}
+            <strong>${label}</strong><br>
+            Usuários: ${value}
         `;
         
         tooltip.style.display = 'block';
@@ -473,18 +474,18 @@ class LineChartSVG {
         tooltip.style.top = event.pageY - 10 + 'px';
     }
 
-    hideLineTooltip() {
-        const tooltip = document.getElementById('line-chart-tooltip');
+    hideBarTooltip() {
+        const tooltip = document.getElementById('bar-chart-tooltip');
         if (tooltip) {
             tooltip.style.display = 'none';
         }
     }
 
-    getOrCreateLineTooltip() {
-        let tooltip = document.getElementById('line-chart-tooltip');
+    getOrCreateBarTooltip() {
+        let tooltip = document.getElementById('bar-chart-tooltip');
         if (!tooltip) {
             tooltip = document.createElement('div');
-            tooltip.id = 'line-chart-tooltip';
+            tooltip.id = 'bar-chart-tooltip';
             tooltip.className = 'chart-tooltip';
             document.body.appendChild(tooltip);
         }
@@ -500,7 +501,7 @@ class LineChartSVG {
 }
 
 // Variável global para armazenar a instância do gráfico de linha
-let lineChartInstance = null;
+let barChartInstance = null;
 
 // Função para carregar dados de usuários por mês
 function loadUsersByMonthData() {
@@ -515,64 +516,85 @@ function loadUsersByMonthData() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Dados de usuários por mês:', data);
+    console.log('Dados de usuários por mês:', data);
+    
+    const monthsData = data.getUsuariosPorMes || [];
+    
+    // Sempre gerar os últimos 6 meses a partir de hoje
+    const now = new Date();
+    const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 
+                  'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    
+    const last6Months = [];
+    
+    // Gerar os últimos 6 meses sempre a partir do mês atual
+    for (let i = 5; i >= 0; i--) {
+        const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
         
-        const monthsData = data.getUsuariosPorMes || [];
+        // Procurar dados para este mês/ano
+        const monthData = monthsData.find(item => 
+            parseInt(item.mes) === month && parseInt(item.ano) === year
+        );
         
-        if (monthsData.length > 0) {
-            const labels = monthsData.map(item => {
-                const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 
-                              'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-                return `${meses[item.mes - 1]}/${item.ano}`;
-            });
-            
-            const values = monthsData.map(item => parseInt(item.total));
-            
-            if (lineChartInstance) {
-                lineChartInstance.updateData(values, labels, 'Novos Usuários Por Mês');
-            } else {
-                lineChartInstance = new LineChartSVG(
-                    'lineChart',
-                    values,
-                    labels,
-                    'Novos Usuários Por Mês',
-                    '#36A2EB'
-                );
-            }
-        } else {
-            // Dados de exemplo se não houver dados
-            const exampleData = [2, 5, 3, 8, 6];
-            const exampleLabels = ['Jan/2025', 'Fev/2025', 'Mar/2025', 'Abr/2025', 'Mai/2025'];
-            
-            if (lineChartInstance) {
-                lineChartInstance.updateData(exampleData, exampleLabels, 'Novos Usuários Por Mês (Exemplo)');
-            } else {
-                lineChartInstance = new LineChartSVG(
-                    'lineChart',
-                    exampleData,
-                    exampleLabels,
-                    'Novos Usuários Por Mês (Exemplo)',
-                    '#36A2EB'
-                );
-            }
-        }
+        const label = `${meses[date.getMonth()]}/${year}`;
+        const value = monthData ? parseInt(monthData.total) : 0;
+        
+        last6Months.push({
+            label: label,
+            value: value,
+            mes: month,
+            ano: year
+        });
+    }
+    
+    console.log('Últimos 6 meses processados:', last6Months);
+    
+    const labels = last6Months.map(item => item.label);
+    const values = last6Months.map(item => item.value);
+    
+    console.log('Labels:', labels);
+    console.log('Valores:', values);
+    
+    if (barChartInstance) {
+        barChartInstance.updateData(values, labels, '');
+    } else {
+        barChartInstance = new BarChartSVG(
+            'barChart',
+            values,
+            labels,
+            '',
+            '#6B46C1'
+        );
+    }
     })
     .catch(error => {
         console.error('Erro ao carregar dados de usuários por mês:', error);
         
-        // Dados de fallback em caso de erro
-        const fallbackData = [1, 2, 1, 3, 2];
-        const fallbackLabels = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'];
+        // Dados de fallback em caso de erro - últimos 6 meses
+        const now = new Date();
+        const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 
+                      'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
         
-        if (lineChartInstance) {
-            lineChartInstance.updateData(fallbackData, fallbackLabels, 'Usuários Por Mês (Erro)');
+        const fallbackData = [];
+        const fallbackLabels = [];
+        
+        for (let i = 5; i >= 0; i--) {
+            const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            fallbackLabels.push(`${meses[date.getMonth()]}/${date.getFullYear()}`);
+            fallbackData.push(Math.floor(Math.random() * 5) + 1);
+        }
+        
+        if (barChartInstance) {
+            barChartInstance.updateData(fallbackData, fallbackLabels, '');
         } else {
-            lineChartInstance = new LineChartSVG(
-                'lineChart',
+            barChartInstance = new BarChartSVG(
+                'barChart',
                 fallbackData,
                 fallbackLabels,
-                'Usuários Por Mês (Erro)',
-                '#FF6384'
+                '',
+                '#6B46C1'
             );
         }
     });
