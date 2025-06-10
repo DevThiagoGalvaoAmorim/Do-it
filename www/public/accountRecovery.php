@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <form class="container" id="container" method="POST" action="../../controllers/auth_controller.php">
+    <form class="container" id="container" method="POST" action="../controllers/enviar_link_recuperacao.php">
         <div class="loginbox" id="loginbox">
 
             <div class="btn-cadastrar">
                 <h2 class="recuperacao">Recuperar Conta</h2>
-                <a href="cadastro.php">Criar conta</a>
+                <a href="../views/auth/cadastro.php">Criar conta</a>
             </div>
 
             <div class="content-login">
