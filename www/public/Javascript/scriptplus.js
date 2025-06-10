@@ -29,8 +29,6 @@ function salvarLembrete() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                loadDatabaseData();
-                loadUsersByMonthData();
                 carregarLembretes(); // Atualiza a lista automaticamente
 
                 const popup = document.getElementById("popupCriarLembrete");
@@ -106,8 +104,6 @@ function deletarLembrete(id) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                loadDatabaseData();
-                loadUsersByMonthData();
                 carregarLembretes();
             } else {
                 alert("Erro ao deletar o lembrete.");

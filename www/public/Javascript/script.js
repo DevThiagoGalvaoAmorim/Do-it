@@ -277,6 +277,72 @@ function enviarFormulario() {
   alert("Buscando nota...");
 }
 
+function salvarNota() {
+  const titulo = document.querySelector(".titulo-input").value.trim();
+  const descricao = document.querySelector(".texto-input").value.trim();
+  const pasta = document.querySelector(".pasta-input")
+    ? document.querySelector(".pasta-input").value.trim()
+    : ""; // Caso tenha um campo para pasta
+  const id = document.querySelector(".id-input").value.trim(); // Obtém o ID da nota do campo oculto
+
+  // Validação dos campos
+  if (!titulo || !descricao) {
+    alert("Título e descrição são obrigatórios.");
+    return;
+  }
+
+  // Criar um objeto FormData para enviar os dados
+  const formData = new FormData();
+  formData.append("titulo", titulo);
+  formData.append("descricao", descricao);
+  formData.append("pasta", pasta);
+
+  // Decidir entre criar ou atualizar
+  if (id) {
+    // Acionar o update
+    formData.append("action", "update");
+    formData.append("id", id); // Inclui o ID da nota no update
+    fetch("/models/notas_crud.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          finalizarOperacao("Nota atualizada com sucesso!");
+        } else {
+          console.error("Erro ao atualizar nota:", data.message);
+          alert("Erro ao atualizar a nota.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+        alert("Erro ao atualizar a nota.");
+      });
+  } else {
+    // Acionar o create
+    formData.append("action", "create");
+    fetch("/models/notas_crud.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          finalizarOperacao("Nota criada com sucesso!");
+          
+        } else {
+          console.error("Erro ao criar nota:", data.message);
+          alert("Erro ao criar a nota.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+        alert("Erro ao criar a nota.");
+      });
+  }
+}
+
 // Função para finalizar a operação (create e update)
 function finalizarOperacao(mensagem) {
   carregarNotas();
@@ -299,8 +365,6 @@ function deletarNota(notaEl) {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        loadDatabaseData();
-        loadUsersByMonthData();
         carregarNotas();
       } else {
         console.error("Erro ao deletar nota:", data.message);
