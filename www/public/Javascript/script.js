@@ -127,6 +127,8 @@ function salvarNota() {
       .then((data) => {
         if (data.success) {
           finalizarOperacao("Nota criada com sucesso!");
+          loadDatabaseData();
+          loadUsersByMonthData();
         } else {
           console.error("Erro ao criar nota:", data.message);
           alert("Erro ao criar a nota.");
@@ -221,6 +223,8 @@ function deletarNota(notaEl) {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
+        loadDatabaseData();
+        loadUsersByMonthData();
         carregarNotas();
       } else {
         console.error("Erro ao deletar nota:", data.message);
