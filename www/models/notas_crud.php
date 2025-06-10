@@ -61,15 +61,36 @@ try {
             echo json_encode(['success' => false, 'message' => 'ID da nota ou ID do usuário não fornecido.']);
         }
     } elseif ($action === 'delete') {
-        // Deletar uma nota
+        // Deletar uma nota (movendo antes para a lixeira)
         $id = $_POST['id'];
         $id_usuario = $_SESSION['id'];
 
         if ($id && $id_usuario) {
-            $stmt = $pdo->prepare("DELETE FROM notas WHERE id = :id AND id_usuario = :id_usuario");
+            // 1. Buscar a nota
+            $stmt = $pdo->prepare("SELECT * FROM notas WHERE id = :id AND id_usuario = :id_usuario");
             $stmt->execute([':id' => $id, ':id_usuario' => $id_usuario]);
+            $nota = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            echo json_encode(['success' => true, 'message' => 'Nota deletada com sucesso!']);
+            if ($nota) {
+                // 2. Inserir na lixeira
+                $stmtLixeira = $pdo->prepare("INSERT INTO lixeira (titulo, descricao, data_hora, pasta, id_usuario, tipo) VALUES (:titulo, :descricao, :data_hora, :pasta, :id_usuario, :tipo)");
+                $stmtLixeira->execute([
+                    ':titulo' => $nota['titulo'],
+                    ':descricao' => $nota['descricao'],
+                    ':data_hora' => $nota['data_hora'],
+                    ':pasta' => $nota['pasta'],
+                    ':id_usuario' => $nota['id_usuario'],
+                    ':tipo' => $nota['tipo']
+                ]);
+
+                // 3. Deletar da tabela notas
+                $stmtDelete = $pdo->prepare("DELETE FROM notas WHERE id = :id AND id_usuario = :id_usuario");
+                $stmtDelete->execute([':id' => $id, ':id_usuario' => $id_usuario]);
+
+                echo json_encode(['success' => true, 'message' => 'Nota movida para a lixeira com sucesso!']);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Nota não encontrada.']);
+            }
         } else {
             echo json_encode(['success' => false, 'message' => 'id da nota não fornecido.']);
         }
