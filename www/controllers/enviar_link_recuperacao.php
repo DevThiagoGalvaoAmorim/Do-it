@@ -13,7 +13,6 @@ $token = bin2hex(random_bytes(32)); // token seguro
 salvarToken($email, $token);
 
 // Enviar e-mail
-$apiKey = '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';
 $link = "http://localhost:8080/views/auth/reset.php?token=$token";
 
 $mail = new PHPMailer(true);
