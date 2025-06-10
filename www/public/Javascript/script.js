@@ -19,6 +19,58 @@ toggleBtn.addEventListener("click", () => {
   content.classList.toggle("pushed");
 });
 
+// Adicionar event listeners para preview de mídia
+document.addEventListener('DOMContentLoaded', function() {
+  const imagemInput = document.getElementById('imagem-input');
+  const videoInput = document.getElementById('video-input');
+  
+  if (imagemInput) {
+    imagemInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImg = document.getElementById('preview-img');
+          const imagemPreview = document.querySelector('.imagem-preview');
+          previewImg.src = e.target.result;
+          imagemPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+  
+  if (videoInput) {
+    videoInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewVideo = document.getElementById('preview-video');
+          const videoPreview = document.querySelector('.video-preview');
+          previewVideo.src = e.target.result;
+          videoPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+});
+
+function removerImagem() {
+  const imagemInput = document.getElementById('imagem-input');
+  const imagemPreview = document.querySelector('.imagem-preview');
+  imagemInput.value = '';
+  imagemPreview.style.display = 'none';
+}
+
+function removerVideo() {
+  const videoInput = document.getElementById('video-input');
+  const videoPreview = document.querySelector('.video-preview');
+  videoInput.value = '';
+  videoPreview.style.display = 'none';
+}
+
 function abrirPopupCriar(id) {
   const popup = document.getElementById(id);
 
@@ -26,12 +78,163 @@ function abrirPopupCriar(id) {
   const tituloInput = document.querySelector(".titulo-input");
   const descricaoInput = document.querySelector(".texto-input");
   const idInput = document.querySelector(".id-input");
+  const imagemInput = document.getElementById('imagem-input');
+  const videoInput = document.getElementById('video-input');
 
   if (tituloInput) tituloInput.value = "";
   if (descricaoInput) descricaoInput.value = ""; 
   if (idInput) idInput.value = "";
+  if (imagemInput) imagemInput.value = "";
+  if (videoInput) videoInput.value = "";
+  
+  // Limpar previews
+  removerImagem();
+  removerVideo();
 
   popup.style.display = "flex";
+}
+
+function salvarNota() {
+  const titulo = document.querySelector(".titulo-input").value.trim();
+  const descricao = document.querySelector(".texto-input").value.trim();
+  const pasta = document.querySelector(".pasta-input")
+    ? document.querySelector(".pasta-input").value.trim()
+    : "";
+  const id = document.querySelector(".id-input").value.trim();
+  const imagemInput = document.getElementById('imagem-input');
+  const videoInput = document.getElementById('video-input');
+
+  // Validação dos campos
+  if (!titulo || !descricao) {
+    alert("Título e descrição são obrigatórios.");
+    return;
+  }
+
+  // Criar um objeto FormData para enviar os dados
+  const formData = new FormData();
+  formData.append("titulo", titulo);
+  formData.append("descricao", descricao);
+  formData.append("pasta", pasta);
+  
+  // Adicionar arquivos se selecionados
+  if (imagemInput.files[0]) {
+    formData.append("imagem", imagemInput.files[0]);
+  }
+  if (videoInput.files[0]) {
+    formData.append("video", videoInput.files[0]);
+  }
+
+  // Decidir entre criar ou atualizar
+  if (id) {
+    // Acionar o update
+    formData.append("action", "update");
+    formData.append("id", id);
+    fetch("/models/notas_crud.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          finalizarOperacao("Nota atualizada com sucesso!");
+        } else {
+          console.error("Erro ao atualizar nota:", data.message);
+          alert("Erro ao atualizar a nota.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+        alert("Erro ao atualizar a nota.");
+      });
+  } else {
+    // Acionar o create
+    formData.append("action", "create");
+    fetch("/models/notas_crud.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          finalizarOperacao("Nota criada com sucesso!");
+        } else {
+          console.error("Erro ao criar nota:", data.message);
+          alert("Erro ao criar a nota.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+        alert("Erro ao criar a nota.");
+      });
+  }
+}
+
+function carregarNotas() {
+  fetch("/models/notas_crud.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "action=read",
+  })
+    .then((response) => response.json())
+    .then((notas) => {
+      const container = document.querySelector(".listagem_de_notas .notas");
+      container.innerHTML = "";
+
+      // Iterar pelas notas e criar as divs
+      notas.forEach((nota) => {
+        const divNota = document.createElement("div");
+        divNota.className = "nota";
+        divNota.dataset.id = nota.id;
+        divNota.dataset.date = nota.data_hora;
+
+        divNota.addEventListener("click", (event) => {
+          if (event.target.tagName === "BUTTON") {
+            return;
+          }
+
+          // Preenche os campos do popup com os dados da nota
+          const tituloInput = document.querySelector(".titulo-input");
+          const descricaoInput = document.querySelector(".texto-input");
+          const idInput = document.querySelector(".id-input");
+          
+          if (tituloInput && descricaoInput && idInput) {
+            tituloInput.value = nota.titulo;
+            descricaoInput.value = nota.descricao;
+            idInput.value = nota.id;
+          }
+
+          // Abre o popup
+          abrirPopupEditar("popupCriar", nota);
+        });
+        
+        // Construir HTML da nota com mídia
+        let mediaHtml = '';
+        if (nota.imagem_url) {
+          mediaHtml += `<img src="${nota.imagem_url}" alt="Imagem da nota" style="max-width: 100%; height: auto; margin: 10px 0;">`;
+        }
+        if (nota.video_url) {
+          mediaHtml += `<video src="${nota.video_url}" controls style="max-width: 100%; height: auto; margin: 10px 0;"></video>`;
+        }
+        
+        divNota.innerHTML = `
+          <h4 class="nota-titulo">${nota.titulo}</h4>
+          <p class="nota-texto">${nota.descricao}</p>
+          ${mediaHtml}
+          <div class="nota-botoes">
+            <button class="nota-botao">📦</button>
+            <button type="button" class="archive_button nota-botao">🗑️</button>
+            <button class="nota-botao">✏️</button>
+          </div>
+        `;
+
+        container.appendChild(divNota);
+      });
+    })
+    .catch((error) => {
+      console.error("Erro ao carregar notas:", error);
+    });
 }
 
 function abrirPopupEditar(id, nota) {
@@ -74,71 +277,6 @@ function enviarFormulario() {
   alert("Buscando nota...");
 }
 
-function salvarNota() {
-  const titulo = document.querySelector(".titulo-input").value.trim();
-  const descricao = document.querySelector(".texto-input").value.trim();
-  const pasta = document.querySelector(".pasta-input")
-    ? document.querySelector(".pasta-input").value.trim()
-    : ""; // Caso tenha um campo para pasta
-  const id = document.querySelector(".id-input").value.trim(); // Obtém o ID da nota do campo oculto
-
-  // Validação dos campos
-  if (!titulo || !descricao) {
-    alert("Título e descrição são obrigatórios.");
-    return;
-  }
-
-  // Criar um objeto FormData para enviar os dados
-  const formData = new FormData();
-  formData.append("titulo", titulo);
-  formData.append("descricao", descricao);
-  formData.append("pasta", pasta);
-
-  // Decidir entre criar ou atualizar
-  if (id) {
-    // Acionar o update
-    formData.append("action", "update");
-    formData.append("id", id); // Inclui o ID da nota no update
-    fetch("/models/notas_crud.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          finalizarOperacao("Nota atualizada com sucesso!");
-        } else {
-          console.error("Erro ao atualizar nota:", data.message);
-          alert("Erro ao atualizar a nota.");
-        }
-      })
-      .catch((error) => {
-        console.error("Erro:", error);
-        alert("Erro ao atualizar a nota.");
-      });
-  } else {
-    // Acionar o create
-    formData.append("action", "create");
-    fetch("/models/notas_crud.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          finalizarOperacao("Nota criada com sucesso!");
-        } else {
-          console.error("Erro ao criar nota:", data.message);
-          alert("Erro ao criar a nota.");
-        }
-      })
-      .catch((error) => {
-        console.error("Erro:", error);
-        alert("Erro ao criar a nota.");
-      });
-  }
-}
-
 // Função para finalizar a operação (create e update)
 function finalizarOperacao(mensagem) {
   carregarNotas();
@@ -146,66 +284,6 @@ function finalizarOperacao(mensagem) {
   if (popupCriar) {
     popupCriar.style.display = "none";
   }
-}
-
-function carregarNotas() {
-  fetch("/models/notas_crud.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: "action=read",
-  })
-    .then((response) => response.json())
-    .then((notas) => {
-      const container = document.querySelector(".listagem_de_notas .notas");
-      container.innerHTML = "";
-
-      // Iterar pelas notas e criar as divs
-      notas.forEach((nota) => {
-        const divNota = document.createElement("div");
-        divNota.className = "nota";
-        divNota.dataset.id = nota.id;
-
-        divNota.dataset.date = nota.data_hora;
-
-        divNota.addEventListener("click", (event) => {
-          if (event.target.tagName === "BUTTON") {
-            return;
-          }
-
-          // Preenche os campos do popup com os dados da nota
-          const tituloInput = document.querySelector(".titulo-input");
-          const descricaoInput = document.querySelector(".texto-input");
-          const idInput = document.querySelector(".id-input"); // Campo oculto para o ID
-          
-          if (tituloInput && descricaoInput && idInput) {
-            tituloInput.value = nota.titulo;
-            descricaoInput.value = nota.descricao;
-            idInput.value = nota.id; // Define o ID da nota no campo oculto
-            console.log("ID da nota:", nota.id); // Exibe o ID no console
-          }
-
-          // Abre o popup
-          abrirPopupEditar("popupCriar", nota);
-        });
-        divNota.className = "nota";
-        divNota.innerHTML = `
-          <h4 class="nota-titulo">${nota.titulo}</h4>
-          <p class="nota-texto">${nota.descricao}</p>
-          <div class="nota-botoes">
-        <button class="nota-botao">📦</button>
-        <button type="button" class="archive_button nota-botao">🗑️</button>
-        <button class="nota-botao">✏️</button>
-    </div>
-`;
-
-        container.appendChild(divNota);
-      });
-    })
-    .catch((error) => {
-      console.error("Erro ao carregar notas:", error);
-    });
 }
 
 function deletarNota(notaEl) {

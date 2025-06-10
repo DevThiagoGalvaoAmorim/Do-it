@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ .'../../conexao_db/conexao.php';
+require_once __DIR__ . '/cloudinary_service.php';
 
 $action = $_POST['action'] ?? null;
 
@@ -11,16 +12,39 @@ try {
         $pasta = $_POST['pasta'] ?? '';
         $tipo = $_POST['tipo'] ?? 'Checklist';
         $id_usuario = $_SESSION['id']; 
+        
+        $imagem_url = null;
+        $video_url = null;
+        
+        // Processar upload de imagem
+        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $cloudinary = new CloudinaryService();
+            $uploadResult = $cloudinary->uploadFile($_FILES['imagem'], 'image');
+            if ($uploadResult['success']) {
+                $imagem_url = $uploadResult['url'];
+            }
+        }
+        
+        // Processar upload de vídeo
+        if (isset($_FILES['video']) && $_FILES['video']['error'] === UPLOAD_ERR_OK) {
+            $cloudinary = new CloudinaryService();
+            $uploadResult = $cloudinary->uploadFile($_FILES['video'], 'video');
+            if ($uploadResult['success']) {
+                $video_url = $uploadResult['url'];
+            }
+        }
     
         if ($id_usuario) {
-            // Inserir a nota com o ID do usuário
-            $stmt = $pdo->prepare("INSERT INTO notas (titulo, descricao, pasta, tipo, id_usuario) VALUES (:titulo, :descricao, :pasta, :tipo, :id_usuario)");
+            // Inserir a nota com o ID do usuário e URLs de mídia
+            $stmt = $pdo->prepare("INSERT INTO notas (titulo, descricao, pasta, tipo, id_usuario, imagem_url, video_url) VALUES (:titulo, :descricao, :pasta, :tipo, :id_usuario, :imagem_url, :video_url)");
             $stmt->execute([
                 ':titulo' => $titulo,
                 ':descricao' => $descricao,
                 ':pasta' => $pasta,
                 ':tipo' => $tipo,
-                ':id_usuario' => $id_usuario
+                ':id_usuario' => $id_usuario,
+                ':imagem_url' => $imagem_url,
+                ':video_url' => $video_url
             ]);
     
             echo json_encode(['success' => true, 'message' => 'Nota criada com sucesso!']);
@@ -40,18 +64,46 @@ try {
         echo json_encode($notas);
     } elseif ($action === 'update') {
         // Atualizar uma nota
-        $id = $_POST['id'] ?? null; // ID da nota a ser atualizada
+        $id = $_POST['id'] ?? null;
         $id_usuario = $_SESSION['id'];
         $titulo = $_POST['titulo'] ?? '';
         $descricao = $_POST['descricao'] ?? '';
         $pasta = $_POST['pasta'] ?? '';
+        
+        // Buscar URLs atuais
+        $stmt = $pdo->prepare("SELECT imagem_url, video_url FROM notas WHERE id = :id AND id_usuario = :id_usuario");
+        $stmt->execute([':id' => $id, ':id_usuario' => $id_usuario]);
+        $notaAtual = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $imagem_url = $notaAtual['imagem_url'];
+        $video_url = $notaAtual['video_url'];
+        
+        // Processar novo upload de imagem
+        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $cloudinary = new CloudinaryService();
+            $uploadResult = $cloudinary->uploadFile($_FILES['imagem'], 'image');
+            if ($uploadResult['success']) {
+                $imagem_url = $uploadResult['url'];
+            }
+        }
+        
+        // Processar novo upload de vídeo
+        if (isset($_FILES['video']) && $_FILES['video']['error'] === UPLOAD_ERR_OK) {
+            $cloudinary = new CloudinaryService();
+            $uploadResult = $cloudinary->uploadFile($_FILES['video'], 'video');
+            if ($uploadResult['success']) {
+                $video_url = $uploadResult['url'];
+            }
+        }
     
         if ($id && $id_usuario) {
-            $stmt = $pdo->prepare("UPDATE notas SET titulo = :titulo, descricao = :descricao, pasta = :pasta WHERE id = :id AND id_usuario = :id_usuario");
+            $stmt = $pdo->prepare("UPDATE notas SET titulo = :titulo, descricao = :descricao, pasta = :pasta, imagem_url = :imagem_url, video_url = :video_url WHERE id = :id AND id_usuario = :id_usuario");
             $stmt->execute([
                 ':titulo' => $titulo,
                 ':descricao' => $descricao,
                 ':pasta' => $pasta,
+                ':imagem_url' => $imagem_url,
+                ':video_url' => $video_url,
                 ':id' => $id,
                 ':id_usuario' => $id_usuario
             ]);
@@ -73,14 +125,16 @@ try {
 
             if ($nota) {
                 // 2. Inserir na lixeira
-                $stmtLixeira = $pdo->prepare("INSERT INTO lixeira (titulo, descricao, data_hora, pasta, id_usuario, tipo) VALUES (:titulo, :descricao, :data_hora, :pasta, :id_usuario, :tipo)");
+                $stmtLixeira = $pdo->prepare("INSERT INTO lixeira (titulo, descricao, data_hora, pasta, id_usuario, tipo, imagem_url, video_url) VALUES (:titulo, :descricao, :data_hora, :pasta, :id_usuario, :tipo, :imagem_url, :video_url)");
                 $stmtLixeira->execute([
                     ':titulo' => $nota['titulo'],
                     ':descricao' => $nota['descricao'],
                     ':data_hora' => $nota['data_hora'],
                     ':pasta' => $nota['pasta'],
                     ':id_usuario' => $nota['id_usuario'],
-                    ':tipo' => $nota['tipo']
+                    ':tipo' => $nota['tipo'],
+                    ':imagem_url' => $nota['imagem_url'],
+                    ':video_url' => $nota['video_url']
                 ]);
 
                 // 3. Deletar da tabela notas

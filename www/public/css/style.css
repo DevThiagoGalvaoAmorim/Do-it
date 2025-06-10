@@ -364,19 +364,69 @@ body.Dark .popup .conteudo {
   background-size: contain;
   border: none;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
 .botao1 {
-  background-image: url('URL_DO_ICONE_1');
+  background-color: #777377;; 
 }
 
 .botao2 {
-  background-image: url('URL_DO_ICONE_2');
+  background-color: #777377;
 }
 
 .botao3 {
-  background-image: url('URL_DO_ICONE_3');
+  background-color: #777377; 
+}
+
+/* Efeito hover para melhor interação */
+.icone:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.preview-container {
+  margin: 10px 0;
+}
+
+.imagem-preview, .video-preview {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+}
+
+.remove-media {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.linha-icones label {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.linha-icones label:hover {
+  background: #e0e0e0;
 }
 
 .footer-form {
