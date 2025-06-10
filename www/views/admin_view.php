@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <style>
         /* CSS styles here */
     </style>
@@ -15,7 +15,7 @@
         <section class="search">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="imagens/logo_branca.png" alt="Do it Logo">
+                    <img src="../public/imagens/logo_branca.png" alt="Do it Logo">
                 </div>
                 <h1>Administrador</h1>
                 <div class="header-actions">

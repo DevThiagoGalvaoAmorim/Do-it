@@ -1,0 +1,53 @@
+.bar-chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    background-color: #c0c0c0;
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+#barChart {
+    max-width: 800px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+}
+.bar-chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    background-color: #c0c0c0;
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.bar-chart-wrapper svg {
+    background-color: #c0c0c0;
+}
+
+#barChart {
+    max-width: 800px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+}
+
+/* Tooltip específico para gráfico de barras */
+#bar-chart-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+    max-width: 200px;
+    text-align: center;
+}

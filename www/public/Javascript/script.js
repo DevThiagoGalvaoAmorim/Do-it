@@ -127,6 +127,7 @@ function salvarNota() {
       .then((data) => {
         if (data.success) {
           finalizarOperacao("Nota criada com sucesso!");
+          
         } else {
           console.error("Erro ao criar nota:", data.message);
           alert("Erro ao criar a nota.");
