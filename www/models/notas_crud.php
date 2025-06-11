@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ .'../../conexao_db/conexao.php';
+require_once __DIR__ . '/../conexao_db/conexao.php';  // Fixed path
 
 $action = $_POST['action'] ?? null;
 
@@ -10,8 +10,10 @@ try {
         $descricao = $_POST['descricao'] ?? '';
         $pasta = $_POST['pasta'] ?? '';
         $tipo = $_POST['tipo'] ?? 'Checklist';
-        $id_usuario = $_SESSION['id']; 
+        $id_usuario = $_SESSION['id'] ?? null;  // Added null coalescing
     
+        // Debug logging removed for production
+        
         if ($id_usuario) {
             // Inserir a nota com o ID do usuário
             $stmt = $pdo->prepare("INSERT INTO notas (titulo, descricao, pasta, tipo, id_usuario) VALUES (:titulo, :descricao, :pasta, :tipo, :id_usuario)");
@@ -25,7 +27,7 @@ try {
     
             echo json_encode(['success' => true, 'message' => 'Nota criada com sucesso!']);
         } else {
-            echo json_encode(['success' => false, 'message' => 'ID do usuário não fornecido.']);
+            echo json_encode(['success' => false, 'message' => 'Usuário não está logado ou sessão expirou.']);
         }
     } elseif ($action === 'read') {
         // Ler todas as notas do usuário
