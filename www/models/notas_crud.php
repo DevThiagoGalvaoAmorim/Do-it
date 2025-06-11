@@ -100,7 +100,6 @@ try {
         
         // Processar novo upload de vídeo
         if (isset($_FILES['video']) && $_FILES['video']['error'] === UPLOAD_ERR_OK) {
-            $cloudinary = new CloudinaryService();
             $uploadResult = $cloudinary->uploadFile($_FILES['video'], 'video');
             if ($uploadResult['success']) {
                 $video_url = $uploadResult['url'];
