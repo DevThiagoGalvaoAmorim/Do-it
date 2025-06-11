@@ -16,9 +16,9 @@ echo $novaSenha;
 echo "\n".$token;
 
 if(atualizarSenha($novaSenha, $email)){
-    echo "Deu certo ao atualizar a senha! Faça o login em <a href='/views/auth/login.php'>Faça login</a>";
+    tela_de_mensagem("Deu certo ao atualizar a senha!");
 }else{
-    echo "Erro ao atualizar senha! Tente novamente.";
+    tela_de_mensagem("Erro ao atualizar senha! Tente novamente.");
 }
 
 apagarToken($token);

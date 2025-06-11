@@ -24,7 +24,7 @@ function tela_de_mensagem($mensagem){
     }
 
     body {
-      background: url("../../public/imagens/fundowarning.gif") no-repeat center center fixed;
+      background: url("../../public/imagens/night.gif") no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -33,12 +33,12 @@ function tela_de_mensagem($mensagem){
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: rgba(50, 50, 50, 0.8);
+      background-color: rgba(0, 4, 41, 0.79);
       border-radius: 12px;
       padding: 40px;
       text-align: center;
       width: 500px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
     }
 
     .logo {
@@ -58,11 +58,6 @@ function tela_de_mensagem($mensagem){
       border-radius: 50%;
     }
 
-    @keyframes swing {
-      0% { transform: rotate(-30deg); }
-      100% { transform: rotate(30deg); }
-    }
-
     .mensagem {
       color: #fff;
       margin-bottom: 25px;
@@ -70,11 +65,12 @@ function tela_de_mensagem($mensagem){
     }
 
     .btn-login {
-      background-color: black;
-      color: white;
+      background-color: white;
+      color: black;
       border: none;
       padding: 12px 25px;
       font-size: 18px;
+     
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
@@ -82,14 +78,15 @@ function tela_de_mensagem($mensagem){
     }
 
     .btn-login:hover {
-      background-color: #222;
+      background-color: #AAA;
+      color: white;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logo">
-      <img src="../../public/imagens/povin.png" alt="logo">
+      <img src="../../public/imagens/polvo_landing.png" alt="logo">
     </div>
     <div class="mensagem" id="mensagem">'. $mensagem . '</div>
     <a href="/views/auth/login.php" class="btn-login">Ir para Login</a>
