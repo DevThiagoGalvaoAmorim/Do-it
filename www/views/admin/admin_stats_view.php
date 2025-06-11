@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../public/css/stats_admin.css">
+    <link rel="stylesheet" href="../../public/css/pie_chart.css">
+    <link rel="stylesheet" href="../../public/css/bar_chart.css">
 </head>
-
 
 <body>
     <header class="admin-stats-header">
         <div class="admin-stats-header-content">
             <div class="admin-stats-header-logo">
-                <img src="imagens/logo_branca.png" alt="Do it Logo">
+                <a href="../main.php">
+                    <img src="../../public/imagens/logo_branca.png" alt="Do it Logo">
+                </a>
             </div>
             <h1>Administrador</h1>
             <div class="admin-stats-header-actions">
-                <a href="index.php" class="admin-stats-sair-btn">Sair</a>
+                <a href="../../public/index.php" class="admin-stats-sair-btn">Sair</a>
             </div>
         </div>
     </header>
 
-
     <main class="admin-stats-main">
         <div class="admin-stats-sidebar">
             <nav class="admin-stats-nav">
-                <a href="admin.php" class="active">Usuários</a>
-                <a href="admin_stats.php">Estatísticas</a>
+                <a href="../admin_view.php">Usuários</a>
+                <a href="admin_stats.php" class="active">Estatísticas</a>
+                <a href="#">Log De Atividades</a>
             </nav>
         </div>
 
-
         <div class="admin-stats-main-content">
-            <div class="admin-stats-card">
-                <p>Usuários Cadastrados</p>
-                <div class="admin-stats-big-number"><?php echo $userCount; ?></div>
+            <div class="admin-stats-top-row">
+                <div class="admin-stats-card">
+                    <p>Usuários Cadastrados</p>
+                    <div id="userCount" class="admin-stats-big-number">0</div>
+                </div>
+                <div class="admin-stats-card">
+                    <p>Notas/Lembretes Criados</p>
+                    <div id="notesCount" class="admin-stats-big-number">0</div>
+                </div>
             </div>
-            <div class="admin-stats-card">
-                <p>Notas Criadas</p>
-                <div class="admin-stats-big-number"><?php echo $notesCreated; ?></div>
-            </div>
+            
             <div class="admin-stats-card admin-stats-full-width">
-                <p>Número de Usuários Novos Por Mês</p>
-                <div class="admin-stats-big-number"><?php echo $newUsersPerMonth; ?></div>
+                <div class="chart-container">
+                    <div class="chart-title">Usuários Novos - Últimos 6 Meses</div>
+                    <div class="bar-chart-wrapper">
+                        <svg id="barChart" viewBox="0 0 800 400"></svg>
+                    </div>
+                </div>
             </div>
+            
             <div class="admin-stats-card admin-stats-full-width">
-                <p><strong>Tipos De Notas Mais Usadas</strong></p>
-                <div class="admin-stats-pie-chart-container">
-                    <div class="admin-stats-pie-chart"></div>
-                    <div class="admin-stats-legend">
-                        <?php foreach ($noteTypesUsage as $type => $count): ?>
-                            <div><span class="admin-stats-color-box admin-stats-<?php echo strtolower($type); ?>"></span> <?php echo $type; ?> (<?php echo $count; ?>)</div>
-                        <?php endforeach; ?>
+                <div class="chart-container">
+                    <div class="chart-title">Tipos De Anotação Mais Usados</div>
+                    <div class="pie-chart-wrapper">
+                        <svg id="pieChart" viewBox="0 0 400 400"></svg>
+                        <div id="chartLegend" class="chart-legend"></div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-
     <footer>
-        <?php include 'footer.php'; ?>
+        <?php include '../partials/footer.php'; ?>
     </footer>
-
+    <script src="../../public/Javascript/graficos.js"></script>
+    <script src="../../public/Javascript/stats_admin.js"></script>
 
 </body>
-
 
 </html>

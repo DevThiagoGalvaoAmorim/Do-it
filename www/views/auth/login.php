@@ -23,7 +23,7 @@
                 <!-- Adicionados os atributos name -->
                 <input type="text" name="email" placeholder="Email@exemplo.com" class="lock">
                 <input type="password" name="senha" placeholder="Senha" class="lock">
-                <a href="">Esqueceu a senha</a>
+                <a href="../../public/accountRecovery.php">Esqueceu a senha</a>
                 <button class="btn-enter" type="submit">Entrar</button>
             </div>
 
