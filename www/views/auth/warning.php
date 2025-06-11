@@ -84,7 +84,7 @@
 <body>
   <div class="container">
     <div class="logo">
-      <img src="../../public/imagens/logo_branca.png" alt="logo">
+      <img src="../../public/imagens/povin.png" alt="logo">
     </div>
     <div class="mensagem" id="mensagem">Mensagem Genérica</div>
     <a href="/login.html" class="btn-login">Ir para Login</a>
