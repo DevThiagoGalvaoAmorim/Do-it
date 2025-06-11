@@ -44,3 +44,10 @@ CREATE TABLE IF NOT EXISTS lembrete (
     id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS password_resets (
+    email VARCHAR(255) NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (token)
+);
