@@ -299,6 +299,8 @@ function deletarNota(notaEl) {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
+        loadDatabaseData();
+        loadUsersByMonthData();
         carregarNotas();
       } else {
         console.error("Erro ao deletar nota:", data.message);

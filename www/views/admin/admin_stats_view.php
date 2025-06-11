@@ -15,11 +15,13 @@
     <header class="admin-stats-header">
         <div class="admin-stats-header-content">
             <div class="admin-stats-header-logo">
-                <img src="../../public/imagens/logo_branca.png" alt="Do it Logo">
+                <a href="../main.php">
+                    <img src="../../public/imagens/logo_branca.png" alt="Do it Logo">
+                </a>
             </div>
             <h1>Administrador</h1>
             <div class="admin-stats-header-actions">
-                <a href="index.php" class="admin-stats-sair-btn">Sair</a>
+                <a href="../../public/index.php" class="admin-stats-sair-btn">Sair</a>
             </div>
         </div>
     </header>
@@ -27,7 +29,7 @@
     <main class="admin-stats-main">
         <div class="admin-stats-sidebar">
             <nav class="admin-stats-nav">
-                <a href="admin.php">Usuários</a>
+                <a href="../admin_view.php">Usuários</a>
                 <a href="admin_stats.php" class="active">Estatísticas</a>
                 <a href="#">Log De Atividades</a>
             </nav>
@@ -56,7 +58,7 @@
             
             <div class="admin-stats-card admin-stats-full-width">
                 <div class="chart-container">
-                    <div class="chart-title">Tipos De Notas Mais Usadas</div>
+                    <div class="chart-title">Tipos De Anotação Mais Usados</div>
                     <div class="pie-chart-wrapper">
                         <svg id="pieChart" viewBox="0 0 400 400"></svg>
                         <div id="chartLegend" class="chart-legend"></div>

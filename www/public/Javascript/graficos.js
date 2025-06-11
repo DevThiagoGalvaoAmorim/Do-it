@@ -128,7 +128,8 @@ class PieChartSVG {
         const index = parseInt(slice.getAttribute('data-index'));
         
         if (isEntering) {
-            slice.style.transform = "scale(1.05)";
+            slice.style.transformOrigin = `${this.centerX}px ${this.centerY}px`;
+            slice.style.transform = "scale(1.1)";
             slice.style.filter = "brightness(1.1)";
             this.showTooltip(event, slice);
             this.highlightLegendItem(index, true);
@@ -188,7 +189,8 @@ class PieChartSVG {
         const slice = this.container.querySelector(`[data-index="${index}"]`);
         if (slice) {
             if (highlight) {
-                slice.style.transform = "scale(1.05)";
+                slice.style.transformOrigin = `${this.centerX}px ${this.centerY}px`;
+                slice.style.transform = "scale(1.1)";
                 slice.style.filter = "brightness(1.1)";
             } else {
                 slice.style.transform = "scale(1)";
@@ -241,24 +243,23 @@ function loadDatabaseData() {
         
         console.log('Notas:', notasCount, 'Lembretes:', lembretesCount);
         
-        // Se ambos forem zero, mostrar dados de exemplo
+        // Se ambos forem zero, ocultar gráfico e mostrar apenas a legenda
         if (notasCount === 0 && lembretesCount === 0) {
-            const exampleData = [1, 1]; // Dados de exemplo
-            const exampleLabels = ['Notas', 'Lembretes'];
-            const colors = ['#6B46C1', '#C084FC']; // Roxo para combinar com a imagem
-            
-            if (pieChartInstance) {
-                pieChartInstance.updateData(exampleData, exampleLabels, 'Dados do Sistema (Exemplo)');
-            } else {
-                pieChartInstance = new PieChartSVG(
-                    'pieChart',
-                    exampleData,
-                    colors,
-                    exampleLabels,
-                    'Dados do Sistema (Exemplo)'
-                );
+            // Ocultar o container do gráfico
+            const pieChartContainer = document.getElementById('pieChart');
+            if (pieChartContainer) {
+                pieChartContainer.style.display = 'none';
             }
+            
+            // Criar apenas a legenda com valores zerados
+            createEmptyLegend();
         } else {
+            // Mostrar o container do gráfico se estava oculto
+            const pieChartContainer = document.getElementById('pieChart');
+            if (pieChartContainer) {
+                pieChartContainer.style.display = 'block';
+            }
+            
             // Usar dados reais do banco
             const realData = [notasCount, lembretesCount];
             const realLabels = ['Notas', 'Lembretes'];
@@ -279,22 +280,41 @@ function loadDatabaseData() {
     .catch(error => {
         console.error('Erro ao carregar dados:', error);
         
-        // Em caso de erro, usar dados de exemplo
-        const fallbackData = [1, 1];
-        const fallbackLabels = ['Notas', 'Lembretes'];
-        const colors = ['#6B46C1', '#C084FC'];
-        
-        if (pieChartInstance) {
-            pieChartInstance.updateData(fallbackData, fallbackLabels, 'Dados do Sistema (Erro)');
-        } else {
-            pieChartInstance = new PieChartSVG(
-                'pieChart',
-                fallbackData,
-                colors,
-                fallbackLabels,
-                'Dados do Sistema (Erro)'
-            );
+        // Em caso de erro, ocultar gráfico e mostrar legenda zerada
+        const pieChartContainer = document.getElementById('pieChart');
+        if (pieChartContainer) {
+            pieChartContainer.style.display = 'none';
         }
+        
+        createEmptyLegend();
+    });
+}
+
+// Função para criar legenda vazia quando não há dados
+function createEmptyLegend() {
+    const legendContainer = document.getElementById('chartLegend');
+    if (!legendContainer) return;
+    
+    legendContainer.innerHTML = '';
+    
+    const labels = ['Notas', 'Lembretes'];
+    const colors = ['#6B46C1', '#C084FC'];
+    
+    labels.forEach((label, index) => {
+        const legendItem = document.createElement('div');
+        legendItem.className = 'legend-item';
+        
+        const colorBox = document.createElement('div');
+        colorBox.className = 'legend-color';
+        colorBox.style.backgroundColor = colors[index];
+        
+        const labelText = document.createElement('span');
+        labelText.className = 'legend-label';
+        labelText.textContent = `${label}: 0`;
+        
+        legendItem.appendChild(colorBox);
+        legendItem.appendChild(labelText);
+        legendContainer.appendChild(legendItem);
     });
 }
 

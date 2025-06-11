@@ -26,12 +26,12 @@ function getUsuariosPorMes(){
     try{
         global $pdo;
         $query = "SELECT 
-                    YEAR(criado_em) as ano,
-                    MONTH(criado_em) as mes,
-                    COUNT(*) as total
-                  FROM usuarios 
-                  GROUP BY YEAR(criado_em), MONTH(criado_em)
-                  ORDER BY ano ASC, mes ASC";
+            MONTH(criado_em) AS mes, 
+            YEAR(criado_em) AS ano, 
+            COUNT(*) AS total 
+        FROM usuarios 
+        GROUP BY ano, mes 
+        ORDER BY ano, mes";
         
         $result = $pdo->query($query);
         return $result->fetchAll(PDO::FETCH_ASSOC);
