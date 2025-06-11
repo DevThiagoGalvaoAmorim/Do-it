@@ -52,6 +52,3 @@ function apagarToken($token){
         return false;
     }
 }
-
-
-atualizarSenha("565656", "ruam.marcos03@gmail.com");
