@@ -1347,3 +1347,87 @@ ADMIN STATS PAGE
   background-color: #f2f2f2;
   font-weight: bold;
 }
+
+/* Tela "Usuários" do administrador*/
+
+#editModal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); /* Fundo escurecido */
+  justify-content: center;
+  align-items: center;
+}
+
+#editModal .modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px 25px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+#editModal h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#editModal .form-group {
+  margin-bottom: 15px;
+}
+
+#editModal label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#editModal input[type="text"],
+#editModal input[type="email"],
+#editModal input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+#editModal .btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#editModal .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#editModal .btn-primary {
+  background-color: #0066ff;
+  color: #fff;
+}
+
+#editModal .btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+
+@media (max-width: 500px) {
+  #editModal .modal-content {
+    width: 95%;
+    padding: 15px 5px;
+  }
+}
