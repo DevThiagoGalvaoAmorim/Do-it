@@ -47,10 +47,10 @@
 
 | Feature                                                                     | Autor                       | Revisor                     |   |
 | --------------------------------------------------------------------------- | --------------------------- | --------------------------- | - |
-| **Implementar feature de renderização Markdown nas notas usando Marked.js** | Raphael Sales               | Thiago Galvão Amorim        | ❌  |
-| **Implementar autenticação de usuários usando Auth0**                       | Ruam Marcos                 | João Sestari                |  ❌ |
-| **Implementar envio de notificações por e-mail com Mailgun**                |    Thiago Galvão Amorim   | Guilherme da Silva Carvalho | ❌  |
-| **Integrar Firebase Realtime Database para salvar e recuperar notas**       | João Sestari                | Raphael Sales               |  ❌ |
-| **Permitir upload e compartilhamento de arquivos usando File.io**           | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |  ❌ |
-| **Implementar gráficos nas telas de administrador**                  |   Douglas Alves da Cruz       | Ruam Marcos                 |  ❌ |
+| **Implementar feature de Carregamento de Imagenes - via API Cloudinary** | Raphael Sales               | Thiago Galvão Amorim        | ✅  |
+| **Implementar de Recuperação de Email- via API PHPMailer**                       | Ruam Marcos                 | João Sestari                |  ✅ |
+| **Implementar envio de notificações por e-mail- via API PHPMailer**                |    Thiago Galvão Amorim   | Guilherme da Silva Carvalho | ✅  |
+| **Criar API interna para exclusão de notas**       | João Sestari                | Raphael Sales               | ✅ |
+| **Implementar API de Correção Ortográfica -via SpellChecker**           | Guilherme da Silva Carvalho | Ruam Marcos Maciel dos Santos        |  ✅ |
+| **Implementar gráficos nas telas de administrador**                  |   Douglas Alves da Cruz       | Ruam Marcos                 |  ✅ |
 
