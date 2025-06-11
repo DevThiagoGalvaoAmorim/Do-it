@@ -21,7 +21,15 @@ require_once __DIR__ . '/../controllers/safe_page.php';
 
   <main>
 
-    <?php include './partials/sidebar.php'; ?>
+    <?php
+    session_start();
+    //corrigir verificação posteriormente
+    if ($_SESSION['email'] == 'admin@mail') {
+      include './partials/sidebarAdmin.php';
+    } else {
+      include './partials/sidebar.php';
+    }
+    ?>
 
     <section class="conteudo_notas">
 
@@ -56,18 +64,21 @@ require_once __DIR__ . '/../controllers/safe_page.php';
         <input type="hidden" class="id-input" value="">
         <input type="text" class="titulo-input" placeholder="Título" />
 
-        <textarea class="texto-input" placeholder="Escreva seu texto aqui... (Suporte Markdown)"></textarea>
+        <div class="texto-input-container">
+            <div class="texto-highlight"></div>
+            <textarea class="texto-input" placeholder="Escreva seu texto aqui... (Suporte Markdown)"></textarea>
+        </div>
 
         <div class="linha-icones">
           <label for="imagem-input" class="icone botao1" title="Adicionar Imagem">📷</label>
           <input type="file" id="imagem-input" class="imagem-input" accept="image/*" style="display: none;">
-          
+
           <label for="video-input" class="icone botao2" title="Adicionar Vídeo">🎥</label>
           <input type="file" id="video-input" class="video-input" accept="video/*" style="display: none;">
-          
+
           <button class="icone botao3"></button>
         </div>
-        
+
         <div class="preview-container">
           <div class="imagem-preview" style="display: none;">
             <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 200px;">
@@ -90,13 +101,14 @@ require_once __DIR__ . '/../controllers/safe_page.php';
     <?php include './partials/footer.php'; ?>
   </footer>
 
-  <!-- Marked.js CDN -->
+  
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <!-- DOMPurify para sanitização -->
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
   <script src="../public/Javascript/markdown.js"></script>
   <script src="../public/Javascript/script.js"></script>
   <script src="../public/Javascript/search.js"></script>
+  <script src="../public/Javascript/typo.js"></script>
+  <script src="../public/Javascript/spellcheck.js"></script>
 </body>
 
 </html>
