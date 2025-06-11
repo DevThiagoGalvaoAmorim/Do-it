@@ -80,9 +80,16 @@ try {
         $imagem_url = $notaAtual['imagem_url'];
         $video_url = $notaAtual['video_url'];
         
+        $cloudinary = new CloudinaryService();
+        
         // Processar novo upload de imagem
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $cloudinary = new CloudinaryService();
+            // Delete old image from Cloudinary
+            if ($imagem_url) {
+                $oldImagePublicId = $cloudinary->extractPublicId($imagem_url);
+                $cloudinary->deleteFile($oldImagePublicId);
+            }
+            
             $uploadResult = $cloudinary->uploadFile($_FILES['imagem'], 'image');
             if ($uploadResult['success']) {
                 $imagem_url = $uploadResult['url'];
