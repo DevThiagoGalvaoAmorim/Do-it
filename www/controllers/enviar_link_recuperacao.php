@@ -1,5 +1,7 @@
 <?php
 require_once  '../models/account_config.php';
+require_once  '../views/auth/warning.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -37,7 +39,7 @@ $mail = new PHPMailer(true);
         $mail->send();
         
         
-        echo "✅ E-mail enviado para o usuário logado!";
+        tela_de_mensagem("Um link de recuperação enviado ao seu E-mail!");
     } catch (Exception $e) {
-        echo "❌ Erro ao enviar e-mail: {$mail->ErrorInfo}";
+        tela_de_mesagem("Erro ao enviar e-mail: {$mail->ErrorInfo}");
     }

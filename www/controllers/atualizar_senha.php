@@ -1,5 +1,5 @@
 <?php
-
+require_once  '../views/auth/warning2.php';
 require_once __DIR__ . '/../models/account_config.php';
 
 $token = $_POST['token'];
