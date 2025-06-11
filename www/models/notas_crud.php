@@ -16,9 +16,11 @@ try {
         $imagem_url = null;
         $video_url = null;
         
+        // Instanciar CloudinaryService uma vez
+        $cloudinary = new CloudinaryService();
+        
         // Processar upload de imagem
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $cloudinary = new CloudinaryService();
             $uploadResult = $cloudinary->uploadFile($_FILES['imagem'], 'image');
             if ($uploadResult['success']) {
                 $imagem_url = $uploadResult['url'];
