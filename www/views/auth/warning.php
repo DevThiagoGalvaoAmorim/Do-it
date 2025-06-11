@@ -1,3 +1,8 @@
+<?php 
+function tela_de_mensagem($mensagem){
+  echo '
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,7 +24,7 @@
     }
 
     body {
-      background: url('../../public/imagens/fundowarning.gif') no-repeat center center fixed;
+      background: url("../../public/imagens/fundowarning.gif") no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -86,14 +91,12 @@
     <div class="logo">
       <img src="../../public/imagens/povin.png" alt="logo">
     </div>
-    <div class="mensagem" id="mensagem">Mensagem Genérica</div>
-    <a href="/login.html" class="btn-login">Ir para Login</a>
+    <div class="mensagem" id="mensagem">'. $mensagem . '</div>
+    <a href="login.php" class="btn-login">Ir para Login</a>
   </div>
 
-  <script>
-    // Exemplo: atribuir dinamicamente a mensagem
-    const mensagem = "Sessão expirada. Por favor, faça login novamente.";
-    document.getElementById('mensagem').textContent = mensagem;
-  </script>
 </body>
-</html>
+</html>';
+}
+
+
