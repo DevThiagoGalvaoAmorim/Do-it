@@ -18,6 +18,8 @@ CREATE TABLE notas (
     pasta VARCHAR(100),
     id_usuario INT NOT NULL,
     tipo ENUM('Checklist', 'Anotação') NOT NULL,
+    imagem_url VARCHAR(500) NULL,
+    video_url VARCHAR(500) NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
@@ -29,6 +31,8 @@ CREATE TABLE lixeira (
     pasta VARCHAR(100),
     id_usuario INT NOT NULL,
     tipo ENUM('Checklist', 'Anotação') NOT NULL,
+    imagem_url VARCHAR(500) NULL,
+    video_url VARCHAR(500) NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 

@@ -4,4 +4,4 @@ sessions/
 *.log
 *.lock
 dist/
-build/
+build/sessions/

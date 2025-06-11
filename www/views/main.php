@@ -59,9 +59,24 @@ require_once __DIR__ . '/../controllers/safe_page.php';
         <textarea class="texto-input" placeholder="Escreva seu texto aqui... (Suporte Markdown)"></textarea>
 
         <div class="linha-icones">
-          <button class="icone botao1"></button>
-          <button class="icone botao2"></button>
+          <label for="imagem-input" class="icone botao1" title="Adicionar Imagem">📷</label>
+          <input type="file" id="imagem-input" class="imagem-input" accept="image/*" style="display: none;">
+          
+          <label for="video-input" class="icone botao2" title="Adicionar Vídeo">🎥</label>
+          <input type="file" id="video-input" class="video-input" accept="video/*" style="display: none;">
+          
           <button class="icone botao3"></button>
+        </div>
+        
+        <div class="preview-container">
+          <div class="imagem-preview" style="display: none;">
+            <img id="preview-img" src="" alt="Preview" style="max-width: 200px; max-height: 200px;">
+            <button type="button" class="remove-media" onclick="removerImagem()">❌</button>
+          </div>
+          <div class="video-preview" style="display: none;">
+            <video id="preview-video" controls style="max-width: 200px; max-height: 200px;"></video>
+            <button type="button" class="remove-media" onclick="removerVideo()">❌</button>
+          </div>
         </div>
 
         <div class="footer-form">
