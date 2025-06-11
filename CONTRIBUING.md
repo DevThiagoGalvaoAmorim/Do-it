@@ -74,8 +74,8 @@
 | **Criar funcionalidade de notas arquivadas**                                | Douglas Alves               | Guilherme da Silva Carvalho |❌|
 | **Refatorar API externa (Corretor ortográfico)/ Camada de serviço**         | Raphael Sales               | Guilherme da Silva Carvalho |❌|
 | **Criar sessão de admin**                                                   | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |❌|
-| **PENSANDO...**                                                             | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |❌|
-| **PENSANDO...**                                                             |  Raphael Sales              | Thiago Galvão Amorim        |❌|
+| **A definir...**                                                             | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |❌|
+| **A definir...**                                                             |  Raphael Sales              | Thiago Galvão Amorim        |❌|
 
 
 
