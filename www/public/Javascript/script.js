@@ -190,7 +190,8 @@ function carregarNotas() {
         divNota.dataset.date = nota.data_hora;
 
         divNota.addEventListener("click", (event) => {
-          if (event.target.tagName === "BUTTON") {
+          // Ignore clicks on any button, especially the edit button
+          if (event.target.tagName === "BUTTON" || event.target.classList.contains("edit_button")) {
             return;
           }
 
@@ -203,9 +204,9 @@ function carregarNotas() {
             tituloInput.value = nota.titulo;
             descricaoInput.value = nota.descricao;
             idInput.value = nota.id;
+            console.log("ID da nota:", nota.id);
           }
 
-          // Abre o popup
           abrirPopupEditar("popupCriar", nota);
         });
         
@@ -228,6 +229,14 @@ function carregarNotas() {
             <button class="nota-botao">✏️</button>
           </div>
         `;
+
+        // Se tem Markdown, renderiza o preview com formatação
+        const editBtn = divNota.querySelector('.nota-botao:last-child'); // The ✏️ button
+        editBtn.classList.add('edit_button');
+        editBtn.addEventListener('click', (event) => {
+          event.stopPropagation(); // Prevent triggering the note's main click
+          abrirPopupEditar("popupCriar", nota);
+        });
 
         container.appendChild(divNota);
       });
@@ -373,7 +382,8 @@ function carregarNotas() {
         divNota.dataset.date = nota.data_hora;
 
         divNota.addEventListener("click", (event) => {
-          if (event.target.tagName === "BUTTON") {
+          // Ignore clicks on any button, especially the edit button
+          if (event.target.tagName === "BUTTON" || event.target.classList.contains("edit_button")) {
             return;
           }
 
@@ -417,6 +427,14 @@ function carregarNotas() {
           const textoContainer = divNota.querySelector('.nota-texto');
           renderMarkdownInElement(textoContainer, previewText);
         }
+
+        // Add this after divNota.innerHTML = ...
+        const editBtn = divNota.querySelector('.nota-botao:last-child'); // The ✏️ button
+        editBtn.classList.add('edit_button');
+        editBtn.addEventListener('click', (event) => {
+          event.stopPropagation(); // Prevent triggering the note's main click
+          abrirPopupEditar("popupCriar", nota);
+        });
 
         container.appendChild(divNota);
       });
