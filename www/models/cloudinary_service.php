@@ -115,5 +115,33 @@ class CloudinaryService {
         
         return json_decode($response, true);
     }
+    
+    public function extractPublicId($url) {
+        // Extract public_id from Cloudinary URL
+        // Cloudinary URLs have format: https://res.cloudinary.com/{cloud_name}/{resource_type}/upload/{transformations}/{public_id}.{format}
+        $pattern = '/\/upload\/(?:v\d+\/)?([^\/]+?)(?:\.[a-zA-Z0-9]+)?$/';
+        if (preg_match($pattern, $url, $matches)) {
+            return $matches[1];
+        }
+        
+        // Fallback: try to extract from different URL patterns
+        $parts = parse_url($url);
+        if (isset($parts['path'])) {
+            $pathParts = explode('/', trim($parts['path'], '/'));
+            // Look for the part after 'upload'
+            $uploadIndex = array_search('upload', $pathParts);
+            if ($uploadIndex !== false && isset($pathParts[$uploadIndex + 1])) {
+                $publicIdPart = $pathParts[$uploadIndex + 1];
+                // Remove version if present (v1234567890)
+                if (preg_match('/^v\d+$/', $publicIdPart) && isset($pathParts[$uploadIndex + 2])) {
+                    $publicIdPart = $pathParts[$uploadIndex + 2];
+                }
+                // Remove file extension
+                return pathinfo($publicIdPart, PATHINFO_FILENAME);
+            }
+        }
+        
+        return null;
+    }
 }
 ?>
