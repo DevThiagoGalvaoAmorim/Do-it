@@ -2,10 +2,20 @@ let typo = null;
 let isLoading = false;
 let debounceTimer = null;
 
+// Cache DOM elements
+const textarea = document.querySelector('.texto-input');
+const highlight = document.querySelector('.texto-highlight');
+const popup = document.getElementById('popupCriar');
+
 // Load dictionary only when needed
 async function loadDictionary() {
     if (typo || isLoading) return;
     isLoading = true;
+
+    // Show loading indicator (optional)
+    if (highlight) {
+        highlight.innerHTML = "Loading dictionary...";
+    }
     
     try {
         const [affResponse, dicResponse] = await Promise.all([
@@ -21,6 +31,9 @@ async function loadDictionary() {
         typo = new Typo('pt_BR', aff, dic, { platform: 'any' });
     } catch (error) {
         console.error('Failed to load dictionary:', error);
+        if (highlight) {
+            highlight.innerHTML = "Failed to load dictionary.";
+        }
     } finally {
         isLoading = false;
     }
@@ -39,33 +52,31 @@ function escapeHtml(text) {
 }
 
 function highlightMisspelled(text) {
-    if (!typo) return text;
-    return text.replace(/\b\w{3,}\b/g, word => 
+    if (!typo) return escapeHtml(text);
+    return escapeHtml(text).replace(/\b\w{3,}\b/g, word => 
         typo.check(word) ? word : `<span class="misspelled">${word}</span>`
     );
 }
 
 function syncHighlight() {
-    const textarea = document.querySelector('.texto-input');
-    const highlight = document.querySelector('.texto-highlight');
-    
     if (!textarea || !highlight) return;
     
-    // Only process if popup is visible
-    const popup = document.getElementById('popupCriar');
     if (!popup || popup.style.display === 'none') return;
 
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(async () => {
         if (!typo) await loadDictionary();
         highlight.innerHTML = highlightMisspelled(textarea.value);
-        highlight.scrollTop = textarea.scrollTop;
-    }, 500); // Increased debounce time
+
+        // Use requestAnimationFrame for scroll sync (optional)
+        requestAnimationFrame(() => {
+            highlight.scrollTop = textarea.scrollTop;
+        });
+    }, 500);
 }
 
 // Attach event listeners only when popup opens
 function setupSpellcheck() {
-    const popup = document.getElementById('popupCriar');
     if (!popup) return;
 
     const observer = new MutationObserver((mutations) => {
@@ -73,15 +84,16 @@ function setupSpellcheck() {
             if (mutation.type === 'attributes' && 
                 (mutation.attributeName === 'style' || mutation.attributeName === 'class')) {
                 const isVisible = popup.style.display === 'block';
-                const textarea = document.querySelector('.texto-input');
                 
                 if (isVisible && textarea) {
                     textarea.addEventListener('input', syncHighlight);
                     textarea.addEventListener('scroll', () => {
-                        const highlight = document.querySelector('.texto-highlight');
-                        if (highlight) highlight.scrollTop = textarea.scrollTop;
+                        if (highlight) {
+                            highlight.scrollTop = textarea.scrollTop;
+                        }
                     });
                     loadDictionary();
+                    syncHighlight();
                 } else {
                     textarea?.removeEventListener('input', syncHighlight);
                     textarea?.removeEventListener('scroll', syncHighlight);
