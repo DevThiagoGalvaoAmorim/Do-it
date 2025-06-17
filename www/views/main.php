@@ -107,7 +107,6 @@ require_once __DIR__ . '/../controllers/safe_page.php';
   <script src="../public/Javascript/markdown.js"></script>
   <script src="../public/Javascript/script.js"></script>
   <script src="../public/Javascript/search.js"></script>
-  <script src="../public/Javascript/typo.js"></script>
   <script src="../public/Javascript/spellcheck.js"></script>
 </body>
 
