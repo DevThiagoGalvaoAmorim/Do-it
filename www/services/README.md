@@ -1,23 +1,52 @@
-# API do Serviço de Verificação Ortográfica
+# Serviço de Correção Ortográfica
 
-Este diretório contém o serviço de verificação ortográfica refatorado que fornece funcionalidade de verificação ortográfica do lado do servidor para a aplicação Do-it.
+Este diretório contém a implementação refatorada do serviço de correção ortográfica, movendo o processamento do lado cliente (client-side) para uma camada de serviço no servidor (server-side).
 
-## Visão Geral da Arquitetura
+## Arquitetura
 
-O serviço de verificação ortográfica foi refatorado de uma implementação do lado do cliente usando Typo.js para uma arquitetura baseada em API do lado do servidor com os seguintes componentes:
+### Componentes Server-Side
 
-### Componentes Principais
+#### 1. `SpellcheckService.php`
+Classe principal que implementa a lógica de negócio para correção ortográfica:
+- Verificação de palavras individuais
+- Geração de sugestões para palavras incorretas
+- Verificação de texto completo
+- Suporte a múltiplos idiomas
+- Cache de resultados para melhor performance
 
-1. **SpellcheckService.php** - Classe de serviço principal que gerencia a lógica de verificação ortográfica
-2. **spellcheck_api.php** - Endpoint da API REST para comunicação cliente-servidor
-3. **SpellcheckConfig.php** - Gerenciamento de configuração e constantes
-4. **test_spellcheck.php** - Conjunto de testes para validação
+#### 2. `spellcheck_api.php`
+API REST que expõe os endpoints do serviço:
+- `GET /health` - Verificação de saúde da API
+- `POST /check-word` - Verifica se uma palavra está correta
+- `POST /suggestions` - Obtém sugestões para palavra incorreta
+- `POST /check-text` - Verifica texto completo
+- `GET /languages` - Lista idiomas suportados
+- `GET /stats` - Estatísticas do serviço
 
-### Integração do Lado do Cliente
+#### 3. `SpellcheckConfig.php`
+Classe de configuração que gerencia:
+- Idiomas suportados
+- Caminhos de dicionários
+- Limites de processamento
+- Configurações de cache
+- Validação de configurações
 
-- **spellcheck.js** - Cliente JavaScript refatorado que se comunica com a API
-- Removida dependência da biblioteca Typo.js
-- Adicionado mecanismo de cache para melhor performance
+#### 4. `test_spellcheck.php`
+Suite de testes para validar o funcionamento:
+- Testes unitários das classes
+- Testes de integração da API
+- Validação de configurações
+- Testes de tratamento de erros
+
+### Componente Client-Side
+
+#### `spellcheck.js` (Refatorado)
+Cliente JavaScript que se comunica com a API server-side:
+- Classe `SpellcheckClient` para comunicação com API
+- Cache client-side para melhor performance
+- Interface interativa com tooltips de sugestões
+- Seletor de idiomas
+- Destaque visual de palavras incorretas
 
 ## Endpoints da API
 
@@ -209,4 +238,4 @@ php test_spellcheck.php
 2. **Dicionários Personalizados:** Permitir adições de palavras específicas do usuário
 3. **Sugestões Avançadas:** Implementar sugestões conscientes do contexto
 4. **Monitoramento de Performance:** Adicionar métricas e monitoramento
-5. **Limitação de Taxa:** Implementar limitação de taxa da API para prevenção de abuso
+5. **Limitação de Taxa:** Implementar limitação de taxa da API para prevenção de abuso.
