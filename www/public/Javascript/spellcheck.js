@@ -1,41 +1,75 @@
-let typo = null;
 let isLoading = false;
 let debounceTimer = null;
+let spellcheckCache = new Map();
 
 // Cache DOM elements
 const textarea = document.querySelector('.texto-input');
 const highlight = document.querySelector('.texto-highlight');
 const popup = document.getElementById('popupCriar');
 
-// Load dictionary only when needed
-async function loadDictionary() {
-    if (typo || isLoading) return;
-    isLoading = true;
+// API configuration
+const SPELLCHECK_API_URL = '/services/spellcheck_api.php';
+const CACHE_EXPIRY = 5 * 60 * 1000; // 5 minutes
 
-    // Show loading indicator (optional)
-    if (highlight) {
-        highlight.innerHTML = "Loading dictionary...";
+// Check word using API with caching
+async function checkWordWithAPI(word) {
+    const cacheKey = `check_${word.toLowerCase()}`;
+    const cached = spellcheckCache.get(cacheKey);
+    
+    if (cached && Date.now() - cached.timestamp < CACHE_EXPIRY) {
+        return cached.result;
     }
     
     try {
-        const [affResponse, dicResponse] = await Promise.all([
-            fetch('/public/Javascript/dicionarios/index.aff'),
-            fetch('/public/Javascript/dicionarios/index.dic')
-        ]);
-
-        const [aff, dic] = await Promise.all([
-            affResponse.text(),
-            dicResponse.text()
-        ]);
-
-        typo = new Typo('pt_BR', aff, dic, { platform: 'any' });
-    } catch (error) {
-        console.error('Failed to load dictionary:', error);
-        if (highlight) {
-            highlight.innerHTML = "Failed to load dictionary.";
+        const response = await fetch(SPELLCHECK_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `action=check&word=${encodeURIComponent(word)}&language=pt_BR`
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            const result = data.data.correct;
+            spellcheckCache.set(cacheKey, {
+                result: result,
+                timestamp: Date.now()
+            });
+            return result;
+        } else {
+            console.error('Spellcheck API error:', data.error);
+            return true; // Return true on error to avoid false positives
         }
-    } finally {
-        isLoading = false;
+    } catch (error) {
+        console.error('Failed to check word:', error);
+        return true; // Return true on error to avoid false positives
+    }
+}
+
+// Get suggestions using API
+async function getSuggestionsWithAPI(word) {
+    try {
+        const response = await fetch(SPELLCHECK_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `action=suggest&word=${encodeURIComponent(word)}&language=pt_BR&max_suggestions=5`
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            return data.data.suggestions;
+        } else {
+            console.error('Suggestions API error:', data.error);
+            return [];
+        }
+    } catch (error) {
+        console.error('Failed to get suggestions:', error);
+        return [];
     }
 }
 
@@ -51,10 +85,31 @@ function escapeHtml(text) {
   });
 }
 
-function highlightMisspelled(text) {
-    if (!typo) return escapeHtml(text);
-    return escapeHtml(text).replace(/\b\w{3,}\b/g, word => 
-        typo.check(word) ? word : `<span class="misspelled">${word}</span>`
+async function highlightMisspelled(text) {
+    const escapedText = escapeHtml(text);
+    const words = text.match(/\b\w{3,}\b/g) || [];
+    
+    if (words.length === 0) {
+        return escapedText;
+    }
+    
+    // Check all words in parallel
+    const wordChecks = await Promise.all(
+        words.map(async word => ({
+            word: word,
+            correct: await checkWordWithAPI(word)
+        }))
+    );
+    
+    // Create a map for quick lookup
+    const wordCorrectness = new Map();
+    wordChecks.forEach(({word, correct}) => {
+        wordCorrectness.set(word, correct);
+    });
+    
+    // Replace words with highlighted versions if misspelled
+    return escapedText.replace(/\b\w{3,}\b/g, word => 
+        wordCorrectness.get(word) ? word : `<span class="misspelled">${word}</span>`
     );
 }
 
@@ -65,13 +120,23 @@ function syncHighlight() {
 
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(async () => {
-        if (!typo) await loadDictionary();
-        highlight.innerHTML = highlightMisspelled(textarea.value);
+        if (isLoading) return;
+        
+        isLoading = true;
+        try {
+            const highlightedText = await highlightMisspelled(textarea.value);
+            highlight.innerHTML = highlightedText;
 
-        // Use requestAnimationFrame for scroll sync (optional)
-        requestAnimationFrame(() => {
-            highlight.scrollTop = textarea.scrollTop;
-        });
+            // Use requestAnimationFrame for scroll sync
+            requestAnimationFrame(() => {
+                highlight.scrollTop = textarea.scrollTop;
+            });
+        } catch (error) {
+            console.error('Error highlighting text:', error);
+            highlight.innerHTML = escapeHtml(textarea.value);
+        } finally {
+            isLoading = false;
+        }
     }, 500);
 }
 
@@ -92,7 +157,6 @@ function setupSpellcheck() {
                             highlight.scrollTop = textarea.scrollTop;
                         }
                     });
-                    loadDictionary();
                     syncHighlight();
                 } else {
                     textarea?.removeEventListener('input', syncHighlight);
