@@ -120,7 +120,7 @@
             <nav class="admin-nav">
                 <a href="#" class="active">Usuários</a>
                 <a href="./admin/admin_stats_view.php">Estatísticas</a>
-                <a href="#">Log De Atividades</a>
+                <a href="./admin/admin_log_view.php">Log De Atividades</a>
             </nav>
         </div>
 

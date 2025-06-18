@@ -31,7 +31,7 @@
             <nav class="admin-stats-nav">
                 <a href="../admin_view.php">Usuários</a>
                 <a href="admin_stats.php" class="active">Estatísticas</a>
-                <a href="#">Log De Atividades</a>
+                <a href="admin_log_view.php">Log De Atividades</a>
             </nav>
         </div>
 
