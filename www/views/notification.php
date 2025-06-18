@@ -20,7 +20,15 @@ require_once __DIR__ . '/../controllers/safe_page.php';
     <?php include './partials/header.php'; ?>
 
     <main>
-        <?php include './partials/sidebar.php'; ?>
+        <?php
+        session_start();
+        //corrigir verificação posteriormente
+        if ($_SESSION['email'] == 'admin@mail') {
+            include './partials/sidebarAdmin.php';
+        } else {
+            include './partials/sidebar.php';
+        }
+        ?>
 
         <section class="conteudo_lembretes">
             <div class="criacao_de_lembretes">

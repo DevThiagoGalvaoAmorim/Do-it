@@ -269,7 +269,7 @@ let pieChartInstance = null;
 
 // Função para carregar dados do banco e atualizar o gráfico
 function loadDatabaseData() {
-  fetch("/controllers/api_data.php", {
+  fetch("/services/api_graficos/api_data.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -665,7 +665,7 @@ let barChartInstance = null;
 
 // Função para carregar dados de usuários por mês
 function loadUsersByMonthData() {
-  fetch("/controllers/api_data.php", {
+  fetch("/services/api_graficos/api_data.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

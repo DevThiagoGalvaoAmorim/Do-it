@@ -60,7 +60,7 @@ let notesCounter = null;
 
 // Função para carregar dados dos contadores
 function loadStatsCounters() {
-    fetch('/controllers/api_data.php', {
+    fetch('/services/api_graficos/api_data.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
