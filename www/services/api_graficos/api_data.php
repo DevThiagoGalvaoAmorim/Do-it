@@ -1,5 +1,5 @@
 <?php
-require_once '../models/fetch_data.php';
+require_once './fetch_data.php';
 
 header('Content-Type: application/json');
 
