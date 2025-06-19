@@ -64,7 +64,7 @@
 | **Corrigir feature de redefinição de senha**                                | Ruam Marcos                 | João Sestari                |❌|
 | **Tela modal para usuário/ Para header**                                    | Ruam Marcos                 | Raphael Sales               |❌|
 | **Criar funcionalidade das pastas**                                         | Ruam Marcos                 | Thiago Galvão Amorim        |❌|
-| **Criar funcionalidade de log do admin(Externa/interna)**                   | Ruam Marcos                 | Guilherme da Silva Carvalho |❌|
+| **Criar funcionalidade de log do admin(Externa/interna)**                   | Ruam Marcos                 | Guilherme da Silva Carvalho |✅|
 | **Criação de rotas e restrição de acesso**                                  | Ruam Marcos                 | Raphael Sales               |❌|
 | **Refatorar API interna/ Camada de serviço**                                | Douglas Alves               | Guilherme da Silva Carvalho |❌|
 | **Refatorar API externa (Email)/ Camada de serviço**                        | Thiago Galvão               | Douglas Alves               |❌|
