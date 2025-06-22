@@ -70,7 +70,7 @@
 | **Refatorar API externa (Email)/ Camada de serviço**                        | Thiago Galvão               | Douglas Alves               |❌|
 | **Corrigir modo noturno**                                                   | Thiago Galvão               | Guilherme da Silva Carvalho |❌|
 | **Criar notificação com prazo(para lembretes)**                             | Thiago Galvão               | Raphael Sales               |❌|
-| **Refatorar API externa (markdown)/ Camada de serviço**                     | Raphael Sales               | Douglas Alves               |❌|
+| **Refatorar API externa (markdown)/ Camada de serviço**                     | Raphael Sales               | Douglas Alves               |✅|
 | **Criar funcionalidade de notas arquivadas**                                | Douglas Alves               | Guilherme da Silva Carvalho |❌|
 | **Refatorar API externa (Corretor ortográfico)/ Camada de serviço**         | Raphael Sales               | Guilherme da Silva Carvalho |❌|
 | **Criar sessão de admin**                                                   | Guilherme da Silva Carvalho | Thiago Galvão Amorim        |❌|
