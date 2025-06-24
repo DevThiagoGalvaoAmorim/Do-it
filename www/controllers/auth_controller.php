@@ -12,14 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($email) && !empty($senha)) {
             // Verifica se o email e a senha são "admin"
             if ($email === 'admin' && $senha === 'admin') {
-                // Define o usuário como admin
-                $_SESSION['id'] = 1; // Você pode definir um ID fixo ou buscar no banco
-                $_SESSION['nome'] = 'Admin';
-                $_SESSION['email'] = $email;
-                $_SESSION['tipo'] = 'admin';
-                
-                header('Location: ../views/admin/admin_view.php');
-                exit;
+                // Buscar admin no banco de dados
+                $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND tipo = 'admin'");
+                $stmt->execute([':email' => $email, ':senha' => $senha]);
+                $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($admin) {
+                    $_SESSION['id'] = $admin['id'];
+                    $_SESSION['nome'] = $admin['nome'];
+                    $_SESSION['email'] = $admin['email'];
+                    $_SESSION['tipo'] = $admin['tipo'];
+                    header('Location: ../views/admin/admin_view.php');
+                    exit;
+                }
             } else {
                 // Busca o usuário no banco de dados
                 $usuario = buscarUsuario($email, $senha);
