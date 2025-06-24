@@ -1,12 +1,14 @@
+<?php require_once __DIR__ . '/../../controllers/admin_only.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
     <style>
         #editModal {
             position: fixed;
@@ -99,17 +101,18 @@
 </head>
 
 <body>
+
     <header>
         <section class="search">
             <div class="header-content">
                 <div class="header-logo">
-                    <a href="./main.php">
+                    <a href="../main.php">
                         <img src="../../public/imagens/logo_branca.png" alt="Do it Logo">
                     </a>
                 </div>
                 <h1>Administrador</h1>
                 <div class="header-actions">
-                    <a href="logout.php" class="sair-btn">Sair</a>
+                    <a href="../../controllers/logout.php" class="sair-btn">Sair</a>
                 </div>
             </div>
         </section>
@@ -118,9 +121,9 @@
     <main>
         <div class="admin-sidebar">
             <nav class="admin-nav">
-                <a href="#" class="active">Usuários</a>
-                <a href="./admin/admin_stats_view.php">Estatísticas</a>
-                <a href="./admin/admin_log_view.php">Log De Atividades</a>
+                <a href="admin_view.php" class="active">Usuários</a>
+                <a href="admin_stats_view.php">Estatísticas</a>
+                <a href="admin_log_view.php">Log De Atividades</a>
             </nav>
         </div>
 
@@ -167,7 +170,7 @@
         </div>
     </main>
 
-    <script src="../public/javascript/admin-user.js"></script>
+    <script src="../../public/javascript/admin-user.js"></script>
 
     <footer>
         <?php include 'footer.php'; ?>

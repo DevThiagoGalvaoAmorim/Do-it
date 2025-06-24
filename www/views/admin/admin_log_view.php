@@ -1,5 +1,6 @@
 <?php 
 
+require_once __DIR__ . '/../../controllers/admin_only.php';
 require __DIR__ . '/../../controllers/log_atividades.php';
 
 ?>
@@ -69,13 +70,13 @@ require __DIR__ . '/../../controllers/log_atividades.php';
         <section class="search">
             <div class="header-content">
                 <div class="header-logo">
-                    <a href="./main.php">
+                    <a href="../main.php">
                         <img src="../../public/imagens/logo_branca.png" alt="Do it Logo">
                     </a>
                 </div>
                 <h1>Administrador</h1>
                 <div class="header-actions">
-                    <a href="logout.php" class="sair-btn">Sair</a>
+                    <a href="../../controllers/logout.php" class="sair-btn">Sair</a>
                 </div>
             </div>
         </section>
@@ -84,9 +85,9 @@ require __DIR__ . '/../../controllers/log_atividades.php';
     <main>
         <div class="admin-sidebar">
             <nav class="admin-nav">
-                <a href="../admin_view.php">Usuários</a>
+                <a href="admin_view.php">Usuários</a>
                 <a href="admin_stats_view.php">Estatísticas</a>
-                <a href="#" class="active">Log De Atividades</a>
+                <a href="admin_log_view.php" class="active">Log De Atividades</a>
             </nav>
         </div>
 
