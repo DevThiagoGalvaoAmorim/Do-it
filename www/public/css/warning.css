@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(background-login.png);
+    background-image: url(../imagens/background-login.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 0px -70px;
@@ -24,12 +24,12 @@ body {
     border-radius: 45px;
 }
 
-.loginbox {
+.warningbox {
     align-content: center
 }
 
 
-.content-login {
+.content-warning {
     
     border-left: 2px solid rgba(0, 0, 0, 0.555);
     display: flex;
@@ -39,7 +39,7 @@ body {
     gap: 50px;
 }
 
-.content-login img{
+.content-warning img{
     padding-top: 4rem;
     width: 14rem;
 }
@@ -59,7 +59,7 @@ body {
     gap: 20px
 }
 
-.content-login .btn-enter {
+.content-warning .btn-enter {
     text-align: center;
     padding: 12px;
     width: 10rem;
