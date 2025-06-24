@@ -10,6 +10,13 @@ CREATE TABLE IF NOT EXISTS usuarios (
     tipo VARCHAR(100),
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Inserindo um usuário administrador padrão
+-- A senha deve ser armazenada de forma segura, aqui é apenas um exemplo.   
+
+INSERT INTO usuarios (nome, email, senha, tipo)
+VALUES ('Admin', 'admin', 'admin', 'admin');
+
 CREATE TABLE notas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
