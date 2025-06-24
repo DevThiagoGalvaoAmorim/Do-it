@@ -19,7 +19,7 @@ O Sistema de Notas é uma aplicação voltada para organização pessoal de info
 ### Requisitos Funcionais do Projeto
 
 ### Protótipo
-Link do Figma:[Clique aqui](https://www.figma.com/proto/NkrOmzGeP9iJk7x515aj9f/Do-it---Prototype001?node-id=1-3&p=f&t=rdSItcbIqmxTrU6p-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3)
+Link do Figma: [Clique aqui](https://www.figma.com/design/NkrOmzGeP9iJk7x515aj9f/Do-it---Prot%C3%B3tipo?node-id=0-1&t=2X7gTSUI7cN5yLnP-1)
 
 ### RF01 - Cadastro de Usuário
 
