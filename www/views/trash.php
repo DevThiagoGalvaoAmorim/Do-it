@@ -115,6 +115,7 @@ if ($id_usuario) {
             });
         });
     </script>
+     <script src="../public/Javascript/script.js"></script>
 </body>
 
 </html>

@@ -473,6 +473,31 @@ function abrirPerfilUsuario() {
   document.body.style.overflow = 'hidden';
 }
 
+
+// Hover do perfil do usuário
+document.addEventListener("DOMContentLoaded", function () {
+  const avatar = document.getElementById("userAvatar");
+  const hover = document.getElementById("profileHover");
+
+  if (avatar && hover) {
+    avatar.addEventListener("mouseenter", () => {
+      hover.style.display = "block";
+    });
+    avatar.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (!hover.matches(":hover")) hover.style.display = "none";
+      }, 150);
+    });
+    hover.addEventListener("mouseleave", () => {
+      hover.style.display = "none";
+    });
+    hover.addEventListener("mouseenter", () => {
+      hover.style.display = "block";
+    });
+  }
+});
+
+
 // Função para abrir a página de configurações
 function abrirConfiguracoes() {
   // Implementar redirecionamento para a página de configurações

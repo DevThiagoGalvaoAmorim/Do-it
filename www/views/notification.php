@@ -11,7 +11,9 @@ require_once __DIR__ . '/../controllers/safe_page.php';
     <title>Do it</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+ 
     <link rel="stylesheet" href="../public/css/stylePlus.css">
+
 
 </head>
 
@@ -71,6 +73,7 @@ require_once __DIR__ . '/../controllers/safe_page.php';
     <script src="../public/Javascript/scriptplus.js"></script>
     <script src="../public/Javascript/search.js"></script>
     <script src="../public/Javascript/sendemail.js"></script>
+    <script src="../public/Javascript/script.js"></script>
 </body>
 
 </html>

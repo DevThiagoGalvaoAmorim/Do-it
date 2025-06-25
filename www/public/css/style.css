@@ -1482,10 +1482,86 @@ ADMIN STATS PAGE
   background-color: #ccc;
   color: #333;
 }
-
 @media (max-width: 500px) {
   #editModal .modal-content {
     width: 95%;
     padding: 15px 5px;
   }
+}
+
+.user-avatar {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-hover {
+  display: none;
+  position: absolute;
+  top: 110%; /* logo abaixo do avatar */
+  left: -130%;   /* alinha à esquerda do avatar */
+
+  background: #18191c;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0003;
+  min-width: 260px;
+  z-index: 100;
+  padding: 24px 20px 16px 20px;
+}
+
+.profile-hover-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-hover-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #222;
+  border: 2px solid #333;
+}
+
+.profile-hover-info {
+  text-align: center;
+}
+
+.profile-hover-info strong {
+  font-size: 1.1rem;
+  display: block;
+}
+
+.profile-hover-info span {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.profile-hover-btn,
+.profile-hover-logout {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  background: #232325;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.profile-hover-btn:hover {
+  background: #0A4FFF;
+}
+
+.profile-hover-logout {
+  background: #e57373;
+  color: #fff;
+}
+
+.profile-hover-logout:hover {
+  background: #c62828;
 }
