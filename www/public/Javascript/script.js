@@ -230,7 +230,7 @@ function carregarNotas() {
           <p class="nota-texto">${nota.descricao}</p>
           ${mediaHtml}
           <div class="nota-botoes">
-            <button type="button" class="arquivar_button nota-botao" title="Arquivar">�</button>
+            <button type="button" class="arquivar_button nota-botao" title="Arquivar">📦</button>
             <button type="button" class="archive_button nota-botao" title="Excluir">🗑️</button>
             <button class="nota-botao edit_button" title="Editar">✏️</button>
           </div>
@@ -421,7 +421,7 @@ function carregarNotas() {
             <p class="nota-texto">${previewText}</p>
           </div>
           <div class="nota-botoes">
-            <button type="button" class="arquivar_button nota-botao" title="Arquivar">�</button>
+            <button type="button" class="arquivar_button nota-botao" title="Arquivar">📦</button>
             <button type="button" class="archive_button nota-botao" title="Excluir">🗑️</button>
             <button class="nota-botao edit_button" title="Editar">✏️</button>
           </div>
