@@ -14,6 +14,42 @@ Grupo:
 ### Descrição  
 O Sistema de Notas é uma aplicação voltada para organização pessoal de informações, permitindo ao usuário criar, editar e gerenciar notas, lembretes, listas de tarefas e agrupá-las em pastas. O sistema também possibilita personalização de perfil e gerenciamento de conta, com diferentes níveis de acesso (Usuário e Administrador).
 
+### Scripts de Teste
+
+#### Testes da API de Markdown
+O projeto inclui testes para a API de markdown que podem ser executados no navegador:
+
+**Multiplataforma (recomendado):**
+```bash
+npm run test:markdown
+```
+
+**Scripts específicos por sistema operacional:**
+- **macOS:** `npm run test:markdown:mac`
+- **Linux:** `npm run test:markdown:linux`  
+- **Windows:** `npm run test:markdown:windows`
+
+O script principal `test:markdown` detecta automaticamente o sistema operacional e usa o comando apropriado:
+- macOS: `open`
+- Windows: `start`
+- Linux: `xdg-open`
+
+#### Testes de Integração PHP
+Para executar os testes de integração com PHPUnit:
+
+```bash
+# Instalar dependências
+composer install
+
+# Executar testes específicos de markdown
+./vendor/bin/phpunit www/tests/MarkdownIntegrationTest.php
+
+# Executar todos os testes
+./vendor/bin/phpunit
+```
+
+Consulte `www/tests/README.md` para mais detalhes sobre a configuração e execução dos testes.
+
 ---
  
 ### Requisitos Funcionais do Projeto

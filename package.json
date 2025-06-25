@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "test:markdown": "node -e \"const { exec } = require('child_process'); const os = require('os'); const path = 'www/tests/test_markdown.html'; const cmd = os.platform() === 'darwin' ? 'open' : os.platform() === 'win32' ? 'start' : 'xdg-open'; exec(cmd + ' ' + path);\"",
+    "test:markdown:mac": "open www/tests/test_markdown.html",
+    "test:markdown:linux": "xdg-open www/tests/test_markdown.html",
+    "test:markdown:windows": "start www/tests/test_markdown.html"
   },
   "repository": {
     "type": "git",
@@ -28,6 +32,8 @@
     "mongoose": "^8.14.3"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^26.1.0",
     "nodemon": "^3.1.10"
   }
 }
