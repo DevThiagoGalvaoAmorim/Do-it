@@ -1,12 +1,11 @@
 <?php
 require_once  '../models/account_config.php';
 require_once  '../views/auth/warning.php';
+require '/var/www/html/vendor/autoload.php';
+require_once __DIR__ . '/../conexao_db/conexao.php'; 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require '/var/www/html/vendor/autoload.php';
-require_once __DIR__ . '/../conexao_db/conexao.php'; // Certifique-se de que está puxando a conexão corretamente!
 
 
 $email = $_POST['email'];
