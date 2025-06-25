@@ -17,14 +17,16 @@ try {
 
             if ($nota) {
                 // Inserir de volta na tabela notas
-                $stmtNota = $pdo->prepare("INSERT INTO notas (titulo, descricao, data_hora, pasta, id_usuario, tipo) VALUES (:titulo, :descricao, :data_hora, :pasta, :id_usuario, :tipo)");
+                $stmtNota = $pdo->prepare("INSERT INTO notas (titulo, descricao, data_hora, pasta, id_usuario, tipo, imagem_url, video_url) VALUES (:titulo, :descricao, :data_hora, :pasta, :id_usuario, :tipo, :imagem_url, :video_url)");
                 $stmtNota->execute([
                     ':titulo' => $nota['titulo'],
                     ':descricao' => $nota['descricao'],
                     ':data_hora' => $nota['data_hora'],
                     ':pasta' => $nota['pasta'],
                     ':id_usuario' => $nota['id_usuario'],
-                    ':tipo' => $nota['tipo']
+                    ':tipo' => $nota['tipo'],
+                    ':imagem_url' => $nota['imagem_url'],
+                    ':video_url' => $nota['video_url']
                 ]);
                 // Remover da lixeira
                 $stmtDelete = $pdo->prepare("DELETE FROM lixeira WHERE id = :id AND id_usuario = :id_usuario");

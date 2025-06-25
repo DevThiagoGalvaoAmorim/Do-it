@@ -8,6 +8,12 @@ document.addEventListener("click", (event) => {
     const notaEl = event.target.closest(".nota"); // Seleciona o elemento da nota
     deletarNota(notaEl); // Passa o elemento da nota para a função
   }
+  
+  // Adicionar evento ao botão de arquivar
+  if (event.target.classList.contains("arquivar_button")) {
+    const notaEl = event.target.closest(".nota"); // Seleciona o elemento da nota
+    arquivarNota(notaEl); // Passa o elemento da nota para a função
+  }
 });
 
 document.addEventListener("DOMContentLoaded", carregarNotas);
@@ -224,15 +230,14 @@ function carregarNotas() {
           <p class="nota-texto">${nota.descricao}</p>
           ${mediaHtml}
           <div class="nota-botoes">
-            <button class="nota-botao">📦</button>
-            <button type="button" class="archive_button nota-botao">🗑️</button>
-            <button class="nota-botao">✏️</button>
+            <button type="button" class="arquivar_button nota-botao" title="Arquivar">�</button>
+            <button type="button" class="archive_button nota-botao" title="Excluir">🗑️</button>
+            <button class="nota-botao edit_button" title="Editar">✏️</button>
           </div>
         `;
 
         // Se tem Markdown, renderiza o preview com formatação
-        const editBtn = divNota.querySelector('.nota-botao:last-child'); // The ✏️ button
-        editBtn.classList.add('edit_button');
+        const editBtn = divNota.querySelector('.edit_button'); // The ✏️ button
         editBtn.addEventListener('click', (event) => {
           event.stopPropagation(); // Prevent triggering the note's main click
           abrirPopupEditar("popupCriar", nota);
@@ -416,9 +421,9 @@ function carregarNotas() {
             <p class="nota-texto">${previewText}</p>
           </div>
           <div class="nota-botoes">
-            <button class="nota-botao">📦</button>
-            <button type="button" class="archive_button nota-botao">🗑️</button>
-            <button class="nota-botao">✏️</button>
+            <button type="button" class="arquivar_button nota-botao" title="Arquivar">�</button>
+            <button type="button" class="archive_button nota-botao" title="Excluir">🗑️</button>
+            <button class="nota-botao edit_button" title="Editar">✏️</button>
           </div>
         `;
         
@@ -429,8 +434,7 @@ function carregarNotas() {
         }
 
         // Add this after divNota.innerHTML = ...
-        const editBtn = divNota.querySelector('.nota-botao:last-child'); // The ✏️ button
-        editBtn.classList.add('edit_button');
+        const editBtn = divNota.querySelector('.edit_button'); // The ✏️ button
         editBtn.addEventListener('click', (event) => {
           event.stopPropagation(); // Prevent triggering the note's main click
           abrirPopupEditar("popupCriar", nota);
@@ -557,4 +561,31 @@ function sortByDate() {
 
   calendarIcon.classList.toggle('flip', !dateAscending);
   dateAscending = !dateAscending;
+}
+
+// Função para arquivar uma nota
+function arquivarNota(notaEl) {
+  const id = notaEl.dataset.id; // Obtém o ID da nota do atributo data-id
+  const formData = new FormData();
+  formData.append("action", "archive");
+  formData.append("id", id);
+
+  fetch("/models/notas_crud.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        carregarNotas();
+        // alert("Nota arquivada com sucesso!");
+      } else {
+        console.error("Erro ao arquivar nota:", data.message);
+        // alert("Erro ao arquivar nota: " + data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro:", error);
+      // alert("Erro ao arquivar nota.");
+    });
 }

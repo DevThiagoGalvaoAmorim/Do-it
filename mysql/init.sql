@@ -43,6 +43,19 @@ CREATE TABLE lixeira (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
+CREATE TABLE arquivadas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    pasta VARCHAR(100),
+    id_usuario INT NOT NULL,
+    tipo ENUM('Checklist', 'Anotação') NOT NULL,
+    imagem_url VARCHAR(500) NULL,
+    video_url VARCHAR(500) NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS lembrete (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -146,5 +159,26 @@ BEGIN
     
     -- Actually delete the items
     DELETE FROM lixeira WHERE id_usuario = p_id_usuario;
+END//
+DELIMITER ;
+
+-- Triggers para notas arquivadas
+DELIMITER //
+CREATE TRIGGER after_arquivadas_insert
+AFTER INSERT ON arquivadas
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_atividades (id_usuario, acao)
+    VALUES (NEW.id_usuario, CONCAT('Arquivou a nota "', NEW.titulo, '" (ID: ', NEW.id, ')'));
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER after_arquivadas_delete
+AFTER DELETE ON arquivadas
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_atividades (id_usuario, acao)
+    VALUES (OLD.id_usuario, CONCAT('Desarquivou a nota "', OLD.titulo, '" (ID: ', OLD.id, ')'));
 END//
 DELIMITER ;
