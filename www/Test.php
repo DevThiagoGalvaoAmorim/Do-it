@@ -2,12 +2,6 @@
 session_start();
 require_once __DIR__ . '/conexao_db/conexao.php';
 
-// Verify admin privileges
-if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
-    header('Location: ../login.php');
-    exit;
-}
-
 try {
     // Fetch only email and tipo from database
     $stmt = $pdo->query("SELECT email, tipo FROM usuarios ORDER BY tipo, email");
