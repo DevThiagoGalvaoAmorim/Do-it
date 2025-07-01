@@ -330,7 +330,7 @@ Antes de começar, certifique-se de que você tem as seguintes ferramentas insta
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/DevThiagoGalvaoAmorim/Do-it.git](https://github.com/DevThiagoGalvaoAmorim/Do-it.git)
+    git clone https://github.com/DevThiagoGalvaoAmorim/Do-it.git
     ```
 
 2.  **Acesse o diretório do projeto:**
