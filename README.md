@@ -312,3 +312,46 @@ Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sist
 | **US06** | Implementar Cadastro de Usuário – Criar conta com dados pessoais e senha. |
 | **US07** | Implementar Login com Sessão – Fazer login no sistema e acessar painel. |
 | **US09** | Criar Página de Logout e Encerrar Sessão – Encerrar sessão com segurança. |
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para colocar a aplicação para rodar localmente na sua máquina.
+
+### Pré-requisitos
+
+Antes de começar, certifique-se de que você tem as seguintes ferramentas instaladas:
+
+-   [**Docker**](https://www.docker.com/products/docker-desktop/)
+-   [**Git**](https://git-scm.com/)
+
+### Passos para Instalação
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/DevThiagoGalvaoAmorim/Do-it.git](https://github.com/DevThiagoGalvaoAmorim/Do-it.git)
+    ```
+
+2.  **Acesse o diretório do projeto:**
+    ```bash
+    cd Do-it
+    ```
+
+3.  **Construa e inicie os containers Docker:**
+    ```bash
+    docker-compose up --build
+    ```
+
+4.  **Acesse a aplicação:**
+    Abra seu navegador e acesse o seguinte endereço:
+    [http://localhost:8080/public/index.php](http://localhost:8080/public/index.php)
+
+### 🛑 Para Parar a Execução
+
+Para parar todos os containers relacionados ao projeto, execute o comando:
+
+```bash
+docker-compose down
+
+
