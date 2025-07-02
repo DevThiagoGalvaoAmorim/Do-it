@@ -1,4 +1,5 @@
 <?php 
+
 function tela_de_mensagem($mensagem){
   echo '
 <!DOCTYPE html>
@@ -17,11 +18,11 @@ function tela_de_mensagem($mensagem){
         <div class="warningbox" id="warningbox">
 
             <div class="content-warning">
-                <img src="logo_preta.png" alt="user-polvo">
+                <img src="../../public/imagens/logo_preta.png" alt="user-polvo">
                 <div class="mensagem">
                     <p> '. $mensagem . ' </p>
                 </div>
-                <button class="btn-enter" type="button" onclick="window.location.href='pagina_de_login.html';">Voltar ao Login</button>
+                <button class="btn-enter" type="button" ><a href="/views/auth/login.php" class="jatenhoconta" color="white">Voltar ao Login</a></button>
             </div>
 
         </div>
