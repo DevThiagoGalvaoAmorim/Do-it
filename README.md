@@ -252,10 +252,6 @@ Como usuário, desejo criar, editar, excluir e buscar notas de forma rápida e p
 - RF05 – Exclusão de Notas  
 - RF08 – Pesquisa de Notas por Título
   
-![image](https://github.com/user-attachments/assets/8dccc021-b4b6-4f32-bbf1-742029f7fb22)
-
-![image](https://github.com/user-attachments/assets/46443cc4-0a1f-46ab-aeb1-193bf4ac2c6f)
-
 ### User Stories que se enquadram na iteração 
 
 | User Story | Descrição |
@@ -263,6 +259,9 @@ Como usuário, desejo criar, editar, excluir e buscar notas de forma rápida e p
 | **US02** | Implementar CRUD Básico de Notas – Criar e visualizar notas simples para organizar informações. |
 | **US04** | Prototipar Interface com HTML/CSS – Interface funcional para testar a criação e listagem de notas. |
 | **US05** | Criar Navegação entre Telas – Navegar entre a página inicial e o painel de notas. |
+
+
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio1.md)
 
 ---
 ## Iteração 2 - Gerenciamento das notas
@@ -292,18 +291,7 @@ Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sist
 - RF10 – Exclusão da Conta do Usuário
 - RF11 - Gerenciamento de Usuários pelo Administrador
 
-
-![image](https://github.com/user-attachments/assets/af094729-ba3b-4e69-9c36-726c8665a042)
-
-![image](https://github.com/user-attachments/assets/f2795ec4-f7c5-426a-84f7-97059ad7174f)
-
-![Tela de Administrador - Usuários-Douglas](https://github.com/user-attachments/assets/dcf2d4b4-e5c8-4866-a5cd-106b6462fc82)
-
-![Tela de Administrador - Log De Atividades-Douglas](https://github.com/user-attachments/assets/36b62a4e-6797-4b78-93c5-043c81c2b1cf)
-
-![Tela de Administrador - Estatísticas-Douglas](https://github.com/user-attachments/assets/36224352-9d7d-4a74-8eef-62af22f0cae5)
-
-
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio2.md)
 
 ### User Stories que se enquadram na Iteração 2
 
