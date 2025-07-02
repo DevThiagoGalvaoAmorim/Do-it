@@ -23,6 +23,9 @@ Este repositório contém uma landing page desenvolvida como parte da disciplina
 📍 **Link da página publicada:**  
 ➡️ [Clique aqui para acessar a landing page](https://ruammarcos.github.io/landing_page/)
 
+📍 **Link do Vídeo de Apresentação:**  
+➡️ [Clique aqui para acessar a apresentação](https://drive.google.com/file/d/1ZOldysTAgGjsxIrZFBZADYAobRT2IB0B/view)
+
 ---
 ## Sistema de Notas
 
