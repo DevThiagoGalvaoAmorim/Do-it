@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../../controllers/admin_only.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,7 +22,7 @@
             </div>
             <h1>Administrador</h1>
             <div class="admin-stats-header-actions">
-                <a href="../../public/index.php" class="admin-stats-sair-btn">Sair</a>
+                <a href="../../controllers/logout.php" class="admin-stats-sair-btn">Sair</a>
             </div>
         </div>
     </header>
@@ -29,9 +30,9 @@
     <main class="admin-stats-main">
         <div class="admin-stats-sidebar">
             <nav class="admin-stats-nav">
-                <a href="../admin_view.php">Usuários</a>
-                <a href="admin_stats.php" class="active">Estatísticas</a>
-                <a href="#">Log De Atividades</a>
+                <a href="admin_view.php">Usuários</a>
+                <a href="admin_stats_view.php" class="active">Estatísticas</a>
+                <a href="admin_log_view.php">Log De Atividades</a>
             </nav>
         </div>
 

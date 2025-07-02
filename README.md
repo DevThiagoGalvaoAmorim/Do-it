@@ -14,12 +14,48 @@ Grupo:
 ### Descrição  
 O Sistema de Notas é uma aplicação voltada para organização pessoal de informações, permitindo ao usuário criar, editar e gerenciar notas, lembretes, listas de tarefas e agrupá-las em pastas. O sistema também possibilita personalização de perfil e gerenciamento de conta, com diferentes níveis de acesso (Usuário e Administrador).
 
+### Scripts de Teste
+
+#### Testes da API de Markdown
+O projeto inclui testes para a API de markdown que podem ser executados no navegador:
+
+**Multiplataforma (recomendado):**
+```bash
+npm run test:markdown
+```
+
+**Scripts específicos por sistema operacional:**
+- **macOS:** `npm run test:markdown:mac`
+- **Linux:** `npm run test:markdown:linux`  
+- **Windows:** `npm run test:markdown:windows`
+
+O script principal `test:markdown` detecta automaticamente o sistema operacional e usa o comando apropriado:
+- macOS: `open`
+- Windows: `start`
+- Linux: `xdg-open`
+
+#### Testes de Integração PHP
+Para executar os testes de integração com PHPUnit:
+
+```bash
+# Instalar dependências
+composer install
+
+# Executar testes específicos de markdown
+./vendor/bin/phpunit www/tests/MarkdownIntegrationTest.php
+
+# Executar todos os testes
+./vendor/bin/phpunit
+```
+
+Consulte `www/tests/README.md` para mais detalhes sobre a configuração e execução dos testes.
+
 ---
  
 ### Requisitos Funcionais do Projeto
 
 ### Protótipo
-Link do Figma:[Clique aqui](https://www.figma.com/proto/NkrOmzGeP9iJk7x515aj9f/Do-it---Prototype001?node-id=1-3&p=f&t=rdSItcbIqmxTrU6p-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3)
+Link do Figma:[Clique aqui](https://www.figma.com/design/NkrOmzGeP9iJk7x515aj9f/Do-it---Prot%C3%B3tipo?node-id=0-1&t=8PqLAWix6DMJqZd4-1)
 
 ### RF01 - Cadastro de Usuário
 
@@ -276,3 +312,46 @@ Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sist
 | **US06** | Implementar Cadastro de Usuário – Criar conta com dados pessoais e senha. |
 | **US07** | Implementar Login com Sessão – Fazer login no sistema e acessar painel. |
 | **US09** | Criar Página de Logout e Encerrar Sessão – Encerrar sessão com segurança. |
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para colocar a aplicação para rodar localmente na sua máquina.
+
+### Pré-requisitos
+
+Antes de começar, certifique-se de que você tem as seguintes ferramentas instaladas:
+
+-   [**Docker**](https://www.docker.com/products/docker-desktop/)
+-   [**Git**](https://git-scm.com/)
+
+### Passos para Instalação
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/DevThiagoGalvaoAmorim/Do-it.git
+    ```
+
+2.  **Acesse o diretório do projeto:**
+    ```bash
+    cd Do-it
+    ```
+
+3.  **Construa e inicie os containers Docker:**
+    ```bash
+    docker-compose up --build
+    ```
+
+4.  **Acesse a aplicação:**
+    Abra seu navegador e acesse o seguinte endereço:
+    [http://localhost:8080/public/index.php](http://localhost:8080/public/)
+
+### 🛑 Para Parar a Execução
+
+Para parar todos os containers relacionados ao projeto, execute o comando:
+
+```bash
+docker-compose down
+
+

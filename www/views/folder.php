@@ -21,7 +21,15 @@ require_once __DIR__ . '/../controllers/safe_page.php';
 
     <main>
 
-        <?php include './partials/sidebar.php'; ?>
+        <?php
+        session_start();
+        //corrigir verificação posteriormente
+        if ($_SESSION['email'] == 'admin@mail') {
+            include './partials/sidebarAdmin.php';
+        } else {
+            include './partials/sidebar.php';
+        }
+        ?>
 
         <section class="folder-container">
             <div class="new-folder">
@@ -64,8 +72,8 @@ require_once __DIR__ . '/../controllers/safe_page.php';
     <footer>
         <?php include './partials/footer.php'; ?>
     </footer>
-    <script src="./public/javascript/script.js"></script>
     <script src="./public/javascript/search.js"></script>
+    <script src="../public/javascript/script.js"></script>
 </body>
 
 </html>

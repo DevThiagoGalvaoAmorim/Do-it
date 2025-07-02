@@ -32,7 +32,15 @@ if ($id_usuario) {
 
     <main>
 
-        <?php include 'partials/sidebar.php'; ?>
+        <?php
+        session_start();
+        //corrigir verificação posteriormente
+        if ($_SESSION['email'] == 'admin@mail') {
+            include './partials/sidebarAdmin.php';
+        } else {
+            include './partials/sidebar.php';
+        }
+        ?>
 
         <div class="container-notas">
             <div class="cabecalho-notas">
@@ -50,7 +58,7 @@ if ($id_usuario) {
                         <div class="nota-lixeira">
                             <h3 class="nota-titulo"><?= htmlspecialchars($nota['titulo']) ?></h3>
                             <p class="nota-texto"><?= nl2br(htmlspecialchars($nota['descricao'])) ?></p>
-                            <div class="nota-botoes">             
+                            <div class="nota-botoes">
                                 <button class="btn-restaurar" data-id="<?= $nota['id'] ?>">Restaurar</button>
                                 <button class="btn-excluir" data-id="<?= $nota['id'] ?>">Excluir</button>
                             </div>
@@ -69,40 +77,45 @@ if ($id_usuario) {
     <script src="./public/Javascript/search.js">
     </script>
     <script>
-    document.querySelectorAll('.btn-restaurar').forEach(btn => {
-        btn.addEventListener('click', function() {
-            if(confirm('Deseja restaurar esta nota?')) {
-                fetch('../models/lixeira_crud.php', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    body: 'action=restaurar&id=' + this.dataset.id
-                })
-                .then(res => res.json())
-                .then(data => {
-                    alert(data.message);
-                    if(data.success) location.reload();
-                });
-            }
+        document.querySelectorAll('.btn-restaurar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Deseja restaurar esta nota?')) {
+                    fetch('../models/lixeira_crud.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: 'action=restaurar&id=' + this.dataset.id
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            alert(data.message);
+                            if (data.success) location.reload();
+                        });
+                }
+            });
         });
-    });
 
-    document.querySelectorAll('.btn-excluir').forEach(btn => {
-        btn.addEventListener('click', function() {
-            if(confirm('Excluir esta nota da lixeira? Esta ação não pode ser desfeita.')) {
-                fetch('../models/lixeira_crud.php', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    body: 'action=excluir&id=' + this.dataset.id
-                })
-                .then(res => res.json())
-                .then(data => {
-                    alert(data.message);
-                    if(data.success) location.reload();
-                });
-            }
+        document.querySelectorAll('.btn-excluir').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Excluir esta nota da lixeira? Esta ação não pode ser desfeita.')) {
+                    fetch('../models/lixeira_crud.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: 'action=excluir&id=' + this.dataset.id
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            alert(data.message);
+                            if (data.success) location.reload();
+                        });
+                }
+            });
         });
-    });
     </script>
+     <script src="../public/Javascript/script.js"></script>
 </body>
 
 </html>

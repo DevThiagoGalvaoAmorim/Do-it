@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testes da API Markdown</title>
+    <style>
+        .test-result { margin: 10px 0; padding: 10px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Testes da API de Markdown</h1>
+    <div id="test-results"></div>
+    
+    <!-- Bibliotecas necessárias -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+    
+    <!-- API de Markdown -->
+    <script src="../public/Javascript/markdown.js"></script>
+    
+    <!-- Testes -->
+    <script>
+        class SimpleTestRunner {
+            constructor() {
+                this.results = [];
+                this.resultsContainer = document.getElementById('test-results');
+            }
+            
+            test(description, testFunction) {
+                try {
+                    const result = testFunction();
+                    if (result) {
+                        this.addResult(description, true);
+                    } else {
+                        this.addResult(description, false, 'Teste falhou');
+                    }
+                } catch (error) {
+                    this.addResult(description, false, error.message);
+                }
+            }
+            
+            addResult(description, passed, error = '') {
+                const div = document.createElement('div');
+                div.className = `test-result ${passed ? 'pass' : 'fail'}`;
+                div.innerHTML = `
+                    <strong>${passed ? '✅' : '❌'} ${description}</strong>
+                    ${error ? `<br><small>Erro: ${error}</small>` : ''}
+                `;
+                this.resultsContainer.appendChild(div);
+            }
+        }
+        
+        // Executar testes
+        const runner = new SimpleTestRunner();
+        
+        // Testes para markdownToHTML
+        runner.test('markdownToHTML - Converte header', () => {
+            const result = markdownToHTML('# Título');
+            return result.includes('<h1>') && result.includes('Título');
+        });
+        
+        runner.test('markdownToHTML - Converte negrito', () => {
+            const result = markdownToHTML('**texto**');
+            return result.includes('<strong>') && result.includes('texto');
+        });
+        
+        runner.test('markdownToHTML - Trata entrada vazia', () => {
+            const result = markdownToHTML('');
+            return result === '';
+        });
+        
+        runner.test('markdownToHTML - Trata null', () => {
+            const result = markdownToHTML(null);
+            return result === null || result === '';
+        });
+        
+        // Testes para hasMarkdownSyntax
+        runner.test('hasMarkdownSyntax - Detecta header', () => {
+            return hasMarkdownSyntax('# Título') === true;
+        });
+        
+        runner.test('hasMarkdownSyntax - Detecta negrito', () => {
+            return hasMarkdownSyntax('**texto**') === true;
+        });
+        
+        runner.test('hasMarkdownSyntax - Detecta itálico', () => {
+            return hasMarkdownSyntax('*texto*') === true;
+        });
+        
+        runner.test('hasMarkdownSyntax - Detecta links', () => {
+            return hasMarkdownSyntax('[link](url)') === true;
+        });
+        
+        runner.test('hasMarkdownSyntax - Detecta código inline', () => {
+            return hasMarkdownSyntax('`código`') === true;
+        });
+        
+        runner.test('hasMarkdownSyntax - Detecta listas', () => {
+            return hasMarkdownSyntax('- item') === true;
+        });
+        
+        runner.test('hasMarkdownSyntax - Texto simples retorna false', () => {
+            return hasMarkdownSyntax('texto simples') === false;
+        });
+        
+        runner.test('hasMarkdownSyntax - Entrada vazia retorna false', () => {
+            return hasMarkdownSyntax('') === false;
+        });
+        
+        // Testes para truncateMarkdown
+        runner.test('truncateMarkdown - Trunca texto longo', () => {
+            const longText = 'a'.repeat(200);
+            const result = truncateMarkdown(longText, 100);
+            return result.length <= 103 && result.includes('...');
+        });
+        
+        runner.test('truncateMarkdown - Remove sintaxe markdown', () => {
+            const result = truncateMarkdown('# Título **negrito** com texto adicional para forçar truncamento', 20);
+            return !result.includes('#') && !result.includes('**');
+        });
+        
+        runner.test('truncateMarkdown - Texto curto não é modificado', () => {
+            const shortText = 'texto curto';
+            const result = truncateMarkdown(shortText, 100);
+            return result === shortText;
+        });
+        
+        // Testes para renderMarkdownInElement
+        runner.test('renderMarkdownInElement - Renderiza em elemento', () => {
+            const div = document.createElement('div');
+            renderMarkdownInElement(div, '# Título');
+            return div.innerHTML.includes('<h1>') && div.classList.contains('markdown-content');
+        });
+        
+        runner.test('renderMarkdownInElement - Trata elemento null', () => {
+            try {
+                renderMarkdownInElement(null, '# Título');
+                return true; // Não deve gerar erro
+            } catch (error) {
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

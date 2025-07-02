@@ -31,7 +31,7 @@ require_once __DIR__ . '/../controllers/processar_perfil.php';
     </header>
 
     <div class="layout-container">
-        <?php include './partials/sidebar.php'; ?>
+       
         <section class="background">
 
             <div class="main-container">
@@ -101,12 +101,12 @@ require_once __DIR__ . '/../controllers/processar_perfil.php';
         </section>
     </div>
 
-    
-  <footer>
-    <?php include './partials/footer.php'; ?>
-  </footer>
 
-  <script src="../public/javascript/perfil.js"></script>
+    <footer>
+        <?php include './partials/footer.php'; ?>
+    </footer>
+
+    <script src="../public/javascript/perfil.js"></script>
 </body>
 
 </html>
