@@ -345,7 +345,7 @@ Antes de começar, certifique-se de que você tem as seguintes ferramentas insta
 
 4.  **Acesse a aplicação:**
     Abra seu navegador e acesse o seguinte endereço:
-    [http://localhost:8080/public/index.php](http://localhost:8080/public/index.php)
+    [http://localhost:8080/public/index.php](http://localhost:8080/public/)
 
 ### 🛑 Para Parar a Execução
 
