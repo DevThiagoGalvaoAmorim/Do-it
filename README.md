@@ -1,14 +1,29 @@
-# Engenharia de Software 2024.2 - Universidade Federal do Tocantins  
-Bacharelado em Ciência da Computação, 4º semestre  
-Professor: Edeilson Milhomem da Silva  
-Grupo: 
-* Thiago Galvâo Amorim
-* Douglas Alves da Cruz
-* Ruam Marcos Maciel dos Santos
-* João Sestari Galvão
-* Guilherme da Silva Carvalho
-* Raphael Sales de Souza
+# 🛠️ Engenharia de Software — 2024.2  
+**Universidade Federal do Tocantins (UFT)**  
+**Bacharelado em Ciência da Computação – 4º Semestre**  
+**Professor:** Edeilson Milhomem da Silva
 
+---
+
+## 👥 Integrantes do Grupo
+
+- **Thiago Galvão Amorim**  
+- **Douglas Alves da Cruz**  
+- **Ruam Marcos Maciel dos Santos**  
+- **João Sestari Galvão**  
+- **Guilherme da Silva Carvalho**  
+- **Raphael Sales de Souza**
+
+---
+
+# 🌐 Landing Page — Projeto de Engenharia de Software
+
+Este repositório contém uma landing page desenvolvida como parte da disciplina de **Engenharia de Software – 2024.2**, no curso de **Ciência da Computação** da **Universidade Federal do Tocantins (UFT)**.
+
+📍 **Link da página publicada:**  
+➡️ [Clique aqui para acessar a landing page](https://ruammarcos.github.io/landing_page/)
+
+---
 ## Sistema de Notas
 
 ### Descrição  
