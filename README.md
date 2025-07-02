@@ -1,14 +1,29 @@
-# Engenharia de Software 2024.2 - Universidade Federal do Tocantins  
-Bacharelado em Ciência da Computação, 4º semestre  
-Professor: Edeilson Milhomem da Silva  
-Grupo: 
-* Thiago Galvâo Amorim
-* Douglas Alves da Cruz
-* Ruam Marcos Maciel dos Santos
-* João Sestari Galvão
-* Guilherme da Silva Carvalho
-* Raphael Sales de Souza
+# 🛠️ Engenharia de Software — 2024.2  
+**Universidade Federal do Tocantins (UFT)**  
+**Bacharelado em Ciência da Computação – 4º Semestre**  
+**Professor:** Edeilson Milhomem da Silva
 
+---
+
+## 👥 Integrantes do Grupo
+
+- **Thiago Galvão Amorim**  
+- **Douglas Alves da Cruz**  
+- **Ruam Marcos Maciel dos Santos**  
+- **João Sestari Galvão**  
+- **Guilherme da Silva Carvalho**  
+- **Raphael Sales de Souza**
+
+---
+
+# 🌐 Landing Page — Projeto de Engenharia de Software
+
+Este repositório contém uma landing page desenvolvida como parte da disciplina de **Engenharia de Software – 2024.2**, no curso de **Ciência da Computação** da **Universidade Federal do Tocantins (UFT)**.
+
+📍 **Link da página publicada:**  
+➡️ [Clique aqui para acessar a landing page](https://ruammarcos.github.io/landing_page/)
+
+---
 ## Sistema de Notas
 
 ### Descrição  
@@ -237,6 +252,12 @@ Eu, como usuário logado, quero poder sair do sistema com segurança, encerrando
 **US10**  - Implementar Recuperação de Senha  
 Eu, como usuário, quero recuperar minha senha caso eu a esqueça, para poder voltar a acessar minha conta sem precisar criar uma nova.
 
+**US11**  - Implementar Recuperação de Senha 
+Criar Testes Unitários para Funcionalidades Críticas – Garantir que funções principais do sistema funcionem corretamente de forma isolada.
+
+**US12** - Acrescentar API ao projeto
+Integrar API de Envio de E-mails – Enviar e-mails automáticos após eventos como cadastro ou recuperação de senha.
+
 ---
 ## Iteração 1 – Criação, Edição, Exclusão e Pesquisa de Notas  
 
@@ -252,10 +273,6 @@ Como usuário, desejo criar, editar, excluir e buscar notas de forma rápida e p
 - RF05 – Exclusão de Notas  
 - RF08 – Pesquisa de Notas por Título
   
-![image](https://github.com/user-attachments/assets/8dccc021-b4b6-4f32-bbf1-742029f7fb22)
-
-![image](https://github.com/user-attachments/assets/46443cc4-0a1f-46ab-aeb1-193bf4ac2c6f)
-
 ### User Stories que se enquadram na iteração 
 
 | User Story | Descrição |
@@ -263,6 +280,9 @@ Como usuário, desejo criar, editar, excluir e buscar notas de forma rápida e p
 | **US02** | Implementar CRUD Básico de Notas – Criar e visualizar notas simples para organizar informações. |
 | **US04** | Prototipar Interface com HTML/CSS – Interface funcional para testar a criação e listagem de notas. |
 | **US05** | Criar Navegação entre Telas – Navegar entre a página inicial e o painel de notas. |
+
+
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio1.md)
 
 ---
 ## Iteração 2 - Gerenciamento das notas
@@ -274,7 +294,9 @@ Garantir que o usuário seja capaz de organizar suas notas em pastas.
 Como usuário, desejo organizar em pastas, definir prazo e remover minhas notas criadas.
 
 **Requisitos Relacionados:** 
-- RF07 - Organização em módulos 
+- RF07 - Organização em módulos
+
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio2.md)
 
 ---
 ## Iteração 3 – Login, Cadastro e Controle de Sessão  
@@ -292,20 +314,9 @@ Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sist
 - RF10 – Exclusão da Conta do Usuário
 - RF11 - Gerenciamento de Usuários pelo Administrador
 
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio3.md)
 
-![image](https://github.com/user-attachments/assets/af094729-ba3b-4e69-9c36-726c8665a042)
-
-![image](https://github.com/user-attachments/assets/f2795ec4-f7c5-426a-84f7-97059ad7174f)
-
-![Tela de Administrador - Usuários-Douglas](https://github.com/user-attachments/assets/dcf2d4b4-e5c8-4866-a5cd-106b6462fc82)
-
-![Tela de Administrador - Log De Atividades-Douglas](https://github.com/user-attachments/assets/36b62a4e-6797-4b78-93c5-043c81c2b1cf)
-
-![Tela de Administrador - Estatísticas-Douglas](https://github.com/user-attachments/assets/36224352-9d7d-4a74-8eef-62af22f0cae5)
-
-
-
-### User Stories que se enquadram na Iteração 2
+### User Stories que se enquadram na Iteração 3
 
 | User Story | Descrição |
 |------------|-----------|
@@ -314,6 +325,48 @@ Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sist
 | **US09** | Criar Página de Logout e Encerrar Sessão – Encerrar sessão com segurança. |
 
 ---
+## Iteração 4 – Acrescentar API ao projeto | Exposição SaaS
+
+**Valor:**  
+Adicionar uma API externa (ou interna) que traga uma nova funcionalidade ao sistema, proporcionando integração com serviços que ampliem a utilidade, performance ou automatização do produto para o usuário final.
+
+**Objetivo:**  
+Como usuário, desejo receber e enviar e-mails do sistema (como confirmações, avisos ou alertas), para que eu seja informado sobre eventos importantes.
+
+**Requisitos Relacionados:**  
+- RF11. O sistema deve integrar com uma API de e-mail para envio automático de mensagens.
+- RF12. O sistema deve enviar e-mails automaticamente após eventos específicos, como cadastro de usuário, recuperação de senha e criação de notas.
+- RF13. O sistema deve registrar o status de envio de cada e-mail (sucesso, erro, rejeitado).
+
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio4.md)
+
+### User Stories que se enquadram na Iteração 4
+
+| User Story | Descrição |
+|------------|-----------|
+| **US11** | Integrar API de Envio de E-mails – Enviar e-mails automáticos após eventos como cadastro ou recuperação de senha. |
+
+---
+## Iteração 5 – Testes unitários | Exposição SaaS
+
+**Valor:**  
+Garantir que o usuário possa acessar sua área pessoal de forma segura, por meio de cadastro, login e controle de sessão, permitindo que apenas usuários autorizados acessem suas anotações e demais funcionalidades do sistema.
+
+**Objetivo:**  
+Como usuário, desejo me cadastrar, fazer login e encerrar minha sessão no sistema, para utilizar minhas funcionalidades com segurança e manter meu acesso exclusivo às minhas informações.
+
+**Requisitos Relacionados:**  
+
+
+
+
+### User Stories que se enquadram na Iteração 5
+
+| User Story | Descrição |
+|------------|-----------|
+|**US11**  | Criar Testes Unitários para Funcionalidades Críticas – Garantir que funções principais do sistema funcionem corretamente de forma isolada. |
+
+[Acesse o relatório](https://github.com/DevThiagoGalvaoAmorim/Do-it/blob/ReleaseFinal/relatorio/relatorio5.md)
 
 ## 🚀 Como Executar o Projeto
 
