@@ -1,18 +1,18 @@
 <?php
 require_once '../../models/account_config.php';
 
-$token = $_GET['token'] ?? '';
-if (!$token) {
-    echo "Token inválido.";
-    exit;
-}
+// $token = $_GET['token'] ?? '';
+// if (!$token) {
+//     echo "Token inválido.";
+//     exit;
+// }
 
-$email = buscarToken($token);
+// $email = buscarToken($token);
 
-if (!$email) {
-    echo "Token inválido ou já usado.";
-    exit;
-}
+// if (!$email) {
+//     echo "Token inválido ou já usado.";
+//     exit;
+// }
 ?>
 
 <!DOCTYPE html>

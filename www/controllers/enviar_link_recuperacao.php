@@ -1,7 +1,7 @@
 <?php
-require_once  '../models/account_config.php';
-require_once  '../views/auth/warning.php';
-require '/var/www/html/vendor/autoload.php';
+require_once __DIR__ . '/../models/account_config.php';
+require_once  __DIR__ . '/../views/auth/warning.php';
+require  '/var/www/html/vendor/autoload.php';
 require_once __DIR__ . '/../conexao_db/conexao.php'; 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 $email = $_POST['email'];
 $token = bin2hex(random_bytes(32)); // token seguro
 
-salvarToken($email, $token);
+// salvarToken($email, $token);
 
 // Enviar e-mail
 $link = "http://localhost:8080/views/auth/reset.php?token=$token";
@@ -88,7 +88,7 @@ $mail = new PHPMailer(true);
 
         $mail->setFrom('projeto.do.it2025@gmail.com', 'Do it');
         $mail->isHTML(true);
-        $mail->Subject = 'Lembrete criado com sucesso';
+        $mail->Subject = 'Sua Senha Alterada Sendo Alterada!';
         $mail->Body = $mensagem;
 
         // **Enviar e-mail APENAS para o usuário logado**
@@ -99,7 +99,7 @@ $mail = new PHPMailer(true);
         
         tela_de_mensagem("Um link de recuperação enviado ao seu E-mail!");
     } catch (Exception $e) {
-        tela_de_mesagem("Erro ao enviar e-mail: {$mail->ErrorInfo}");
+        print("Erro ao enviar mensagem");
     }
 
 

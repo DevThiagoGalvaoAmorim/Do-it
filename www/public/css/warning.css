@@ -24,6 +24,11 @@ body {
     border-radius: 45px;
 }
 
+.jatenhoconta {
+    color: white;
+    text-decoration: none;
+}
+
 .warningbox {
     align-content: center
 }
